@@ -17,13 +17,16 @@ namespace ValueObject
         public string IDHoaDonNhap { get; set; }
         public string IDChiTiet { get; set; }
         public int SoLuong { get; set; }
-        public ChiTietHoaDonNhap(string id, string idct, int sl )
-        {
-            this.IDHoaDonNhap = id;
-            this.IDChiTiet = idct;
-            this.SoLuong = sl;
-        }
+    
         public virtual ChiTietSanPham ChiTietSanPham { get; set; }
         public virtual HoaDonNhap HoaDonNhap { get; set; }
+
+        public ChiTietHoaDonNhap(string iDHoaDonNhap, string iDChiTiet, int soLuong)
+        {
+            IDHoaDonNhap = iDHoaDonNhap;
+            IDChiTiet = iDChiTiet;
+            SoLuong = soLuong;
+            
+        }
     }
 }

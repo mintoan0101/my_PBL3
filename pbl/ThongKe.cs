@@ -50,7 +50,7 @@ namespace pbl
         {
             using (PBL3Entities1 db = new PBL3Entities1())
             {
-                var li = from h in db.HoaDon
+                var li = from h in db.HoaDons
                          select new
                          {
                              Ngay = h.NgayTaoHoaDon,
@@ -125,7 +125,7 @@ namespace pbl
             }
             using (PBL3Entities1 db = new PBL3Entities1())
             {
-                var li = db.HoaDon.Select(h => new
+                var li = db.HoaDons.Select(h => new
                 {
                     Ngay = h.NgayTaoHoaDon,
                     GiamGia = h.ChietKhau,

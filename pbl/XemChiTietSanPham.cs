@@ -130,7 +130,7 @@ namespace pbl
         {
             using (PBL3Entities1 db = new PBL3Entities1())
             {
-                var li = from c in db.ChiTietSanPham
+                var li = from c in db.ChiTietSanPhams
                          where c.IDSanPham == idsanpham
                          select new
                          {
@@ -151,7 +151,7 @@ namespace pbl
             {
                 string npp = cb_nhaphanphoi.SelectedItem.ToString();
                 string boloc = cb_boloc.SelectedItem.ToString();
-                var li = from c in db.ChiTietSanPham
+                var li = from c in db.ChiTietSanPhams
                          where c.IDSanPham.Contains(non_idsanpham)
                          select new
                          {
@@ -196,7 +196,7 @@ namespace pbl
             {
                 if (isFull)
                 {
-                    var li = from c in db.ChiTietSanPham
+                    var li = from c in db.ChiTietSanPhams
                              where c.IDSanPham == idsanpham
                              select new
                              {
@@ -214,7 +214,7 @@ namespace pbl
                 }
                 else
                 {
-                    var li = from c in db.ChiTietSanPham
+                    var li = from c in db.ChiTietSanPhams
                            
                              select new
                              {

@@ -15,7 +15,7 @@ namespace pbl
     public partial class Khachhang_Nhanvien : Form
     {
         KhachHangBUS bus = new KhachHangBUS();
-  
+
         //CÁC HÀM KHỞI TẠO CƠ BẢN
         public Khachhang_Nhanvien()
         {
@@ -56,16 +56,16 @@ namespace pbl
         {
             string txt = txt_timkiem.Text;
             string phanloai = cb_thuoctinh.SelectedItem.ToString();
-            string boloc = cbb_BoLoc.SelectedItem.ToString();   
+            string boloc = cbb_BoLoc.SelectedItem.ToString();
             dataGridView1.DataSource = KhachHangBUS.Instance.Search(txt, phanloai, boloc);
         }
         private void btn_xoa_Click(object sender, EventArgs e)
         {
 
-            if(dataGridView1.SelectedRows.Count>0)
-            {   
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
                 string id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                DialogResult re = MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng có ID là "+id, "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult re = MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng có ID là " + id, "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (re == DialogResult.Yes)
                 {
                     if (bus.Delete(id) > 0)
@@ -83,7 +83,16 @@ namespace pbl
         public void Load_Khach_Hang()
         {
             dataGridView1.DataSource = KhachHangBUS.Instance.GetData();
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            if (dataGridView1.Columns.Count > 0)
+            {
+                dataGridView1.Columns[0].Width = 90;
+                dataGridView1.Columns[1].Width = 200;
+                dataGridView1.Columns[2].Width = 100;
+                dataGridView1.Columns[3].Width = 70;
+            }
         }
+
         public void Load_Thuoc_Tinh()
         {
             cb_thuoctinh.Items.Add("SĐT");
@@ -100,8 +109,8 @@ namespace pbl
             cbb_BoLoc.Items.Add("Tất cả");
             cbb_BoLoc.SelectedItem = "Tất cả";
         }
-       
 
-     
+
+
     }
 }

@@ -17,9 +17,10 @@ namespace ValueObject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ChiTietSanPham()
         {
-            this.ChiTietHoaDon = new HashSet<ChiTietHoaDon>();
-            this.ChiTietHoaDonNhap = new HashSet<ChiTietHoaDonNhap>();
+            this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
+            this.ChiTietHoaDonNhaps = new HashSet<ChiTietHoaDonNhap>();
         }
+    
         public string IDChiTiet { get; set; }
         public string IDSanPham { get; set; }
         public string IDNhaPhanPhoi { get; set; }
@@ -27,10 +28,10 @@ namespace ValueObject
         public System.DateTime HanSuDung { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDon { get; set; }
+        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietHoaDonNhap> ChiTietHoaDonNhaps { get; set; }
         public virtual NhaPhanPhoi NhaPhanPhoi { get; set; }
         public virtual SanPham SanPham { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHoaDonNhap> ChiTietHoaDonNhap { get; set; }
     }
 }

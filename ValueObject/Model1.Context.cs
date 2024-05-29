@@ -25,15 +25,15 @@ namespace ValueObject
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ChiTietHoaDon> ChiTietHoaDon { get; set; }
-        public virtual DbSet<ChiTietSanPham> ChiTietSanPham { get; set; }
-        public virtual DbSet<HoaDon> HoaDon { get; set; }
-        public virtual DbSet<KhachHang> KhachHang { get; set; }
-        public virtual DbSet<NhanVien> NhanVien { get; set; }
-        public virtual DbSet<NhaPhanPhoi> NhaPhanPhoi { get; set; }
-        public virtual DbSet<SanPham> SanPham { get; set; }
-        public virtual DbSet<TaiKhoan> TaiKhoan { get; set; }
-        public virtual DbSet<ChiTietHoaDonNhap> ChiTietHoaDonNhap { get; set; }
-        public virtual DbSet<HoaDonNhap> HoaDonNhap { get; set; }
+        public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        public virtual DbSet<ChiTietHoaDonNhap> ChiTietHoaDonNhaps { get; set; }
+        public virtual DbSet<ChiTietSanPham> ChiTietSanPhams { get; set; }
+        public virtual DbSet<HoaDon> HoaDons { get; set; }
+        public virtual DbSet<HoaDonNhap> HoaDonNhaps { get; set; }
+        public virtual DbSet<KhachHang> KhachHangs { get; set; }
+        public virtual DbSet<NhanVien> NhanViens { get; set; }
+        public virtual DbSet<NhaPhanPhoi> NhaPhanPhois { get; set; }
+        public virtual DbSet<SanPham> SanPhams { get; set; }
+        public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
     }
 }

@@ -71,7 +71,7 @@ namespace pbl
         {
             using (PBL3Entities1 db = new PBL3Entities1())
             {
-                var li = from h in db.HoaDonNhap
+                var li = from h in db.HoaDonNhaps
                          select new 
                          {
                              ID = h.IDHoaDonNhap,
@@ -106,7 +106,7 @@ namespace pbl
                 string order = cb_sapxep.SelectedItem.ToString();
                 bool TangDan = checkBox1.Checked;
                 if (status == "Tất Cả") status = "";
-                var li = db.HoaDonNhap.Select(h => new
+                var li = db.HoaDonNhaps.Select(h => new
                 {
                     ID = h.IDHoaDonNhap,
                     NgayTao = h.NgayTao,

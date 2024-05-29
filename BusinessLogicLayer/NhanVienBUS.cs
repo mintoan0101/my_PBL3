@@ -48,5 +48,9 @@ namespace BusinessLogicLayer
         {
             return dao.GetNameNhanVien();
         }
+        public string GetID(string tentaikhoan)
+        {
+            return dao.GetID(tentaikhoan);
+        }
     }
 }

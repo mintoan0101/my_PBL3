@@ -108,7 +108,7 @@ namespace pbl
             // dataGridView1.DataSource = bus.GetData();
             using (PBL3Entities1 db = new PBL3Entities1())
             {
-                var li = from p in db.NhaPhanPhoi
+                var li = from p in db.NhaPhanPhois
                          select new
                          {
                             ID =  p.IDNhaPhanPhoi,
@@ -125,7 +125,7 @@ namespace pbl
             {
                 string txt = txt_timkiem.Text;
                 string thuoctinh = cb_thuoctinh.SelectedItem.ToString();
-                var re = from p in db.NhaPhanPhoi
+                var re = from p in db.NhaPhanPhois
                          select new
                          {
                              ID = p.IDNhaPhanPhoi,

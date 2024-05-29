@@ -17,14 +17,14 @@ namespace pbl
     public partial class ThemHoadon : Form
     {
         public string IDNhanVien;
-        private KhachHang kh = new KhachHang(); 
+        private KhachHang kh = new KhachHang();
 
         private ChiTietSanPhamBUS ctspBUS = new ChiTietSanPhamBUS();
         private NhanVienBUS nvBUS = new NhanVienBUS();
         private bool DaDoiDiem = new bool();
         private List<ChiTietSanPham_View> list = new List<ChiTietSanPham_View>();
         private List<SoLuongCTSP> list_sl = new List<SoLuongCTSP>();
-        
+
         public ThemHoadon()
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace pbl
             Load_DS_San_Pham();
             SetBill();
             AddColumnsToDataGridView2();
-            panel10.Visible = false; 
+            panel10.Visible = false;
             panel11.Visible = false;
         }
         private void SetBill()
@@ -70,7 +70,7 @@ namespace pbl
         {
             list = ctspBUS.GetData1();
             dataGridView1.DataSource = list;
-            
+
         }
 
         private void AddColumnsToDataGridView2()
@@ -99,7 +99,7 @@ namespace pbl
             {
                 HoaDon hd = new HoaDon();
                 hd.IDHoaDon = lb_ID.Text;
-            //    hd.IDNhanVien = nvBUS.GetID(IDNhanVien);
+                hd.IDNhanVien = nvBUS.GetID(IDNhanVien);
                 hd.IDKhachHang = lb_IDKhachHang.Text.Substring(4);
                 hd.NgayTaoHoaDon = Convert.ToDateTime(lb_DateTime.Text);
                 hd.ChietKhau = Convert.ToDecimal(lb_GiamGia.Text);
@@ -120,26 +120,27 @@ namespace pbl
                         listChiTietHoaDon.Add(chiTietHoaDon);
                         ctspBUS.Update(chiTietSanPham);
                     }
-                        
 
-                    
+
+
                 }
-                hd.ChiTietHoaDon = listChiTietHoaDon;
+                hd.ChiTietHoaDons = listChiTietHoaDon;
+                hd.LoiNhuan = HoaDonBUS.Instance.TinhLoiNhuan(listChiTietHoaDon);
                 HoaDonBUS.Instance.Insert(hd);
-                foreach (ChiTietHoaDon chitiethoadon in hd.ChiTietHoaDon)
+                foreach (ChiTietHoaDon chitiethoadon in hd.ChiTietHoaDons)
                 {
                     ChiTietHoaDonDAO.Instance.Insert(chitiethoadon);
                 }
-                int diem = Convert.ToInt32(Convert.ToDecimal(lb_Tong.Text)/20);
+                int diem = Convert.ToInt32(Convert.ToDecimal(lb_Tong.Text) / 20);
                 kh.Diem += diem;
-                KhachHangBUS.Instance.Update( kh);
+                KhachHangBUS.Instance.Update(kh);
                 MessageBox.Show("Thanh toán thành công");
                 this.Close();
             }
             else
             {
                 MessageBox.Show("Hoá đơn không hợp lệ");
-            }   
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -159,7 +160,7 @@ namespace pbl
                 ThemKhachHang f = new ThemKhachHang(null);
                 f.ShowDialog();
             }
-                
+
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -280,7 +281,7 @@ namespace pbl
                 lb_Tong.Text = hd.TongTien.ToString();
                 DaDoiDiem = true;
             }
-                      
+
         }
 
         private void ThemHoadon_Load(object sender, EventArgs e)
@@ -290,25 +291,25 @@ namespace pbl
 
         private void Refresh_DataGridView()
         {
-            dataGridView1.DataSource = null; // Xóa ràng buộc hiện có
-            dataGridView1.DataSource = list; // Ràng buộc lại với danh sách
+
+            dataGridView1.Refresh();
             dataGridView2.Refresh();
         }
 
         private void TinhTien()
         {
-            double thanhtien = 0.0;
+            Decimal thanhtien = 0.000m;
             foreach (DataGridViewRow item in dataGridView2.Rows)
             {
-                thanhtien += Convert.ToDouble(item.Cells[2].Value) * Convert.ToDouble(item.Cells[3].Value);
+                thanhtien += Convert.ToDecimal(item.Cells[2].Value) * Convert.ToDecimal(item.Cells[3].Value);
 
             }
             lb_ThanhTien.Text = thanhtien.ToString();
-            double chietkhau = Convert.ToDouble(lb_GiamGia.Text);
+            Decimal chietkhau = Convert.ToDecimal(lb_GiamGia.Text);
             lb_Tong.Text = (thanhtien - chietkhau).ToString();
         }
 
-        
+
     }
 }
 

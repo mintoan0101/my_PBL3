@@ -49,7 +49,7 @@ namespace pbl
         {
             using (PBL3Entities1 db = new PBL3Entities1())
             {
-                var li = from h in db.HoaDon
+                var li = from h in db.HoaDons
                          where h.IDNhanVien == idnv
                          select new
                          { 
@@ -68,7 +68,7 @@ namespace pbl
             DateTime end = dateTimePicker2.Value;
             using (PBL3Entities1 db = new PBL3Entities1())
             {
-                var li = from h in db.HoaDon
+                var li = from h in db.HoaDons
                          where h.NgayTaoHoaDon >= start && h.NgayTaoHoaDon < end
                                && h.IDNhanVien == idnv
                          select new

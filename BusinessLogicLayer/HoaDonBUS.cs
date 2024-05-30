@@ -71,5 +71,9 @@ namespace BusinessLogicLayer
         {
             return HoaDonDAO.Instance.DoanhThuTheoNhanVien(IDNV);
         }
+        public decimal TinhLoiNhuan(List<ChiTietHoaDon> list)
+        {
+            return HoaDonDAO.Instance.TinhLoiNhuan(list);
+        }
     }
 }

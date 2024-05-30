@@ -33,15 +33,28 @@ namespace DataAccessLayer
         }
         public int Insert(ChiTietHoaDon cthd)
         {
-           
-                pbl.ChiTietHoaDon.Add(cthd);
+            try
+            {
+                pbl.ChiTietHoaDons.Add(cthd);
                 pbl.SaveChanges();
-                return 1;
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine("Inner Exception: " + ex.InnerException.Message);
+                }
+                else
+                {
+                    Console.WriteLine("No inner exception found.");
+                }
+            }
+            return 1;
           
         }
         public List<dynamic> GetData(string ID)
         {
-            var li = pbl.ChiTietHoaDon.Where(p => p.IDHoaDon == ID)
+            var li = pbl.ChiTietHoaDons.Where(p => p.IDHoaDon == ID)
                                        .Select(p => new { p.ChiTietSanPham.SanPham.Ten, p.SoLuong, p.ChiTietSanPham.SanPham.GiaBan });
             return li.ToList<dynamic>();
         }

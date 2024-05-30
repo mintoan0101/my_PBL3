@@ -17,16 +17,16 @@ namespace ValueObject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SanPham()
         {
-            this.ChiTietSanPham = new HashSet<ChiTietSanPham>();
+            this.ChiTietSanPhams = new HashSet<ChiTietSanPham>();
         }
     
         public string IDSanPham { get; set; }
         public string Ten { get; set; }
         public string PhanLoai { get; set; }
         public decimal GiaBan { get; set; }
-        public Nullable<decimal> GiaNhap { get; set; }
+        public decimal GiaNhap { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietSanPham> ChiTietSanPham { get; set; }
+        public virtual ICollection<ChiTietSanPham> ChiTietSanPhams { get; set; }
     }
 }

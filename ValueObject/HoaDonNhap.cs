@@ -17,23 +17,24 @@ namespace ValueObject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HoaDonNhap()
         {
-            this.ChiTietHoaDonNhap = new HashSet<ChiTietHoaDonNhap>();
+            this.ChiTietHoaDonNhaps = new HashSet<ChiTietHoaDonNhap>();
         }
-        public HoaDonNhap(string iDHoaDonNhap, DateTime ngayTao, decimal tongTien, string trangThai)
-        {
-            IDHoaDonNhap = iDHoaDonNhap;
-            NgayTao = ngayTao;
-            TongTien = tongTien;
-            TrangThai = trangThai;
-
-        }
-
+    
         public string IDHoaDonNhap { get; set; }
         public System.DateTime NgayTao { get; set; }
         public decimal TongTien { get; set; }
         public string TrangThai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHoaDonNhap> ChiTietHoaDonNhap { get; set; }
+        public virtual ICollection<ChiTietHoaDonNhap> ChiTietHoaDonNhaps { get; set; }
+
+        public HoaDonNhap(string iDHoaDonNhap, DateTime ngayTao, decimal tongTien, string trangThai)
+        {
+            IDHoaDonNhap = iDHoaDonNhap;
+            NgayTao = ngayTao;
+            TongTien = tongTien;
+            TrangThai = trangThai;
+        }
+
     }
 }

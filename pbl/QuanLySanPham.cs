@@ -120,7 +120,7 @@ namespace pbl
             //dataGridView1.DataSource = spbus.GetData1();
             using (PBL3Entities1 db = new PBL3Entities1())
             {
-                var li = db.SanPham.Select(p => new
+                var li = db.SanPhams.Select(p => new
                 {
                    ID = p.IDSanPham,
                    Ten = p.Ten,
@@ -159,7 +159,7 @@ namespace pbl
                 string txt = txt_tentimkiem.Text;
                 string boloc = cb_boloc.SelectedItem.ToString();
                 string phanloai = cb_phanloai.SelectedItem.ToString();
-                var list = pbl.SanPham.Select(p => new
+                var list = pbl.SanPhams.Select(p => new
                 {
                     ID = p.IDSanPham,
                     Ten = p.Ten,

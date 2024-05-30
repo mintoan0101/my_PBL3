@@ -100,7 +100,7 @@ namespace pbl
         {
             using (PBL3Entities1 db = new PBL3Entities1())
             {
-                var li = from c in db.SanPham
+                var li = from c in db.SanPhams
                          select new { 
                              ID = c.IDSanPham,
                              Ten = c.Ten,
@@ -140,7 +140,7 @@ namespace pbl
                 string id = txt_id.Text;
                 string npp = cb_phanloai.SelectedItem.ToString();
                 if (npp == "Tất Cả") npp = "";
-                var li = db.SanPham.Select(c => new
+                var li = db.SanPhams.Select(c => new
                 {
                     ID = c.IDSanPham,
                     Ten = c.Ten,

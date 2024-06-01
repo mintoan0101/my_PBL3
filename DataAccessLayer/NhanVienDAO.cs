@@ -96,11 +96,19 @@ namespace DataAccessLayer
             var re = pbl.NhanViens.Select(p => p.TenNhanVien);
             return re.ToList();
         }
-
         public string GetID(string tentaikhoan)
         {
             var id = pbl.NhanViens.Where(p => p.TaiKhoan.TenTaiKhoan == tentaikhoan).FirstOrDefault().IDNhanVien;
             return id;
+        }
+        public bool CheckEnableToDelete(string IDNV)
+        {
+            var li = pbl.HoaDons.Where(p => p.NhanVien.IDNhanVien.Contains(IDNV));
+            if(li.Count() > 0)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

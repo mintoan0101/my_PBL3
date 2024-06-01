@@ -137,10 +137,14 @@ namespace DataAccessLayer
 
             return query;
         }
-
-
-
-
-
+        public bool CheckEnableToDelete(string IDKH)
+        {
+            var li = pbl.HoaDons.Where(p => p.IDKhachHang.Contains(IDKH));
+            if(li.Count() > 0)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

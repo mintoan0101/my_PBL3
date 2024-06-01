@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace pbl
 {
-    public partial class Hoadon_nhanvien : Form
+    public partial class HoaDon_NhanVien : Form
     {
         public string IDNhanvien;
         private Form currentFormChild;
-        public Hoadon_nhanvien()
+        public HoaDon_NhanVien()
         {
             InitializeComponent();
         }
@@ -33,16 +33,41 @@ namespace pbl
             childForm.BringToFront();
             childForm.Show();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            ThemHoadon f = new ThemHoadon();
-            f.IDNhanVien = IDNhanvien;
-            f.ShowDialog();
+            OpenChildForm(new HoaDon_DanhSach());
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new DanhSachHoaDon());
+            HoaDon_Them f = new HoaDon_Them();
+            f.IDNhanVien = IDNhanvien;
+            OpenChildForm(f);
+        }
+
+        private void pictureBox2_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox2.BackColor = Color.LightGray;
+        }
+
+        private void pictureBox2_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox2.BackColor = Color.WhiteSmoke;
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox1.BackColor = Color.LightGray;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.BackColor = Color.WhiteSmoke;
+        }
+
+        private void Hoadon_nhanvien_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

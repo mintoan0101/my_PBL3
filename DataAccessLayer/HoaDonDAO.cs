@@ -39,7 +39,9 @@ namespace DataAccessLayer
                 p.IDNhanVien,
                 p.IDKhachHang,
                 p.ChietKhau,
-                p.TongTien
+                p.TongTien,
+                p.LoiNhuan,
+                
             });
             return list.ToList<dynamic>();
         }
@@ -122,7 +124,6 @@ namespace DataAccessLayer
         }
         public decimal DoanhThuTheoNhanVien(string IDNV)
         {
-            decimal tong = 0;
             var li = pbl.HoaDons.GroupBy(p=> p.IDNhanVien).Select(p => new
             {
                 IDNhanVien = p.Key,

@@ -12,26 +12,48 @@ using ValueObject;
 
 namespace pbl
 {
-    public partial class Khachhang_Nhanvien : Form
+    public partial class KhachHang_NhanVien : Form
     {
         KhachHangBUS bus = new KhachHangBUS();
 
         //CÁC HÀM KHỞI TẠO CƠ BẢN
-        public Khachhang_Nhanvien()
+        public KhachHang_NhanVien()
         {
             InitializeComponent();
         }
         private void Khachhang_Nhanvien_Load(object sender, EventArgs e)
         {
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.Font = new Font("Segoe UI Semibold", 12);
+            dataGridView1.RowTemplate.Height = 30;
             Load_Khach_Hang();
             Load_Thuoc_Tinh();
             Load_BoLoc();
+            Dieu_Chinh_DataGridView();
+        }
+        private void Dieu_Chinh_DataGridView()
+        {
+            int total = dataGridView1.Width;
+            int part = total / 20;
+            int i = 1;
+            int count = dataGridView1.Columns.Count;
+            int rate = 1;
+            foreach (DataGridViewColumn c in dataGridView1.Columns)
+            {
+                if (i == 1) rate = 3;
+                else if (i == 2) rate = 6;
+                else if (i == 3) rate = 6;
+                else if (i == 4) rate = 5;
+                c.Width = rate * part;
+                i++;
+                c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
         //CÁC HÀM XỬ LÍ SỰ KIỆN
         private void btn_them_Click(object sender, EventArgs e)
         {
-            ThemKhachHang f = new ThemKhachHang(null);
+            KhachHang_Them f = new KhachHang_Them(null);
             f.isEdit = false;
             f.ShowDialog();
         }
@@ -41,7 +63,7 @@ namespace pbl
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = dataGridView1.SelectedRows[0];
-                ThemKhachHang f = new ThemKhachHang(r.Cells["SDT"].Value.ToString());
+                KhachHang_Them f = new KhachHang_Them(r.Cells["SDT"].Value.ToString());
                 f.isEdit = true;
                 f.kh = KhachHangBUS.Instance.GetKhachHangBySDT(r.Cells[0].Value.ToString());
                 f.ShowDialog();
@@ -64,14 +86,22 @@ namespace pbl
 
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                string id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                DialogResult re = MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng có ID là " + id, "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (re == DialogResult.Yes)
+                string IDKH = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                string TenKH = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                if (bus.CheckEnableToDelete(IDKH))
                 {
-                    if (bus.Delete(id) > 0)
+                    DialogResult re = MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng " + TenKH, "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (re == DialogResult.Yes)
                     {
-                        MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (bus.Delete(IDKH) > 0)
+                        {
+                            MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Không thể xóa vì khách hàng "+TenKH+" hiện đang được sử dụng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else

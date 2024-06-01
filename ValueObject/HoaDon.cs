@@ -17,7 +17,7 @@ namespace ValueObject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HoaDon()
         {
-            this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
+            this.ChiTietHoaDon = new HashSet<ChiTietHoaDon>();
         }
     
         public string IDHoaDon { get; set; }
@@ -29,7 +29,7 @@ namespace ValueObject
         public Nullable<decimal> LoiNhuan { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDon { get; set; }
         public virtual KhachHang KhachHang { get; set; }
         public virtual NhanVien NhanVien { get; set; }
     }

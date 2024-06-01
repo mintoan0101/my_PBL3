@@ -29,23 +29,6 @@ namespace pbl
             childForm.BringToFront();
             childForm.Show();
         }
-
-        //private void OpenChildForm2(Form childForm)
-        //{
-        //    if (currentFormChild != null)
-        //    {
-        //        currentFormChild.Close();
-        //    }
-        //    currentFormChild = childForm;
-        //    childForm.TopLevel = false;
-        //    childForm.FormBorderStyle = FormBorderStyle.None;
-        //    childForm.Dock = DockStyle.Fill;
-        //    panel5.BringToFront();
-        //    panel5.Controls.Add(childForm);
-        //    panel5.Tag = childForm;
-        //    childForm.BringToFront();
-        //    childForm.Show();
-        //}
         private void OpenChildForm1(Form childForm)
         {
             if (currentFormChild != null)
@@ -83,20 +66,17 @@ namespace pbl
         public MainFormAdmin()
         {
             InitializeComponent();
+            panel4.Visible = false;
         }
         private void MainFormAdmin_Load(object sender, EventArgs e)
         {
             btn_infor.Text = username;
             button1.PerformClick();
         }
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void button3_Click_1(object sender, EventArgs e)
         {
 
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Khachhang_Nhanvien());
+            OpenChildForm(new KhachHang_NhanVien());
             button2.BackColor = panel2.BackColor;
             button9.BackColor = panel2.BackColor;
             button7.BackColor = panel2.BackColor;
@@ -104,10 +84,10 @@ namespace pbl
             button8.BackColor = panel2.BackColor;
             button3.BackColor = panel3.BackColor;
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            QuanLySanPham f = new QuanLySanPham();
+
+            SanPham_QuanLy f = new SanPham_QuanLy();
             f.isAdmin = true;
             OpenChildForm(f);
             button2.BackColor = panel2.BackColor;
@@ -120,7 +100,8 @@ namespace pbl
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DanhSachHoaDon f = new DanhSachHoaDon();
+
+            HoaDon_DanhSach f = new HoaDon_DanhSach();
             OpenChildForm1(f);
             button3.BackColor = panel2.BackColor;
             button9.BackColor = panel2.BackColor;
@@ -132,7 +113,8 @@ namespace pbl
 
         private void button7_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Quanlynhanvien());
+    
+            OpenChildForm(new NhanVien_QuanLy());
             button2.BackColor = panel2.BackColor;
             button9.BackColor = panel2.BackColor;
             button3.BackColor = panel2.BackColor;
@@ -143,6 +125,7 @@ namespace pbl
 
         private void button9_Click(object sender, EventArgs e)
         {
+ 
             OpenChildForm(new KhoHang());
             button2.BackColor = panel2.BackColor;
             button7.BackColor = panel2.BackColor;
@@ -150,23 +133,23 @@ namespace pbl
             button1.BackColor = panel2.BackColor;
             button8.BackColor = panel2.BackColor;
             button9.BackColor = panel3.BackColor;
-
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new ThongKe());
+
+            OpenChildForm(new ThongKe_QuanLy());
             button2.BackColor = panel2.BackColor;
             button7.BackColor = panel2.BackColor;
             button3.BackColor = panel2.BackColor;
             button1.BackColor = panel2.BackColor;
             button9.BackColor = panel2.BackColor;
             button8.BackColor = panel3.BackColor;
-
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+
             if (panel4.Visible == false)
             {
                 panel4.BringToFront();
@@ -174,11 +157,12 @@ namespace pbl
             }
             else 
                 panel4.Visible = false;
-                
+
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
+
             DialogResult res = MessageBox.Show("Bạn có chắn chắn muốn đăng xuất","Thông báo",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
             {
@@ -186,16 +170,12 @@ namespace pbl
                 Login f = new Login();
                 f.ShowDialog();
             }
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            OpenChildForm2(new ThongTinCaNhan());
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+            OpenChildForm2(new NhanVien_ThongTin());
+       }
     }
 }

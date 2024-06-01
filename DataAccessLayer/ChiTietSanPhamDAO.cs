@@ -37,10 +37,33 @@ namespace DataAccessLayer
             }
             return 0;
         }
+        public List<ChiTietSanPham_View> Search(string PhanLoai, string txt)
+        {
+            var list = GetData1();
 
+            if (!string.IsNullOrEmpty(txt))
+            {
+                switch (PhanLoai)
+                {
+                    case "ID Chi Tiết":
+                        list = list.Where(p => p.IDChiTiet.Contains(txt)).ToList();
+                        break;
+                    case "Tên Sản Phẩm":
+                        list = list.Where(p => p.Ten.Contains(txt)).ToList();
+                        break;
+                    case "Phân Loại":
+                        list = list.Where(p => p.PhanLoai.Contains(txt)).ToList();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return list;
+        }
         public int Delete(string id)
         {
-            var ct = pbl.ChiTietSanPhams.Where(p => p.IDChiTiet == id).FirstOrDefault();
+            var ct = pbl.ChiTietSanPhams.Where(p => p.IDChiTiet.Contains( id)).FirstOrDefault();
             pbl.ChiTietSanPhams.Remove(ct);
             pbl.SaveChanges();
             return 1;
@@ -74,32 +97,6 @@ namespace DataAccessLayer
         {
             var n = pbl.NhaPhanPhois.Where(p => p.IDNhaPhanPhoi.Contains(index + "")).OrderBy(p => p.IDNhaPhanPhoi).FirstOrDefault();
             return n.IDNhaPhanPhoi;
-        }
-
-
-        public List<ChiTietSanPham_View> Search(string PhanLoai, string txt)
-        {
-            var list = GetData1();
-
-            if (!string.IsNullOrEmpty(txt))
-            {
-                switch (PhanLoai)
-                {
-                    case "ID Chi Tiết":
-                        list = list.Where(p => p.IDChiTiet.Contains(txt)).ToList();
-                        break;
-                    case "Tên Sản Phẩm":
-                        list = list.Where(p => p.Ten.Contains(txt)).ToList();
-                        break;
-                    case "Phân Loại":
-                        list = list.Where(p => p.PhanLoai.Contains(txt)).ToList();
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            return list;
         }
         public int CountID(string f)
         {

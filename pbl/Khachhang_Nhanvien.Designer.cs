@@ -1,6 +1,6 @@
 ﻿namespace pbl
 {
-    partial class Khachhang_Nhanvien
+    partial class KhachHang_NhanVien
     {
         /// <summary>
         /// Required designer variable.
@@ -56,7 +56,7 @@
             this.panel1.Location = new System.Drawing.Point(40, 34);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(744, 428);
+            this.panel1.Size = new System.Drawing.Size(1559, 790);
             this.panel1.TabIndex = 2;
             // 
             // btn_them
@@ -64,13 +64,13 @@
             this.btn_them.BackColor = System.Drawing.Color.White;
             this.btn_them.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btn_them.FlatAppearance.BorderSize = 3;
-            this.btn_them.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_them.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btn_them.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_them.Image = global::pbl.Properties.Resources.add3;
-            this.btn_them.Location = new System.Drawing.Point(71, 366);
+            this.btn_them.Location = new System.Drawing.Point(215, 696);
             this.btn_them.Margin = new System.Windows.Forms.Padding(4);
             this.btn_them.Name = "btn_them";
-            this.btn_them.Size = new System.Drawing.Size(169, 47);
+            this.btn_them.Size = new System.Drawing.Size(250, 80);
             this.btn_them.TabIndex = 6;
             this.btn_them.Text = "Thêm";
             this.btn_them.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -82,13 +82,13 @@
             this.btn_xoa.BackColor = System.Drawing.Color.White;
             this.btn_xoa.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btn_xoa.FlatAppearance.BorderSize = 3;
-            this.btn_xoa.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_xoa.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btn_xoa.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_xoa.Image = global::pbl.Properties.Resources.delete;
-            this.btn_xoa.Location = new System.Drawing.Point(507, 366);
+            this.btn_xoa.Location = new System.Drawing.Point(1096, 696);
             this.btn_xoa.Margin = new System.Windows.Forms.Padding(4);
             this.btn_xoa.Name = "btn_xoa";
-            this.btn_xoa.Size = new System.Drawing.Size(169, 47);
+            this.btn_xoa.Size = new System.Drawing.Size(250, 80);
             this.btn_xoa.TabIndex = 5;
             this.btn_xoa.Text = "Xoá";
             this.btn_xoa.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -100,13 +100,13 @@
             this.btn_sua.BackColor = System.Drawing.Color.White;
             this.btn_sua.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btn_sua.FlatAppearance.BorderSize = 3;
-            this.btn_sua.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_sua.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btn_sua.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_sua.Image = global::pbl.Properties.Resources.sua2;
-            this.btn_sua.Location = new System.Drawing.Point(285, 366);
+            this.btn_sua.Location = new System.Drawing.Point(666, 696);
             this.btn_sua.Margin = new System.Windows.Forms.Padding(4);
             this.btn_sua.Name = "btn_sua";
-            this.btn_sua.Size = new System.Drawing.Size(169, 47);
+            this.btn_sua.Size = new System.Drawing.Size(250, 80);
             this.btn_sua.TabIndex = 4;
             this.btn_sua.Text = "Sửa";
             this.btn_sua.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -121,18 +121,18 @@
             this.panel2.Location = new System.Drawing.Point(20, 20);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(704, 49);
+            this.panel2.Size = new System.Drawing.Size(1506, 75);
             this.panel2.TabIndex = 3;
             // 
             // cbb_BoLoc
             // 
             this.cbb_BoLoc.DisplayMember = "Sort By";
-            this.cbb_BoLoc.Font = new System.Drawing.Font("Segoe UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_BoLoc.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cbb_BoLoc.FormattingEnabled = true;
-            this.cbb_BoLoc.Location = new System.Drawing.Point(544, 11);
+            this.cbb_BoLoc.Location = new System.Drawing.Point(1204, 20);
             this.cbb_BoLoc.Margin = new System.Windows.Forms.Padding(4);
             this.cbb_BoLoc.Name = "cbb_BoLoc";
-            this.cbb_BoLoc.Size = new System.Drawing.Size(140, 28);
+            this.cbb_BoLoc.Size = new System.Drawing.Size(276, 36);
             this.cbb_BoLoc.TabIndex = 1;
             // 
             // panel3
@@ -142,10 +142,10 @@
             this.panel3.Controls.Add(this.btn_timkiem);
             this.panel3.Controls.Add(this.txt_timkiem);
             this.panel3.Controls.Add(this.cb_thuoctinh);
-            this.panel3.Location = new System.Drawing.Point(17, 11);
+            this.panel3.Location = new System.Drawing.Point(17, 17);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(502, 29);
+            this.panel3.Size = new System.Drawing.Size(1143, 42);
             this.panel3.TabIndex = 0;
             // 
             // btn_timkiem
@@ -154,10 +154,10 @@
             this.btn_timkiem.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_timkiem.Image = global::pbl.Properties.Resources.search44;
-            this.btn_timkiem.Location = new System.Drawing.Point(423, -1);
+            this.btn_timkiem.Location = new System.Drawing.Point(1041, -1);
             this.btn_timkiem.Margin = new System.Windows.Forms.Padding(4);
             this.btn_timkiem.Name = "btn_timkiem";
-            this.btn_timkiem.Size = new System.Drawing.Size(79, 30);
+            this.btn_timkiem.Size = new System.Drawing.Size(101, 42);
             this.btn_timkiem.TabIndex = 2;
             this.btn_timkiem.UseVisualStyleBackColor = false;
             this.btn_timkiem.Click += new System.EventHandler(this.btn_timkiem_Click);
@@ -165,34 +165,35 @@
             // txt_timkiem
             // 
             this.txt_timkiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_timkiem.Font = new System.Drawing.Font("Segoe UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_timkiem.Location = new System.Drawing.Point(157, 5);
+            this.txt_timkiem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txt_timkiem.Location = new System.Drawing.Point(333, 5);
             this.txt_timkiem.Margin = new System.Windows.Forms.Padding(4);
             this.txt_timkiem.Name = "txt_timkiem";
-            this.txt_timkiem.Size = new System.Drawing.Size(259, 20);
+            this.txt_timkiem.Size = new System.Drawing.Size(700, 27);
             this.txt_timkiem.TabIndex = 1;
             // 
             // cb_thuoctinh
             // 
             this.cb_thuoctinh.DisplayMember = "Phân loại";
             this.cb_thuoctinh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cb_thuoctinh.Font = new System.Drawing.Font("Segoe UI Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_thuoctinh.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cb_thuoctinh.FormattingEnabled = true;
-            this.cb_thuoctinh.Location = new System.Drawing.Point(0, 1);
+            this.cb_thuoctinh.Location = new System.Drawing.Point(4, 2);
             this.cb_thuoctinh.Margin = new System.Windows.Forms.Padding(4);
             this.cb_thuoctinh.Name = "cb_thuoctinh";
-            this.cb_thuoctinh.Size = new System.Drawing.Size(147, 27);
+            this.cb_thuoctinh.Size = new System.Drawing.Size(321, 36);
             this.cb_thuoctinh.TabIndex = 0;
             // 
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 90);
+            this.dataGridView1.Location = new System.Drawing.Point(20, 131);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(704, 257);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1506, 544);
             this.dataGridView1.TabIndex = 0;
             // 
             // Khachhang_Nhanvien
@@ -200,7 +201,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(240)))), ((int)(((byte)(243)))));
-            this.ClientSize = new System.Drawing.Size(824, 498);
+            this.ClientSize = new System.Drawing.Size(1636, 860);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);

@@ -52,12 +52,10 @@ namespace BusinessLogicLayer
                 HanSuDung = Convert.ToDateTime(i["HanSuDung"]),
             };
         }
-
-        public List<ChiTietSanPham_View> Search(string PhanLoai, string txt)
+        public List<ChiTietSanPham_View> Search(string phanloai, string ten)
         {
-            return dao.Search(PhanLoai, txt);
+            return dao.Search(phanloai, ten);
         }
-
         public List<SoLuongCTSP> GetSoLuongs()
         {
             return dao.GetSoLuongs();

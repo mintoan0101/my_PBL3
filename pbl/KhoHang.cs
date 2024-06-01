@@ -34,14 +34,34 @@ namespace pbl
             childForm.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            
-            OpenChildForm(new QuanLyNhaPhanPhoi());
+            OpenChildForm(new HoaDonNhap_DanhSach());
         }
-        private void btn_nhapkho_Click(object sender, EventArgs e)
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new DanhSachHoaDonNhap());
+            OpenChildForm(new NhaPhanPhoi_QuanLy());
+        }
+
+        private void pictureBox2_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox2.BackColor = Color.LightGray;
+        }
+
+        private void pictureBox2_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox2.BackColor = Color.WhiteSmoke;
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox1.BackColor = Color.LightGray;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.BackColor = Color.WhiteSmoke;
         }
     }
 }

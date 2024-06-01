@@ -38,5 +38,6 @@ namespace BusinessLogicLayer
         {
             return ChiTietHoaDonDAO.Instance.GetData(ID);
         }
+
     }
 }

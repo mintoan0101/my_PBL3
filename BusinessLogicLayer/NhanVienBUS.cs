@@ -52,5 +52,9 @@ namespace BusinessLogicLayer
         {
             return dao.GetID(tentaikhoan);
         }
+        public bool CheckEnableToDelete(string IDNV)
+        {
+            return dao.CheckEnableToDelete(IDNV);
+        }
     }
 }

@@ -71,7 +71,7 @@ namespace pbl
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ThongTinCaNhan t = new ThongTinCaNhan();
+            NhanVien_ThongTin t = new NhanVien_ThongTin();
             t.username = this.username;
             t.idnv = this.id;
             OpenChildForm1(t);
@@ -80,17 +80,17 @@ namespace pbl
         private void button4_Click(object sender, EventArgs e)
         {
 
-            if (panel4.Visible == false)
+            if (panel6.Visible == false)
             {
-                panel4.Visible = true;
-                panel4.BringToFront();
+                panel6.Visible = true;
+                panel6.BringToFront();
             }
-            else panel4.Visible = false;
+            else panel6.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Hoadon_nhanvien f = new Hoadon_nhanvien();
+            HoaDon_NhanVien f = new HoaDon_NhanVien();
             f.IDNhanvien = btn_infor.Text;
             OpenChildForm(f);
             button2.BackColor = panel3.BackColor;
@@ -102,7 +102,7 @@ namespace pbl
         private void button3_Click(object sender, EventArgs e)
         {
             
-            OpenChildForm(new Khachhang_Nhanvien());
+            OpenChildForm(new KhachHang_NhanVien());
             button3.BackColor = panel3.BackColor;
             button1.BackColor = panel2.BackColor;
             button2.BackColor = panel2.BackColor;
@@ -111,7 +111,7 @@ namespace pbl
 
         private void button1_Click(object sender, EventArgs e)
         {
-            QuanLySanPham f  = new QuanLySanPham();
+            SanPham_QuanLy f  = new SanPham_QuanLy();
             f.isAdmin = false;
             OpenChildForm(f);
             button1.BackColor = panel3.BackColor;
@@ -122,7 +122,7 @@ namespace pbl
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            DoanhThuCaNhan f = new DoanhThuCaNhan();
+            NhanVien_DoanhThu f = new NhanVien_DoanhThu();
             OpenChildForm (f);
 
             button3.BackColor = panel2.BackColor;

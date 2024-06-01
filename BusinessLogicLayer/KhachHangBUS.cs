@@ -103,7 +103,10 @@ namespace BusinessLogicLayer
         {
             return KhachHangDAO.Instance.Search(txt, PhanLoai, BoLoc);
         }
-
+        public bool CheckEnableToDelete(string IDKH)
+        {
+            return KhachHangDAO.Instance.CheckEnableToDelete(IDKH);
+        }
 
     }
 

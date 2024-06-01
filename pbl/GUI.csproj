@@ -39,6 +39,14 @@
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
+    <Reference Include="BusinessLogicLayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAccessLayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DataAccessLayer\bin\Debug\DataAccessLayer.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -163,7 +171,8 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="ValueObject">
+    <Reference Include="ValueObject, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ValueObject\bin\Debug\ValueObject.dll</HintPath>
     </Reference>
     <Reference Include="ZstdSharp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
@@ -171,41 +180,41 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BieuDo.cs">
+    <Compile Include="ThongKe_BieuDo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BieuDo.Designer.cs">
-      <DependentUpon>BieuDo.cs</DependentUpon>
+    <Compile Include="ThongKe_BieuDo.Designer.cs">
+      <DependentUpon>ThongKe_BieuDo.cs</DependentUpon>
     </Compile>
-    <Compile Include="DanhSachHoaDonNhap.cs">
+    <Compile Include="HoaDonNhap_DanhSach.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DanhSachHoaDonNhap.Designer.cs">
-      <DependentUpon>DanhSachHoaDonNhap.cs</DependentUpon>
+    <Compile Include="HoaDonNhap_DanhSach.Designer.cs">
+      <DependentUpon>HoaDonNhap_DanhSach.cs</DependentUpon>
     </Compile>
-    <Compile Include="DoanhThuCaNhan.cs">
+    <Compile Include="NhanVien_DoanhThu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DoanhThuCaNhan.Designer.cs">
-      <DependentUpon>DoanhThuCaNhan.cs</DependentUpon>
+    <Compile Include="NhanVien_DoanhThu.Designer.cs">
+      <DependentUpon>NhanVien_DoanhThu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Them_SuaChiTietSanPham.cs">
+    <Compile Include="SanPham_ThemSuaChiTiet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Them_SuaChiTietSanPham.Designer.cs">
-      <DependentUpon>Them_SuaChiTietSanPham.cs</DependentUpon>
+    <Compile Include="SanPham_ThemSuaChiTiet.Designer.cs">
+      <DependentUpon>SanPham_ThemSuaChiTiet.cs</DependentUpon>
     </Compile>
-    <Compile Include="XemChiTietHoaDonNhap.cs">
+    <Compile Include="HoaDonNhap_ChiTiet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="XemChiTietHoaDonNhap.Designer.cs">
-      <DependentUpon>XemChiTietHoaDonNhap.cs</DependentUpon>
+    <Compile Include="HoaDonNhap_ChiTiet.Designer.cs">
+      <DependentUpon>HoaDonNhap_ChiTiet.cs</DependentUpon>
     </Compile>
-    <Compile Include="XemChiTietSanPham.cs">
+    <Compile Include="SanPham_ChiTiet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="XemChiTietSanPham.Designer.cs">
-      <DependentUpon>XemChiTietSanPham.cs</DependentUpon>
+    <Compile Include="SanPham_ChiTiet.Designer.cs">
+      <DependentUpon>SanPham_ChiTiet.cs</DependentUpon>
     </Compile>
     <Compile Include="MainFormAdmin.cs">
       <SubType>Form</SubType>
@@ -213,23 +222,17 @@
     <Compile Include="MainFormAdmin.Designer.cs">
       <DependentUpon>MainFormAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChinhSuaThongTinCaNhan.cs">
+    <Compile Include="NhanVien_ChinhSuaThongTin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChinhSuaThongTinCaNhan.Designer.cs">
-      <DependentUpon>ChinhSuaThongTinCaNhan.cs</DependentUpon>
+    <Compile Include="NhanVien_ChinhSuaThongTin.Designer.cs">
+      <DependentUpon>NhanVien_ChinhSuaThongTin.cs</DependentUpon>
     </Compile>
-    <Compile Include="DanhSachHoaDon.cs">
+    <Compile Include="HoaDon_DanhSach.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DanhSachHoaDon.Designer.cs">
-      <DependentUpon>DanhSachHoaDon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DatLaiMatKhau.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DatLaiMatKhau.Designer.cs">
-      <DependentUpon>DatLaiMatKhau.cs</DependentUpon>
+    <Compile Include="HoaDon_DanhSach.Designer.cs">
+      <DependentUpon>HoaDon_DanhSach.cs</DependentUpon>
     </Compile>
     <Compile Include="KhoHang.cs">
       <SubType>Form</SubType>
@@ -243,11 +246,11 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="MatKhau.cs">
+    <Compile Include="NhanVien_DoiMatKhau.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MatKhau.Designer.cs">
-      <DependentUpon>MatKhau.cs</DependentUpon>
+    <Compile Include="NhanVien_DoiMatKhau.Designer.cs">
+      <DependentUpon>NhanVien_DoiMatKhau.cs</DependentUpon>
     </Compile>
     <Compile Include="MainFormNhanVien.cs">
       <SubType>Form</SubType>
@@ -255,121 +258,118 @@
     <Compile Include="MainFormNhanVien.Designer.cs">
       <DependentUpon>MainFormNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hoadon_nhanvien.cs">
+    <Compile Include="HoaDon_NhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Hoadon_nhanvien.Designer.cs">
-      <DependentUpon>Hoadon_nhanvien.cs</DependentUpon>
+    <Compile Include="HoaDon_NhanVien.Designer.cs">
+      <DependentUpon>HoaDon_NhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Khachhang_Nhanvien.cs">
+    <Compile Include="KhachHang_NhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Khachhang_Nhanvien.Designer.cs">
-      <DependentUpon>Khachhang_Nhanvien.cs</DependentUpon>
+    <Compile Include="KhachHang_NhanVien.Designer.cs">
+      <DependentUpon>KhachHang_NhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyNhaPhanPhoi.cs">
+    <Compile Include="NhaPhanPhoi_QuanLy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QuanLyNhaPhanPhoi.Designer.cs">
-      <DependentUpon>QuanLyNhaPhanPhoi.cs</DependentUpon>
+    <Compile Include="NhaPhanPhoi_QuanLy.Designer.cs">
+      <DependentUpon>NhaPhanPhoi_QuanLy.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhapKho.cs">
+    <Compile Include="KhoHang_NhapHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhapKho.Designer.cs">
-      <DependentUpon>NhapKho.cs</DependentUpon>
+    <Compile Include="KhoHang_NhapHang.Designer.cs">
+      <DependentUpon>KhoHang_NhapHang.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quanlynhanvien.cs">
+    <Compile Include="NhanVien_QuanLy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Quanlynhanvien.Designer.cs">
-      <DependentUpon>Quanlynhanvien.cs</DependentUpon>
+    <Compile Include="NhanVien_QuanLy.Designer.cs">
+      <DependentUpon>NhanVien_QuanLy.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuanLySanPham.cs">
+    <Compile Include="SanPham_QuanLy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QuanLySanPham.Designer.cs">
-      <DependentUpon>QuanLySanPham.cs</DependentUpon>
+    <Compile Include="SanPham_QuanLy.Designer.cs">
+      <DependentUpon>SanPham_QuanLy.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThemHoadon.cs">
+    <Compile Include="HoaDon_Them.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThemHoadon.Designer.cs">
-      <DependentUpon>ThemHoadon.cs</DependentUpon>
+    <Compile Include="HoaDon_Them.Designer.cs">
+      <DependentUpon>HoaDon_Them.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThemKhachHang.cs">
+    <Compile Include="KhachHang_Them.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ThemKhachHang.Designer.cs">
-      <DependentUpon>ThemKhachHang.cs</DependentUpon>
+      <DependentUpon>KhachHang_Them.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThemNhanvien.cs">
+    <Compile Include="NhanVien_Them.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThemNhanvien.Designer.cs">
-      <DependentUpon>ThemNhanvien.cs</DependentUpon>
+    <Compile Include="NhanVien_Them.Designer.cs">
+      <DependentUpon>NhanVien_Them.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThemNhaPhanPhoi.cs">
+    <Compile Include="NhaPhanPhoi_Them.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThemNhaPhanPhoi.Designer.cs">
-      <DependentUpon>ThemNhaPhanPhoi.cs</DependentUpon>
+    <Compile Include="NhaPhanPhoi_Them.Designer.cs">
+      <DependentUpon>NhaPhanPhoi_Them.cs</DependentUpon>
     </Compile>
-    <Compile Include="Themsanpham.cs">
+    <Compile Include="SanPham_Them.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Themsanpham.Designer.cs">
-      <DependentUpon>Themsanpham.cs</DependentUpon>
+    <Compile Include="SanPham_Them.Designer.cs">
+      <DependentUpon>SanPham_Them.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThongKe.cs">
+    <Compile Include="ThongKe_QuanLy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThongKe.Designer.cs">
-      <DependentUpon>ThongKe.cs</DependentUpon>
+    <Compile Include="ThongKe_QuanLy.Designer.cs">
+      <DependentUpon>ThongKe_QuanLy.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThongTinCaNhan.cs">
+    <Compile Include="NhanVien_ThongTin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThongTinCaNhan.Designer.cs">
-      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
+    <Compile Include="NhanVien_ThongTin.Designer.cs">
+      <DependentUpon>NhanVien_ThongTin.cs</DependentUpon>
     </Compile>
-    <Compile Include="XemHoaDon.cs">
+    <Compile Include="HoaDon_Xem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="XemHoaDon.Designer.cs">
-      <DependentUpon>XemHoaDon.cs</DependentUpon>
+    <Compile Include="HoaDon_Xem.Designer.cs">
+      <DependentUpon>HoaDon_Xem.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BieuDo.resx">
-      <DependentUpon>BieuDo.cs</DependentUpon>
+    <EmbeddedResource Include="ThongKe_BieuDo.resx">
+      <DependentUpon>ThongKe_BieuDo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DanhSachHoaDonNhap.resx">
-      <DependentUpon>DanhSachHoaDonNhap.cs</DependentUpon>
+    <EmbeddedResource Include="HoaDonNhap_DanhSach.resx">
+      <DependentUpon>HoaDonNhap_DanhSach.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DoanhThuCaNhan.resx">
-      <DependentUpon>DoanhThuCaNhan.cs</DependentUpon>
+    <EmbeddedResource Include="NhanVien_DoanhThu.resx">
+      <DependentUpon>NhanVien_DoanhThu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Them_SuaChiTietSanPham.resx">
-      <DependentUpon>Them_SuaChiTietSanPham.cs</DependentUpon>
+    <EmbeddedResource Include="SanPham_ThemSuaChiTiet.resx">
+      <DependentUpon>SanPham_ThemSuaChiTiet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="XemChiTietHoaDonNhap.resx">
-      <DependentUpon>XemChiTietHoaDonNhap.cs</DependentUpon>
+    <EmbeddedResource Include="HoaDonNhap_ChiTiet.resx">
+      <DependentUpon>HoaDonNhap_ChiTiet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="XemChiTietSanPham.resx">
-      <DependentUpon>XemChiTietSanPham.cs</DependentUpon>
+    <EmbeddedResource Include="SanPham_ChiTiet.resx">
+      <DependentUpon>SanPham_ChiTiet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainFormAdmin.resx">
       <DependentUpon>MainFormAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChinhSuaThongTinCaNhan.resx">
-      <DependentUpon>ChinhSuaThongTinCaNhan.cs</DependentUpon>
+    <EmbeddedResource Include="NhanVien_ChinhSuaThongTin.resx">
+      <DependentUpon>NhanVien_ChinhSuaThongTin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DanhSachHoaDon.resx">
-      <DependentUpon>DanhSachHoaDon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DatLaiMatKhau.resx">
-      <DependentUpon>DatLaiMatKhau.cs</DependentUpon>
+    <EmbeddedResource Include="HoaDon_DanhSach.resx">
+      <DependentUpon>HoaDon_DanhSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KhoHang.resx">
       <DependentUpon>KhoHang.cs</DependentUpon>
@@ -377,23 +377,23 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MatKhau.resx">
-      <DependentUpon>MatKhau.cs</DependentUpon>
+    <EmbeddedResource Include="NhanVien_DoiMatKhau.resx">
+      <DependentUpon>NhanVien_DoiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainFormNhanVien.resx">
       <DependentUpon>MainFormNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Hoadon_nhanvien.resx">
-      <DependentUpon>Hoadon_nhanvien.cs</DependentUpon>
+    <EmbeddedResource Include="HoaDon_NhanVien.resx">
+      <DependentUpon>HoaDon_NhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Khachhang_Nhanvien.resx">
-      <DependentUpon>Khachhang_Nhanvien.cs</DependentUpon>
+    <EmbeddedResource Include="KhachHang_NhanVien.resx">
+      <DependentUpon>KhachHang_NhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuanLyNhaPhanPhoi.resx">
-      <DependentUpon>QuanLyNhaPhanPhoi.cs</DependentUpon>
+    <EmbeddedResource Include="NhaPhanPhoi_QuanLy.resx">
+      <DependentUpon>NhaPhanPhoi_QuanLy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhapKho.resx">
-      <DependentUpon>NhapKho.cs</DependentUpon>
+    <EmbeddedResource Include="KhoHang_NhapHang.resx">
+      <DependentUpon>KhoHang_NhapHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -405,35 +405,35 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Quanlynhanvien.resx">
-      <DependentUpon>Quanlynhanvien.cs</DependentUpon>
+    <EmbeddedResource Include="NhanVien_QuanLy.resx">
+      <DependentUpon>NhanVien_QuanLy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuanLySanPham.resx">
-      <DependentUpon>QuanLySanPham.cs</DependentUpon>
+    <EmbeddedResource Include="SanPham_QuanLy.resx">
+      <DependentUpon>SanPham_QuanLy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThemHoadon.resx">
-      <DependentUpon>ThemHoadon.cs</DependentUpon>
+    <EmbeddedResource Include="HoaDon_Them.resx">
+      <DependentUpon>HoaDon_Them.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ThemKhachHang.resx">
-      <DependentUpon>ThemKhachHang.cs</DependentUpon>
+      <DependentUpon>KhachHang_Them.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThemNhanvien.resx">
-      <DependentUpon>ThemNhanvien.cs</DependentUpon>
+    <EmbeddedResource Include="NhanVien_Them.resx">
+      <DependentUpon>NhanVien_Them.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThemNhaPhanPhoi.resx">
-      <DependentUpon>ThemNhaPhanPhoi.cs</DependentUpon>
+    <EmbeddedResource Include="NhaPhanPhoi_Them.resx">
+      <DependentUpon>NhaPhanPhoi_Them.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Themsanpham.resx">
-      <DependentUpon>Themsanpham.cs</DependentUpon>
+    <EmbeddedResource Include="SanPham_Them.resx">
+      <DependentUpon>SanPham_Them.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThongKe.resx">
-      <DependentUpon>ThongKe.cs</DependentUpon>
+    <EmbeddedResource Include="ThongKe_QuanLy.resx">
+      <DependentUpon>ThongKe_QuanLy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThongTinCaNhan.resx">
-      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
+    <EmbeddedResource Include="NhanVien_ThongTin.resx">
+      <DependentUpon>NhanVien_ThongTin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="XemHoaDon.resx">
-      <DependentUpon>XemHoaDon.cs</DependentUpon>
+    <EmbeddedResource Include="HoaDon_Xem.resx">
+      <DependentUpon>HoaDon_Xem.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -613,16 +613,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\changr.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BusinessLogicLayer\BusinessLogicLayer.csproj">
-      <Project>{36fc4d56-7be9-40d7-ab69-69e394d6aa2a}</Project>
-      <Name>BusinessLogicLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
-      <Project>{b78d013f-60fa-4d33-81a6-dcf5a5a5a5d0}</Project>
-      <Name>DataAccessLayer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -71,6 +71,7 @@ namespace pbl
                 f.npp.SoDienThoai = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
                 f.npp.DiaChi = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
                 f.ShowDialog();
+                Load_NPP();
             }
             else
             {
@@ -84,6 +85,7 @@ namespace pbl
             NhaPhanPhoi_Them f = new NhaPhanPhoi_Them();
             f.isEdit = false;
             f.ShowDialog();
+            Load_NPP();
         }
 
         private void btn_xoa_Click(object sender, EventArgs e)
@@ -101,6 +103,7 @@ namespace pbl
                         if (bus.Delete(id) > 0)
                         {
                             MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Load_NPP() ;
                         }
                     }
                 }

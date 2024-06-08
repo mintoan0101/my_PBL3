@@ -37,6 +37,7 @@ namespace pbl
                         f.username = txt_username.Text;
                         this.Hide();
                         f.ShowDialog();
+                        this.Show();
                         Clear();
                         
                     }

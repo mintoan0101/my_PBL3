@@ -13,6 +13,10 @@ namespace BusinessLogicLayer
     {
         SanPhamDAO dao = new SanPhamDAO();
 
+        public List<SanPham> GetData()
+        {
+            return dao.GetData();
+        }
         public List<SanPham> GetDataByID(string id)
         {
             return dao.GetDataByID(id);

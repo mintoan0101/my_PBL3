@@ -252,7 +252,7 @@ namespace pbl
             txt_idnv.Text = idnv;
             txt_idtk.Text = n.IDTaiKhoan.ToString();
             txt_hovaten.Text = n.TenNhanVien.ToString();
-            dateTimePicker1.Value = SetStringToDate(n.NgaySinh.ToString());
+            dateTimePicker1.Value = n.NgaySinh;
             if (n.Nam.ToString() == "True")
             {
                 rad_nam.Checked = true;

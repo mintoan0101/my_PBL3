@@ -33,7 +33,6 @@ namespace pbl
         }
 
         //CÁC HÀM XỬ LÍ SỰ KIỆN
-
         private void btn_sua_Click_1(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -43,6 +42,7 @@ namespace pbl
                 f.idnv = row.Cells[0].Value.ToString();
                 f.isEdit = true;
                 f.ShowDialog();
+                Load_DS_Nhan_Vien();
             }
             else
             {
@@ -65,6 +65,7 @@ namespace pbl
                         if (nvbus.Delete(row.Cells[0].Value.ToString()) > 0)
                         {
                             MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Load_DS_Nhan_Vien();
                         }
                     }
                 }
@@ -83,6 +84,7 @@ namespace pbl
             NhanVien_Them f = new NhanVien_Them();
             f.isEdit = false;
             f.ShowDialog();
+            Load_DS_Nhan_Vien();
         }
         private void button5_Click(object sender, EventArgs e)
         {

@@ -41,7 +41,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -79,7 +78,6 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(240)))), ((int)(((byte)(243)))));
-            this.panel3.Controls.Add(this.panel6);
             this.panel3.Location = new System.Drawing.Point(288, 107);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
@@ -90,10 +88,11 @@
             // 
             this.panel6.Controls.Add(this.button6);
             this.panel6.Controls.Add(this.button5);
-            this.panel6.Location = new System.Drawing.Point(1409, 6);
+            this.panel6.Location = new System.Drawing.Point(1697, 107);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(226, 188);
             this.panel6.TabIndex = 1;
+            this.panel6.Visible = false;
             // 
             // button6
             // 
@@ -121,10 +120,10 @@
             this.button5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.button5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.button5.Image = global::pbl.Properties.Resources.profile;
-            this.button5.Location = new System.Drawing.Point(0, 0);
+            this.button5.Location = new System.Drawing.Point(0, -2);
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(226, 94);
+            this.button5.Size = new System.Drawing.Size(226, 96);
             this.button5.TabIndex = 1;
             this.button5.Text = "Tài khoản";
             this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -211,6 +210,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel5);
@@ -233,9 +233,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Main Form Nhân Viên";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormNhanVien_FormCloesd);
             this.Load += new System.EventHandler(this.NHANVIEN_Load);
             this.panel5.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

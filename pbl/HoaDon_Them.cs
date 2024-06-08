@@ -150,10 +150,10 @@ namespace pbl
                         ctspBUS.Update(chiTietSanPham);
                     }
                 }
-                hd.ChiTietHoaDon = listChiTietHoaDon;
+                hd.ChiTietHoaDons = listChiTietHoaDon;
                 hd.LoiNhuan = HoaDonBUS.Instance.TinhLoiNhuan(listChiTietHoaDon);
                 HoaDonBUS.Instance.Insert(hd);
-                foreach (ChiTietHoaDon chitiethoadon in hd.ChiTietHoaDon)
+                foreach (ChiTietHoaDon chitiethoadon in hd.ChiTietHoaDons)
                 {
                     ChiTietHoaDonDAO.Instance.Insert(chitiethoadon);
                 }

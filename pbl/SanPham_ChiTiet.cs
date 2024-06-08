@@ -73,6 +73,7 @@ namespace pbl
             f.isEdit = false;
             f.IDSanPham = idsanpham;
             f.ShowDialog();
+            Load_CTSP() ;
         }
         private void btn_edit_Click_1(object sender, EventArgs e)
         {
@@ -88,6 +89,7 @@ namespace pbl
                 f.HSD = row.Cells[3].Value.ToString();
                 f.SoLuong = int.Parse(row.Cells[4].Value.ToString());
                 f.ShowDialog();
+                Load_CTSP();
             }
             else
             {
@@ -108,6 +110,7 @@ namespace pbl
                         if (bus.Delete(id) > 0)
                         {
                             MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Load_CTSP();
                         }
                     }
                 }

@@ -118,7 +118,7 @@
             this.btn_infor.Location = new System.Drawing.Point(1409, 3);
             this.btn_infor.Margin = new System.Windows.Forms.Padding(4);
             this.btn_infor.Name = "btn_infor";
-            this.btn_infor.Size = new System.Drawing.Size(226, 98);
+            this.btn_infor.Size = new System.Drawing.Size(226, 102);
             this.btn_infor.TabIndex = 0;
             this.btn_infor.Text = "UserName";
             this.btn_infor.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -267,6 +267,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MainForm_Admin";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormAdmin_FormClosing);
             this.Load += new System.EventHandler(this.MainFormAdmin_Load);
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

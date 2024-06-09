@@ -129,5 +129,12 @@ namespace pbl
             button2.BackColor = panel2.BackColor;
             button1.BackColor = panel2.BackColor;
         }
+
+       
+
+        private void MainFormNhanVien_FormCloesd(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

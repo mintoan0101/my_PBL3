@@ -115,7 +115,7 @@
             this.btn_exit.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_exit.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_exit.Image = global::pbl.Properties.Resources.exit;
-            this.btn_exit.Location = new System.Drawing.Point(438, 380);
+            this.btn_exit.Location = new System.Drawing.Point(438, 402);
             this.btn_exit.Margin = new System.Windows.Forms.Padding(4);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(128, 60);
@@ -133,7 +133,7 @@
             this.btn_ok.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ok.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_ok.Image = global::pbl.Properties.Resources.ok;
-            this.btn_ok.Location = new System.Drawing.Point(242, 380);
+            this.btn_ok.Location = new System.Drawing.Point(242, 402);
             this.btn_ok.Margin = new System.Windows.Forms.Padding(4);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(128, 60);
@@ -204,7 +204,7 @@
             this.panel9.Controls.Add(this.panel2);
             this.panel9.Controls.Add(this.label6);
             this.panel9.Controls.Add(this.panel6);
-            this.panel9.Location = new System.Drawing.Point(214, 73);
+            this.panel9.Location = new System.Drawing.Point(214, 92);
             this.panel9.Margin = new System.Windows.Forms.Padding(4);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(384, 288);
@@ -281,13 +281,13 @@
             // lbl_infor
             // 
             this.lbl_infor.AutoSize = true;
-            this.lbl_infor.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbl_infor.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbl_infor.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lbl_infor.Location = new System.Drawing.Point(237, 23);
+            this.lbl_infor.Location = new System.Drawing.Point(183, 28);
             this.lbl_infor.Name = "lbl_infor";
-            this.lbl_infor.Size = new System.Drawing.Size(278, 31);
+            this.lbl_infor.Size = new System.Drawing.Size(467, 41);
             this.lbl_infor.TabIndex = 46;
-            this.lbl_infor.Text = "Nhập thông tin sản phẩm";
+            this.lbl_infor.Text = "NHẬP THÔNG TIN SẢN PHẨM";
             // 
             // SanPham_Them
             // 

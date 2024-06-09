@@ -65,6 +65,7 @@ namespace pbl
             SanPham_Them f = new SanPham_Them();
             f.isEdit = false;
             f.Show();
+            btn_chitiet.PerformClick();
         }
 
         private void btn_sua_Click(object sender, EventArgs e)
@@ -80,6 +81,8 @@ namespace pbl
                 f.giaban = row.Cells[3].Value.ToString();
                 f.gianhap = row.Cells[4].Value.ToString();
                 f.Show();
+                btn_chitiet.PerformClick();
+
             }
             else
             {
@@ -102,6 +105,8 @@ namespace pbl
                         if (spbus.Delete(id) == 1)
                         {
                             MessageBox.Show("Đã xóa thành công","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                            btn_chitiet.PerformClick();
+
                         }
                     }
                 }

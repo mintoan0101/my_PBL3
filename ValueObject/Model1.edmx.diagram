@@ -4,26 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7cab5e60817e4eb69af49f71bf9a2a79" Name="Diagram1">
-        <EntityTypeShape EntityType="PBL3Model.ChiTietHoaDon" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PBL3Model.ChiTietHoaDonNhap" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PBL3Model.ChiTietSanPham" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PBL3Model.HoaDon" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PBL3Model.HoaDonNhap" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PBL3Model.KhachHang" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PBL3Model.NhanVien" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PBL3Model.NhaPhanPhoi" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PBL3Model.SanPham" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PBL3Model.TaiKhoan" Width="1.5" PointX="1.5" PointY="17.875" IsExpanded="true" />
-        <AssociationConnector Association="PBL3Model.FK__ChiTietHo__IDChi__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="PBL3Model.FK__ChiTietHo__IDHoa__49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="PBL3Model.FK__ChiTietHo__IDChi__73BA3083" ManuallyRouted="false" />
-        <AssociationConnector Association="PBL3Model.FK__ChiTietHo__IDHoa__72C60C4A" ManuallyRouted="false" />
-        <AssociationConnector Association="PBL3Model.FK__ChiTietSa__IDNha__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="PBL3Model.FK__ChiTietSa__IDSan__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="PBL3Model.FK__HoaDon__IDKhachH__46E78A0C" ManuallyRouted="false" />
-        <AssociationConnector Association="PBL3Model.FK__HoaDon__IDNhanVi__45F365D3" ManuallyRouted="false" />
-        <AssociationConnector Association="PBL3Model.FK__NhanVien__IDTaiK__398D8EEE" ManuallyRouted="false" />
+      <Diagram DiagramId="5dd70581ade848958b8df433dfab9798" Name="Diagram1">
+        <EntityTypeShape EntityType="PBL3Model1.ChiTietHoaDon" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PBL3Model1.ChiTietHoaDonNhap" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PBL3Model1.ChiTietSanPham" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PBL3Model1.HoaDon" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PBL3Model1.HoaDonNhap" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PBL3Model1.KhachHang" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PBL3Model1.NhanVien" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PBL3Model1.NhaPhanPhoi" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PBL3Model1.SanPham" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PBL3Model1.TaiKhoan" Width="1.5" PointX="1.5" PointY="17.875" IsExpanded="true" />
+        <AssociationConnector Association="PBL3Model1.FK__ChiTietHo__IDChi__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="PBL3Model1.FK__ChiTietHo__IDHoa__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="PBL3Model1.FK__ChiTietHo__IDChi__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="PBL3Model1.FK__ChiTietHo__IDHoa__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="PBL3Model1.FK__ChiTietSa__IDNha__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="PBL3Model1.FK__ChiTietSa__IDSan__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="PBL3Model1.FK__HoaDon__IDKhachH__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="PBL3Model1.FK__HoaDon__IDNhanVi__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="PBL3Model1.FK__NhanVien__IDTaiK__52593CB8" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -56,6 +56,7 @@ namespace pbl
             KhachHang_Them f = new KhachHang_Them(null);
             f.isEdit = false;
             f.ShowDialog();
+            Load_Khach_Hang();
         }
 
         private void btn_sua_Click(object sender, EventArgs e)
@@ -67,6 +68,7 @@ namespace pbl
                 f.isEdit = true;
                 f.kh = KhachHangBUS.Instance.GetKhachHangBySDT(r.Cells[0].Value.ToString());
                 f.ShowDialog();
+                Load_Khach_Hang();
             }
             else
             {
@@ -96,6 +98,7 @@ namespace pbl
                         if (bus.Delete(IDKH) > 0)
                         {
                             MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Load_Khach_Hang();
                         }
                     }
                 }

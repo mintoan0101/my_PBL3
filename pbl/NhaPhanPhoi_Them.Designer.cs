@@ -41,9 +41,9 @@
             this.txt_id = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.lbl_infor = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_ok = new System.Windows.Forms.Button();
-            this.lbl_infor = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +62,7 @@
             this.panel1.Controls.Add(this.txt_id);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(118, 73);
+            this.panel1.Location = new System.Drawing.Point(119, 79);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(567, 306);
@@ -205,46 +205,51 @@
             this.label5.TabIndex = 78;
             this.label5.Text = "ID";
             // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(240)))), ((int)(((byte)(243)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::pbl.Properties.Resources.delete1;
-            this.button2.Location = new System.Drawing.Point(449, 402);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 63);
-            this.button2.TabIndex = 25;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
-            this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
-            // 
-            // btn_ok
-            // 
-            this.btn_ok.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(240)))), ((int)(((byte)(243)))));
-            this.btn_ok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ok.Image = global::pbl.Properties.Resources.ok1;
-            this.btn_ok.Location = new System.Drawing.Point(265, 402);
-            this.btn_ok.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_ok.Name = "btn_ok";
-            this.btn_ok.Size = new System.Drawing.Size(81, 63);
-            this.btn_ok.TabIndex = 24;
-            this.btn_ok.UseVisualStyleBackColor = true;
-            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
-            this.btn_ok.MouseEnter += new System.EventHandler(this.btn_ok_MouseEnter);
-            this.btn_ok.MouseLeave += new System.EventHandler(this.btn_ok_MouseLeave);
-            // 
             // lbl_infor
             // 
             this.lbl_infor.AutoSize = true;
-            this.lbl_infor.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbl_infor.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbl_infor.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lbl_infor.Location = new System.Drawing.Point(184, 18);
+            this.lbl_infor.Location = new System.Drawing.Point(129, 21);
             this.lbl_infor.Name = "lbl_infor";
-            this.lbl_infor.Size = new System.Drawing.Size(403, 38);
+            this.lbl_infor.Size = new System.Drawing.Size(553, 41);
             this.lbl_infor.TabIndex = 63;
-            this.lbl_infor.Text = "Nhập thông tin nhà phân phối";
+            this.lbl_infor.Text = "NHẬP THÔNG TIN NHÀ PHÂN PHỐI";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button2.FlatAppearance.BorderSize = 3;
+            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.Image = global::pbl.Properties.Resources.exit;
+            this.button2.Location = new System.Drawing.Point(409, 401);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(128, 60);
+            this.button2.TabIndex = 65;
+            this.button2.Text = "EXIT";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btn_ok
+            // 
+            this.btn_ok.BackColor = System.Drawing.Color.White;
+            this.btn_ok.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btn_ok.FlatAppearance.BorderSize = 3;
+            this.btn_ok.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ok.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_ok.Image = global::pbl.Properties.Resources.ok;
+            this.btn_ok.Location = new System.Drawing.Point(244, 401);
+            this.btn_ok.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_ok.Name = "btn_ok";
+            this.btn_ok.Size = new System.Drawing.Size(128, 60);
+            this.btn_ok.TabIndex = 64;
+            this.btn_ok.Text = "OK";
+            this.btn_ok.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_ok.UseVisualStyleBackColor = false;
             // 
             // NhaPhanPhoi_Them
             // 
@@ -252,9 +257,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(240)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(815, 490);
-            this.Controls.Add(this.lbl_infor);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_ok);
+            this.Controls.Add(this.lbl_infor);
             this.Controls.Add(this.panel1);
             this.Location = new System.Drawing.Point(550, 230);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -286,8 +291,8 @@
         private System.Windows.Forms.TextBox txt_ten;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_infor;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btn_ok;
-        private System.Windows.Forms.Label lbl_infor;
     }
 }

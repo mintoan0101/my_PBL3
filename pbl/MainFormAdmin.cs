@@ -166,9 +166,7 @@ namespace pbl
             DialogResult res = MessageBox.Show("Bạn có chắn chắn muốn đăng xuất","Thông báo",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
             {
-                this.Hide();
-                Login f = new Login();
-                f.ShowDialog();
+                this.Close();
             }
             
         }
@@ -177,5 +175,10 @@ namespace pbl
         {
             OpenChildForm2(new NhanVien_ThongTin());
        }
+
+        private void MainFormAdmin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -64,7 +64,7 @@
             this.panel3.Location = new System.Drawing.Point(902, 146);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(397, 500);
+            this.panel3.Size = new System.Drawing.Size(459, 500);
             this.panel3.TabIndex = 3;
             // 
             // pictureBox1
@@ -73,7 +73,7 @@
             this.pictureBox1.Image = global::pbl.Properties.Resources.danhsachhoadon;
             this.pictureBox1.Location = new System.Drawing.Point(58, 103);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(292, 354);
+            this.pictureBox1.Size = new System.Drawing.Size(337, 354);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -86,7 +86,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label2.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label2.Location = new System.Drawing.Point(73, 28);
+            this.label2.Location = new System.Drawing.Point(101, 28);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(248, 38);
@@ -102,7 +102,7 @@
             this.panel2.Location = new System.Drawing.Point(161, 146);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(397, 500);
+            this.panel2.Size = new System.Drawing.Size(434, 500);
             this.panel2.TabIndex = 2;
             // 
             // pictureBox2
@@ -111,7 +111,7 @@
             this.pictureBox2.Image = global::pbl.Properties.Resources.taohoadon;
             this.pictureBox2.Location = new System.Drawing.Point(50, 103);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(292, 354);
+            this.pictureBox2.Size = new System.Drawing.Size(322, 354);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
@@ -124,7 +124,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Light", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label1.Location = new System.Drawing.Point(99, 28);
+            this.label1.Location = new System.Drawing.Point(129, 33);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 38);

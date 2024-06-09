@@ -68,7 +68,7 @@ namespace pbl
                 {
                     IDChiTietSP = p.IDChiTiet,
                     TenSanPham = p.ChiTietSanPham.SanPham.Ten,
-                    GiaNhap = p.ChiTietSanPham.SanPham.GiaNhap,
+                    GiaNhap = p.ChiTietSanPham.GiaNhap,
                     SoLuong = p.SoLuong,
                     IDHoaDon = p.IDHoaDonNhap,
                 }).Where(p => p.IDHoaDon == IDHoaDonNhap);
@@ -80,7 +80,6 @@ namespace pbl
             cb_sapxep.Items.Add("ID Chi Tiết Sản Phẩm");
             cb_sapxep.Items.Add("Tên Sản Phẩm");
             cb_sapxep.Items.Add("Số Lượng");
-            cb_sapxep.Items.Add("Giá Nhập");
             cb_sapxep.SelectedItem = "ID Chi Tiết Sản Phẩm";
         }
         public void Hien_Thi_Tim_Kiem()
@@ -94,7 +93,7 @@ namespace pbl
                 {
                     IDChiTietSP = p.IDChiTiet,
                     TenSanPham = p.ChiTietSanPham.SanPham.Ten,
-                    GiaNhap = p.ChiTietSanPham.SanPham.GiaNhap,
+                    GiaNhap = p.ChiTietSanPham.GiaNhap,
                     SoLuong = p.SoLuong,
                     IDHoaDon = p.IDHoaDonNhap,
                 }).Where(p => p.IDHoaDon == IDHoaDonNhap && p.IDChiTietSP.Contains(id));

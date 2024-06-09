@@ -47,12 +47,12 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 104);
+            this.dataGridView1.Location = new System.Drawing.Point(46, 104);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1484, 594);
+            this.dataGridView1.Size = new System.Drawing.Size(1440, 585);
             this.dataGridView1.TabIndex = 49;
             // 
             // btn_edit
@@ -63,7 +63,7 @@
             this.btn_edit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btn_edit.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_edit.Image = global::pbl.Properties.Resources.sua;
-            this.btn_edit.Location = new System.Drawing.Point(471, 717);
+            this.btn_edit.Location = new System.Drawing.Point(471, 708);
             this.btn_edit.Margin = new System.Windows.Forms.Padding(4);
             this.btn_edit.Name = "btn_edit";
             this.btn_edit.Size = new System.Drawing.Size(198, 60);
@@ -81,7 +81,7 @@
             this.btn_them.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btn_them.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_them.Image = global::pbl.Properties.Resources.add2;
-            this.btn_them.Location = new System.Drawing.Point(113, 717);
+            this.btn_them.Location = new System.Drawing.Point(113, 708);
             this.btn_them.Margin = new System.Windows.Forms.Padding(4);
             this.btn_them.Name = "btn_them";
             this.btn_them.Size = new System.Drawing.Size(198, 60);
@@ -117,9 +117,9 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.cb_nhaphanphoi);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(24, 12);
+            this.panel1.Location = new System.Drawing.Point(46, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1483, 63);
+            this.panel1.Size = new System.Drawing.Size(1440, 63);
             this.panel1.TabIndex = 58;
             // 
             // btn_timkiem
@@ -127,7 +127,7 @@
             this.btn_timkiem.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_timkiem.Image = global::pbl.Properties.Resources.search44;
-            this.btn_timkiem.Location = new System.Drawing.Point(1381, 3);
+            this.btn_timkiem.Location = new System.Drawing.Point(1342, 1);
             this.btn_timkiem.Margin = new System.Windows.Forms.Padding(4);
             this.btn_timkiem.Name = "btn_timkiem";
             this.btn_timkiem.Size = new System.Drawing.Size(102, 58);
@@ -143,7 +143,7 @@
             this.cb_boloc.FormattingEnabled = true;
             this.cb_boloc.Location = new System.Drawing.Point(875, 14);
             this.cb_boloc.Name = "cb_boloc";
-            this.cb_boloc.Size = new System.Drawing.Size(457, 36);
+            this.cb_boloc.Size = new System.Drawing.Size(416, 36);
             this.cb_boloc.TabIndex = 42;
             // 
             // label1
@@ -189,7 +189,7 @@
             this.btn_delete.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btn_delete.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_delete.Image = global::pbl.Properties.Resources.delete;
-            this.btn_delete.Location = new System.Drawing.Point(833, 717);
+            this.btn_delete.Location = new System.Drawing.Point(833, 708);
             this.btn_delete.Margin = new System.Windows.Forms.Padding(4);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(203, 60);
@@ -204,7 +204,7 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.linkLabel1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkLabel1.Location = new System.Drawing.Point(1389, 75);
+            this.linkLabel1.Location = new System.Drawing.Point(1368, 75);
             this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(118, 23);

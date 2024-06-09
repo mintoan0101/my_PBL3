@@ -135,7 +135,6 @@ namespace pbl
                              ID = c.IDSanPham,
                              Ten = c.Ten,
                              PhanLoai =c.PhanLoai,
-                             GiaNhap = c.GiaNhap,
                          };
                 dataGridView1.DataSource = li.ToList();
             }
@@ -175,7 +174,6 @@ namespace pbl
                     ID = c.IDSanPham,
                     Ten = c.Ten,
                     PhanLoai = c.PhanLoai,
-                    GiaNhap = c.GiaNhap,
                 }).Where(c => c.PhanLoai.Contains(npp) && c.ID.Contains(id));
                 dataGridView1.DataSource = li.ToList();
             }

@@ -44,13 +44,18 @@ namespace pbl
         {
             lb_ID.Text = hd.IDHoaDon;
             lb_DateTime.Text = hd.NgayTaoHoaDon.ToString();
-            lb_KhachHang.Text = "ID Khách Hàng: " + hd.IDKhachHang;
-            lb_NhanVien.Text = "ID Nhân Viên: " + hd.IDNhanVien;
+            lb_KhachHang.Text = "ID khách hàng: " + hd.IDKhachHang;
+            lb_NhanVien.Text = "ID nhân viên: " + hd.IDNhanVien;
             lb_GiamGia.Text = hd.ChietKhau.ToString();
             lb_Tong.Text = hd.TongTien.ToString();
             lb_ThanhTien.Text = (hd.TongTien + hd.ChietKhau).ToString();
             dataGridView1.DataSource = ChiTietHoaDonBUS.Instance.GetData(hd.IDHoaDon);
             Dieu_Chinh_DataGridView();
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -30,10 +30,10 @@ namespace ValueObject
 
         public HoaDonNhap(string idHoaDonNhap, DateTime ngayTao, decimal tongTien, string trangThai)
         {
-            IDHoaDonNhap = idHoaDonNhap;
-            NgayTao = ngayTao;
-            TongTien = tongTien;
-            TrangThai = trangThai;
+            this.IDHoaDonNhap = idHoaDonNhap;
+            this.NgayTao = ngayTao;
+            this.TongTien = tongTien;
+            this.TrangThai = trangThai;
         }
     }
 }

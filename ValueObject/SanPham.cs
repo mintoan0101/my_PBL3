@@ -24,7 +24,6 @@ namespace ValueObject
         public string Ten { get; set; }
         public string PhanLoai { get; set; }
         public decimal GiaBan { get; set; }
-        public decimal GiaNhap { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietSanPham> ChiTietSanPhams { get; set; }

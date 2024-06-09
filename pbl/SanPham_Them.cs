@@ -45,8 +45,7 @@ namespace pbl
 
             if (!string.IsNullOrEmpty(txt_tensp.Text) &&
                 !string.IsNullOrEmpty(cb_phanloai.SelectedItem.ToString()) &&
-                !string.IsNullOrEmpty(txt_giatien.Text)&&
-                !string.IsNullOrEmpty(txt_gianhap.Text))
+                !string.IsNullOrEmpty(txt_giatien.Text))
             {
                 if (isEdit)
                 {
@@ -108,7 +107,6 @@ namespace pbl
             sp.IDSanPham = lbl_id.Text;
             sp.Ten = txt_tensp.Text;
             sp.PhanLoai = cb_phanloai.SelectedItem.ToString();
-            sp.GiaNhap = decimal.Parse(txt_gianhap.Text);
             sp.GiaBan = decimal.Parse(txt_giatien.Text);
             return sp;
         }
@@ -118,10 +116,7 @@ namespace pbl
             if(double.TryParse(txt_giatien.Text, out res))
             {
                 double res2 = 0;
-                if (double.TryParse(txt_gianhap.Text, out res2))
-                {
-                    return true;
-                }
+                return true;
             }
             return false;
         }
@@ -147,7 +142,6 @@ namespace pbl
             lbl_id.Text = idsanpham;
             cb_phanloai.SelectedItem = phanloai;
             txt_tensp.Text = tensanpham;
-            txt_gianhap.Text = gianhap;
             txt_giatien.Text = giaban; 
         }
         public void Chinh_Sua_Thong_Tin()
@@ -157,7 +151,6 @@ namespace pbl
             sp.PhanLoai = phanloai;
             sp.Ten = txt_tensp.Text;
             sp.GiaBan = decimal.Parse(txt_giatien.Text);
-            sp.GiaNhap = decimal.Parse(txt_gianhap.Text);
             if(sanphambus.Update(sp) == 1)
             {
                 MessageBox.Show("Đã sửa đổi thành công","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);

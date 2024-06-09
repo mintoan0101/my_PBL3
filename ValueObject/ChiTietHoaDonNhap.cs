@@ -28,6 +28,4 @@ namespace ValueObject
             SoLuong = soLuong;
         }
     }
-
-
 }

@@ -28,17 +28,16 @@ namespace pbl
         private void Dieu_Chinh_DataGridView()
         {
             int total = dataGridView1.Width;
-            int part = total / 20;
+            int part = (int)Math.Ceiling((double)total / 20);
             int i = 1;
             int count = dataGridView1.Columns.Count;
             int rate = 1;
             foreach (DataGridViewColumn c in dataGridView1.Columns)
             {
-                if (i == 1) rate = 2;
+                if (i == 1) rate = 3;
                 else if (i == 2) rate = 8;
                 else if (i == 3) rate = 5;
-                else if (i == 4) rate = 2;
-                else if (i == 5) rate = 2;
+                else if (i == 4) rate = 3;
                 c.Width = rate * part;
                 i++;
                 c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -79,7 +78,6 @@ namespace pbl
                 f.phanloai = row.Cells[2].Value.ToString();
                 f.tensanpham = row.Cells[1].Value.ToString();
                 f.giaban = row.Cells[3].Value.ToString();
-                f.gianhap = row.Cells[4].Value.ToString();
                 f.Show();
                 btn_chitiet.PerformClick();
 
@@ -191,7 +189,6 @@ namespace pbl
                     Ten = p.Ten,
                     PhanLoai = p.PhanLoai,
                     GiaBan = p.GiaBan,
-                    GiaNhap = p.GiaNhap,
                 });
                 if (txt != null)
                 {

@@ -30,17 +30,18 @@ namespace pbl
         private void Dieu_Chinh_DataGridView()
         {
             int total = dataGridView1.Width;
-            int part = total / 20;
+            int part = (int)Math.Ceiling((double)total / 20);
             int i = 1;
             int count = dataGridView1.Columns.Count;
             int rate = 1;
             foreach (DataGridViewColumn c in dataGridView1.Columns)
             {
                 if (i == 1) rate = 2;
-                else if (i == 2) rate = 6;
-                else if (i == 3) rate = 6;
+                else if (i == 2) rate = 5;
+                else if (i == 3) rate = 5;
                 else if (i == 4) rate = 3;
                 else if (i == 5) rate = 2;
+                else if (i == 6) rate = 2;
                 c.Width = rate * part;
                 i++;
                 c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -88,6 +89,7 @@ namespace pbl
                 f.TenNPP = row.Cells[2].Value.ToString();
                 f.HSD = row.Cells[3].Value.ToString();
                 f.SoLuong = int.Parse(row.Cells[4].Value.ToString());
+                f.GiaNhap = Convert.ToDecimal(row.Cells[5].Value);
                 f.ShowDialog();
                 Load_CTSP();
             }
@@ -151,21 +153,18 @@ namespace pbl
         }
         public void Load_CTSP()
         {
-            using (PBL3Entities1 db = new PBL3Entities1())
+            PBL3Entities1 db = new PBL3Entities1();
+            var li = db.ChiTietSanPhams.Where(p => p.IDSanPham == idsanpham).Select(p => new
             {
-                var li = from c in db.ChiTietSanPhams
-                         where c.IDSanPham == idsanpham
-                         select new
-                         {
-                             c.IDChiTiet,
-                             c.SanPham.Ten,
-                             c.NhaPhanPhoi.TenNhaPhanPhoi,
-                             c.HanSuDung,
-                             c.SoLuong,
-                            
-                         };
-                dataGridView1.DataSource = li.ToList();
-            }
+                p.IDChiTiet,
+                p.SanPham.Ten,
+                p.NhaPhanPhoi.TenNhaPhanPhoi,
+                p.HanSuDung,
+                p.SoLuong,
+                p.GiaNhap
+            });
+
+            dataGridView1.DataSource = li.ToList();
 
         }
         public void Tim_Kiem()
@@ -183,6 +182,7 @@ namespace pbl
                              c.NhaPhanPhoi.TenNhaPhanPhoi,
                              c.HanSuDung,
                              c.SoLuong,
+                             c.GiaNhap
 
                          };
                 if (npp != "Tất Cả")
@@ -228,6 +228,7 @@ namespace pbl
                                  c.NhaPhanPhoi.TenNhaPhanPhoi,
                                  c.HanSuDung,
                                  c.SoLuong,
+                                 c.GiaNhap,
                              };
                     dataGridView1.DataSource = li.ToList();
                     isFull = false;
@@ -246,6 +247,7 @@ namespace pbl
                                  c.NhaPhanPhoi.TenNhaPhanPhoi,
                                  c.HanSuDung,
                                  c.SoLuong,
+                                 c.GiaNhap,
                              };
                     dataGridView1.DataSource = li.ToList();
                     isFull = true;

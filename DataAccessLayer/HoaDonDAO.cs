@@ -144,8 +144,9 @@ namespace DataAccessLayer
             decimal loiNhuan = 0.000m;
             foreach (ChiTietHoaDon item in listChiTietHoaDon)
             {
-                var sp = pbl.SanPhams.Find(pbl.ChiTietSanPhams.Find(item.IDChiTiet).IDSanPham);
-                decimal giaNhap = sp.GiaNhap;
+                var ctsp = pbl.ChiTietSanPhams.Find(item.IDChiTiet);
+                var sp = pbl.SanPhams.Find(ctsp.IDSanPham);
+                decimal giaNhap = ctsp.GiaNhap;
                 decimal giaBan = sp.GiaBan;
                 loiNhuan += (giaBan - giaNhap) * item.SoLuong;
             }

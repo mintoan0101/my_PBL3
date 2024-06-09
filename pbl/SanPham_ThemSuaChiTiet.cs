@@ -21,6 +21,7 @@ namespace pbl
         public string TenNPP { get; set; }
         public string HSD { get; set; }
         public int SoLuong { get; set; }
+        public decimal GiaNhap { get; set; }
         public bool isEdit { get; set; }
         public bool isNhapKho { get; set; }
         #endregion
@@ -57,7 +58,7 @@ namespace pbl
         private void btn_ok_Click(object sender, EventArgs e)
         {
 
-            if (CheckSoLuongHopLe())
+            if (CheckSoLuongHopLe() && CheckGiaSanPham())
             {
                 if (isEdit == true)
                 {
@@ -102,6 +103,7 @@ namespace pbl
             DateTime dateTimeValue = new DateTime(y, m, d);
             dateTimePicker1.Value = dateTimeValue;
             txt_soluong.Text = SoLuong + "";
+            txt_gianhap.Text = GiaNhap.ToString();
 
         }
         public void Load_Nha_Phan_Phoi()
@@ -140,14 +142,7 @@ namespace pbl
             ctsp.IDChiTiet = lbl_id.Text;
             ctsp.IDNhaPhanPhoi = bus.GetIDNPP(cb_npp.SelectedIndex + 1);
             ctsp.IDSanPham = IDSanPham;
-            string date = dateTimePicker1.Value.ToString().Substring(0, 10);
-            string[] parts = date.Split('/');
-
-            int y = int.Parse(parts[2]);
-            int m = int.Parse(parts[1]);
-            int d = int.Parse(parts[0]);
-            DateTime dateTimeValue = new DateTime(y, m, d);
-            ctsp.HanSuDung = dateTimeValue;
+            ctsp.HanSuDung = dateTimePicker1.Value;
             ctsp.SoLuong = int.Parse(txt_soluong.Text);
             return ctsp;
         }
@@ -160,7 +155,16 @@ namespace pbl
             }
             return false;
         }
-
+        public bool CheckGiaSanPham()
+        {
+            double res2 = 0;
+            if (double.TryParse(txt_gianhap.Text, out res2))
+            {
+                return true;
+            }
+            return false;
+        }
+        
         private void panel9_Paint(object sender, PaintEventArgs e)
         {
 

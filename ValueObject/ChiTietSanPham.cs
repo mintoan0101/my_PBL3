@@ -26,6 +26,7 @@ namespace ValueObject
         public string IDNhaPhanPhoi { get; set; }
         public int SoLuong { get; set; }
         public System.DateTime HanSuDung { get; set; }
+        public decimal GiaNhap { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }

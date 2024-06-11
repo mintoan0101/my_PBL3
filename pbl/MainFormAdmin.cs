@@ -101,7 +101,8 @@ namespace pbl
         private void button2_Click(object sender, EventArgs e)
         {
 
-            HoaDon_DanhSach f = new HoaDon_DanhSach();
+            HoaDon_DanhSach f = new HoaDon_DanhSach(" ");
+            f.isAdmin = true;
             OpenChildForm1(f);
             button3.BackColor = panel2.BackColor;
             button9.BackColor = panel2.BackColor;
@@ -178,7 +179,6 @@ namespace pbl
 
         private void MainFormAdmin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
         }
     }
 }

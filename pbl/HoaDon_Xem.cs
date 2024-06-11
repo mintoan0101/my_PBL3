@@ -43,7 +43,7 @@ namespace pbl
         private void XemHoaDon_Load(object sender, EventArgs e)
         {
             lb_ID.Text = hd.IDHoaDon;
-            lb_DateTime.Text = hd.NgayTaoHoaDon.ToString();
+            lb_DateTime.Text = hd.NgayTaoHoaDon.ToString("dd/MM/yyyy");
             lb_KhachHang.Text = "ID khách hàng: " + hd.IDKhachHang;
             lb_NhanVien.Text = "ID nhân viên: " + hd.IDNhanVien;
             lb_GiamGia.Text = hd.ChietKhau.ToString();

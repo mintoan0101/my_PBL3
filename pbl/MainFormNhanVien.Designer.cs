@@ -233,7 +233,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Main Form Nhân Viên";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormNhanVien_FormCloesd);
             this.Load += new System.EventHandler(this.NHANVIEN_Load);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);

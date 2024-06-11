@@ -131,38 +131,40 @@ namespace pbl
         public void Them_Nhan_Vien()
         {
             string message = "";
-            if(!Kiem_Tra_Day_Du_Thong_Tin()) message += " Vui lòng nhập đầy đủ thông tin.";
-            if(!Kiem_Tra_SDT()) message += " Vui lòng nhập số điện thoại đúng 10 chữ số.";
-            if (!Kiem_Tra_Dinh_Dang_SDT()) message += " Số điện thoại chỉ được phép chứa kí tự số.";
-            if (!Kiem_Tra_Dinh_Dang_CCCD()) message += " Số CCCD chỉ được phép chứa kí tự số.";
+            if (!Kiem_Tra_Day_Du_Thong_Tin()) message += " Vui lòng nhập đầy đủ thông tin.";
+            else if (!Kiem_Tra_SDT()) message += " Vui lòng nhập số điện thoại đúng 10 chữ số.";
+            else if (!Kiem_Tra_Dinh_Dang_SDT()) message += " Số điện thoại chỉ được phép chứa kí tự số.";
+            else if (!Kiem_Tra_Dinh_Dang_CCCD()) message += " Số CCCD chỉ được phép chứa kí tự số.";
+            else if (!Count_CCCD()) message += "Số CCCD chỉ được chưá đúng 12 chữ số";
+            else if (!KiemTraLuong()) message += "Mức lương nhập không đúng định dạng số. ";
             if (message.Length == 0)
             {
-                    TaiKhoan tk = new TaiKhoan();
-                    //Thêm các thông tin tài khoảng trước
-                    tk.IDTaiKhoan = txt_idtk.Text;
-                    tk.TenTaiKhoan = txt_tendangnhap.Text;
-                    tk.MatKhau = txt_matkhau.Text;
-                    if (tkbus.Insert(tk) > 0)
+                TaiKhoan tk = new TaiKhoan();
+                //Thêm các thông tin tài khoảng trước
+                tk.IDTaiKhoan = txt_idtk.Text;
+                tk.TenTaiKhoan = txt_tendangnhap.Text;
+                tk.MatKhau = txt_matkhau.Text;
+                if (tkbus.Insert(tk) > 0)
+                {
+                    NhanVien nv = new NhanVien();
+                    //Rồi thêm các thông tin bên nhân viên
+                    nv.TenNhanVien = txt_hovaten.Text;
+                    nv.IDNhanVien = txt_idnv.Text;
+                    nv.DiaChi = txt_diachi.Text;
+                    nv.NgaySinh = dateTimePicker1.Value;
+                    nv.Nam = (rad_nam.Checked) ? true : false;
+                    nv.SoDienThoai = txt_sdt.Text.Trim();
+                    nv.IDTaiKhoan = txt_idtk.Text.Trim();
+                    nv.MucLuong = int.Parse(txt_luong.Text);
+                    nv.CCCD = txt_cccd.Text.Trim();
+                    nv.Email = txt_email.Text;
+                    if (nvbus.Insert(nv) > 0)
                     {
-                        NhanVien nv = new NhanVien();
-                        //Rồi thêm các thông tin bên nhân viên
-                        nv.TenNhanVien = txt_hovaten.Text;
-                        nv.IDNhanVien = txt_idnv.Text;
-                        nv.DiaChi = txt_diachi.Text;
-                        nv.NgaySinh = dateTimePicker1.Value;
-                        nv.Nam = (rad_nam.Checked) ? true : false;
-                        nv.SoDienThoai = txt_sdt.Text;
-                        nv.IDTaiKhoan = txt_idtk.Text;
-                        nv.MucLuong = int.Parse(txt_luong.Text);
-                        nv.CCCD = txt_cccd.Text;
-                        nv.Email = txt_email.Text;
-                        if (nvbus.Insert(nv) > 0)
-                        {
-                            MessageBox.Show("Đã thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
-                        }
+                        MessageBox.Show("Đã thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
                     }
                 }
+            }
             else
             {
                 MessageBox.Show(message, "Lỗi thông tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -176,6 +178,7 @@ namespace pbl
                 txt_hovaten.Text != "" &&
                 txt_matkhau.Text != "" &&
                 txt_tendangnhap.Text != "" &&
+                txt_luong.Text != ""&& 
                 (rad_nam.Checked == true || rad_nu.Checked == true)
              )
             {
@@ -186,7 +189,7 @@ namespace pbl
         }
         public bool Kiem_Tra_SDT()
         {
-            if(txt_sdt.Text.Length != 10)
+            if (txt_sdt.Text.Length != 10)
             {
                 return false;
             }
@@ -194,19 +197,33 @@ namespace pbl
         }
         public bool Kiem_Tra_Dinh_Dang_CCCD()
         {
-            int s = 0;
-            if(int.TryParse(txt_cccd.Text, out s))
+            if (txt_cccd.Text.Trim().All(char.IsDigit))
             {
                 return true;
             }
             return false;
         }
+        public bool Count_CCCD()
+        {
+            if (txt_cccd.Text.Trim().Length != 12)
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool KiemTraLuong()
+        {
+            if (txt_luong.Text.Trim().All(char.IsDigit))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool Kiem_Tra_Dinh_Dang_SDT()
         {
-            int s = 0;
-            if (int.TryParse(txt_sdt.Text, out s))
-            { 
-            
+            if (txt_sdt.Text.Trim().All(char.IsDigit))
+            {
                 return true;
             }
             return false;

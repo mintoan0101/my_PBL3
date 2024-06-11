@@ -56,5 +56,9 @@ namespace BusinessLogicLayer
         {
             return dao.CheckEnableToDelete(IDNV);
         }
+        public IEnumerable<dynamic> DoanhThu(DateTime start, DateTime end, string sapxep, bool TangDan, string idnv)
+        {
+            return dao.DoanhThu(start, end, sapxep, TangDan, idnv);
+        }
     }
 }

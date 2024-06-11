@@ -35,41 +35,43 @@ namespace pbl
                 Load_ID_TuDong();
             }
         }
-        private void btn_ok_Click(object sender, EventArgs e)
+        private void btn_ok_Click_1(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(this.txt_ten.Text) &&
-               !string.IsNullOrEmpty(this.txt_sdt.Text) &&
-               !string.IsNullOrEmpty(this.txt_diachi.Text) &&
-               !string.IsNullOrEmpty(this.txt_id.Text)
-              )
+            string warning = "";
+            if (string.IsNullOrEmpty(txt_ten.Text) || string.IsNullOrEmpty(txt_diachi.Text)
+                || string.IsNullOrEmpty(txt_sdt.Text))
             {
-                if(CheckSDT())
+                warning = "Vui lòng nhập đầy đủ thông tin. ";
+            }
+            else if (!CheckSDT())
+            {
+                warning += "Số điện thoại không hợp lệ. ";
+            }
+            else if (!CountSDT())
+            {
+                warning += "Số điện thoại nhập vào phải có đúng 10 chữ số";
+            }
+            if (string.IsNullOrEmpty(warning))
+            {
+                if (isEdit)
                 {
-                    if (isEdit)
+                    if (Cap_Nhat_Thong_tin())
                     {
-                        if (Cap_Nhat_Thong_tin())
-                        {
-                            MessageBox.Show("Đã cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
-                        }
-                    }
-                    else
-                    { 
-                        if (Them_Nha_Phan_Phoi())
-                        {
-                            MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
-                        }
+                        MessageBox.Show("Đã cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng nhập số điện thoại đúng 10 chữ số", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (Them_Nha_Phan_Phoi())
+                    {
+                        MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
                 }
             }
-            else MessageBox.Show("Vui lòng điền đầy đủ thông tin","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            else MessageBox.Show(warning, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -122,15 +124,23 @@ namespace pbl
             }
             return false;
         }
-        public bool CheckSDT()
+
+        public bool CountSDT()
         {
-            if(txt_sdt.Text.Length!=10)
+            if (txt_sdt.Text.Length != 10)
             {
                 return false;
             }
             return true;
         }
-
+        public bool CheckSDT()
+        {
+            if (txt_sdt.Text.Trim().All(char.IsDigit))
+            {
+                return true;
+            }
+            return false;
+        }
         private void btn_ok_MouseEnter(object sender, EventArgs e)
         {
             btn_ok.BackColor = Color.PowderBlue;
@@ -150,5 +160,7 @@ namespace pbl
         {
             button2.BackColor = Color.FromArgb(226, 240, 243);
         }
+
+      
     }
 }

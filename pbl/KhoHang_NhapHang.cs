@@ -184,14 +184,18 @@ namespace pbl
             string sanpham = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
             string idsp = (dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
             int vitri = Check_Trung_San_Pham(idsp);
-            if ( vitri == -1)
+            if (vitri == -1)
             {
-                string gianhap = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                int count_1 = ctspbus.CountIDCT(idsp);
                 Them_Moi_CTSP(idsp);
-                int sl = ctspbus.GetSoLuongByLastID(idsp);
-                dataGridView2.Rows.Add(idsp, sanpham, gianhap, sl);
+                int count_2 = ctspbus.CountIDCT(idsp);
+                if (count_2 > count_1)
+                {
+                    int sl = ctspbus.GetSoLuongByLastID(idsp);
+                    decimal gianhap = ctspbus.GetGiaNhapByLastIDSP(idsp);
+                    dataGridView2.Rows.Add(idsp, sanpham, gianhap, sl);
+                }
             }
-            Load_Tong_Tien();
         }
         public void Xoa_Bot_San_Pham()
         {

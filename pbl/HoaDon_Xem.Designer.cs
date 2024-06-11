@@ -241,7 +241,7 @@
             this.lb_DateTime.AutoSize = true;
             this.lb_DateTime.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lb_DateTime.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lb_DateTime.Location = new System.Drawing.Point(155, 68);
+            this.lb_DateTime.Location = new System.Drawing.Point(302, 68);
             this.lb_DateTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_DateTime.Name = "lb_DateTime";
             this.lb_DateTime.Size = new System.Drawing.Size(0, 25);

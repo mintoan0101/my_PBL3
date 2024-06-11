@@ -250,6 +250,7 @@
             this.btn_ok.Text = "OK";
             this.btn_ok.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btn_ok.UseVisualStyleBackColor = false;
+            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click_1);
             // 
             // NhaPhanPhoi_Them
             // 

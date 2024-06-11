@@ -14,16 +14,27 @@ namespace pbl
 {
     public partial class HoaDon_DanhSach : Form
     {
-        public HoaDon_DanhSach()
+        public string IDNhanVien ;
+        public bool isAdmin;
+        public HoaDon_DanhSach(string ID)
         {
             InitializeComponent();
             dataGridView1.Font = new Font("Segoe UI Semibold", 12);
             dataGridView1.RowTemplate.Height = 30;
-            
+            IDNhanVien = ID;
         }
         private void HoaDon_DanhSach_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = HoaDonBUS.Instance.GetData();
+            if (isAdmin == true)
+            {
+                
+                dataGridView1.DataSource = HoaDonBUS.Instance.GetData();
+            }
+            else
+            {
+                dataGridView1.DataSource = HoaDonBUS.Instance.GetDataByNhanVien(IDNhanVien);
+            }
+            //dataGridView1.DataSource = HoaDonBUS.Instance.GetData();
             Load_Bo_Loc();
             cbb_PhanLoai.SelectedIndex = 0;
             Dieu_Chinh_DataGridView();
@@ -57,6 +68,8 @@ namespace pbl
             cbb_BoLoc.Items.Add("100K - 500K");
             cbb_BoLoc.Items.Add("500K - 1000K");
             cbb_BoLoc.Items.Add("> 1000K");
+            cbb_BoLoc.Items.Add("Tăng dần");
+            cbb_BoLoc.Items.Add("Giảm dần");
             cbb_BoLoc.SelectedItem = "Tất Cả";
         }
 
@@ -94,7 +107,8 @@ namespace pbl
                     NgayTaoHoaDon = DateTime.Parse(row.Cells["NgayTaoHoaDon"].Value.ToString()),
                     TongTien = decimal.Parse(row.Cells["TongTien"].Value.ToString()),
                     IDNhanVien = row.Cells["IDNhanVien"].Value.ToString(),
-                    IDKhachHang = row.Cells["IDKhachHang"].Value.ToString()
+                    IDKhachHang = row.Cells["IDKhachHang"].Value.ToString(),
+                    ChietKhau = Convert.ToDecimal(row.Cells["ChietKhau"].Value)
                 };
             }
 

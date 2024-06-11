@@ -32,18 +32,39 @@ namespace DataAccessLayer
         }
         public List<dynamic> GetData()
         {
-            var list = pbl.HoaDons.Select(p => new
-            {
-                p.IDHoaDon,
-                p.NgayTaoHoaDon,
-                p.IDNhanVien,
-                p.IDKhachHang,
-                p.ChietKhau,
-                p.TongTien,
-                p.LoiNhuan,
+            var list = pbl.HoaDons.OrderByDescending(p => p.NgayTaoHoaDon)
+                .ThenByDescending(p => p.IDHoaDon)
+                .Select(p => new
+                {
+                    p.IDHoaDon,
+                    p.NgayTaoHoaDon,
+                    p.IDNhanVien,
+                    p.IDKhachHang,
+                    p.ChietKhau,
+                    p.TongTien,
+                    p.LoiNhuan,
                 
-            });
+                });
+            
             return list.ToList<dynamic>();
+        }
+        public List<dynamic> GetDataByNhanVien(string idnv)
+        {
+            var list = pbl.HoaDons.OrderByDescending(p => p.NgayTaoHoaDon)
+                                  .ThenByDescending(p => p.IDHoaDon)
+                                  .Where(p => p.IDNhanVien == idnv)
+                                  .Select(p => new
+                                  {
+                                      p.IDHoaDon,
+                                      p.NgayTaoHoaDon,
+                                      p.IDNhanVien,
+                                      p.IDKhachHang,
+                                      p.ChietKhau,
+                                      p.TongTien,
+                                      p.LoiNhuan,
+                                  })
+                                  .ToList<dynamic>();
+            return list;
         }
 
         public int Insert(HoaDon hd)
@@ -72,9 +93,6 @@ namespace DataAccessLayer
                     case "ID Hoá Đơn":
                         query = query.Where(hd => hd.IDHoaDon.Contains(txt));
                         break;
-                    case "Ngày Tạo Hoá Đơn":
-                        // Không thể sử dụng like trong LINQ to Entities với DateTime
-                        break;
                     case "Nhân Viên":
                         query = query.Where(hd => hd.NhanVien.IDNhanVien.Contains(txt) || hd.NhanVien.TenNhanVien.Contains(txt));
                         break;
@@ -101,6 +119,12 @@ namespace DataAccessLayer
                         break;
                     case "> 1000K":
                         query = query.Where(hd => hd.TongTien > 1000);
+                        break;
+                    case "Tăng dần":
+                        query = query.OrderBy(hd => hd.TongTien);
+                        break;
+                    case "Giảm dần":
+                        query = query.OrderByDescending(hd => hd.TongTien);
                         break;
                 }
             }

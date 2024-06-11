@@ -75,5 +75,9 @@ namespace BusinessLogicLayer
         {
             return HoaDonDAO.Instance.TinhLoiNhuan(list);
         }
+        public List<dynamic> GetDataByNhanVien(string idnv)
+        {
+            return HoaDonDAO.Instance.GetDataByNhanVien(idnv);
+        }
     }
 }

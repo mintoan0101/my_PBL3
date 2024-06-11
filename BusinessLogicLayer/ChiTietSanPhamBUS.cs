@@ -16,12 +16,18 @@ namespace BusinessLogicLayer
     {
         ChiTietSanPhamDAO dao = new ChiTietSanPhamDAO();
 
-      
+       public int CountIDCT(string IDSP)
+        {
+            return dao.CountIDCT(IDSP);
+        }
         public List<ChiTietSanPham_View> GetData1()
         {
             return dao.GetData1();
         }
-
+        public decimal GetGiaNhapByLastIDSP(string IDSP)
+        {
+            return dao.GetGiaNhapByLastIDSP(IDSP);
+        }
         public int Insert(ChiTietSanPham ctsp)
         {
             return dao.Insert(ctsp);

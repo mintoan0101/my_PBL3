@@ -44,8 +44,15 @@ namespace DataAccessLayer
       
         public int Insert(KhachHang kh)
         {
-           
-                pbl.KhachHangs.Add(kh);
+            foreach (KhachHang item in pbl.KhachHangs)
+            {
+                if (kh.SDT == item.SDT)
+                {
+                    return 0;
+                }
+                    
+            }
+            pbl.KhachHangs.Add(kh);
                 pbl.SaveChanges();
                 return 1;
            

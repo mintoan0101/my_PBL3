@@ -12,9 +12,10 @@ namespace DataAccessLayer
     public class TaiKhoanDAO
     {
         PBL3Entities1 db = new PBL3Entities1();
+ 
         public bool CheckAccount(string username, string password)
         {
-            var anccount = db.TaiKhoan.Where(p => p.TenTaiKhoan == username).FirstOrDefault();
+            var anccount = db.TaiKhoans.Where(p => p.TenTaiKhoan == username).FirstOrDefault();
             if (anccount != null) //có tài khoản trùng tên
             {
                 if (anccount.MatKhau == password)//trùng cả mật khẩu
@@ -30,7 +31,7 @@ namespace DataAccessLayer
         }
         public bool CheckAdmin(string username)
         {
-            var anccount = db.TaiKhoan.Where(p => p.TenTaiKhoan == username).FirstOrDefault();
+            var anccount = db.TaiKhoans.Where(p => p.TenTaiKhoan == username).FirstOrDefault();
             if (anccount.isAdmin == 1)
             {
                 return true;
@@ -39,7 +40,7 @@ namespace DataAccessLayer
         }
         public string GetLastID()
         {
-            var anccount = db.TaiKhoan.OrderByDescending(p => p.IDTaiKhoan).FirstOrDefault();
+            var anccount = db.TaiKhoans.OrderByDescending(p => p.IDTaiKhoan).FirstOrDefault();
             if (anccount != null)
             {
                 return anccount.IDTaiKhoan;
@@ -48,14 +49,14 @@ namespace DataAccessLayer
         }
         public int Insert(TaiKhoan tk)
         {
-            db.TaiKhoan.Add(tk);
+            db.TaiKhoans.Add(tk);
             db.SaveChanges();
             return 1;
         }
         public int Delete(string id)
         {
-            var nv = db.TaiKhoan.Where(p => p.IDTaiKhoan == id).FirstOrDefault();
-            db.TaiKhoan.Remove(nv);
+            var nv = db.TaiKhoans.Where(p => p.IDTaiKhoan == id).FirstOrDefault();
+            db.TaiKhoans.Remove(nv);
             db.SaveChanges();
             return 1;
         }
@@ -63,7 +64,7 @@ namespace DataAccessLayer
         {
             if (tk != null)
             {
-                TaiKhoan t = db.TaiKhoan.Find(tk.IDTaiKhoan);
+                TaiKhoan t = db.TaiKhoans.Find(tk.IDTaiKhoan);
                 t.TenTaiKhoan = tk.TenTaiKhoan;
                 t.MatKhau = tk.MatKhau;
                 db.SaveChanges();
@@ -73,7 +74,7 @@ namespace DataAccessLayer
         }
         public bool CheckPassByIDNV(string idnv, string matkhaucu)
         {
-            bool exists = db.NhanVien.Any(p => p.IDNhanVien == idnv && p.TaiKhoan.MatKhau == matkhaucu);
+            bool exists = db.NhanViens.Any(p => p.IDNhanVien == idnv && p.TaiKhoan.MatKhau == matkhaucu);
 
             if (exists)
             {
@@ -87,7 +88,7 @@ namespace DataAccessLayer
             {
                 NhanVienDAO nvdao = new NhanVienDAO();
                 string idtk = nvdao.GetIDTaiKhoanByNhanVien(idnv);
-                TaiKhoan tk = db.TaiKhoan.Find(idtk);
+                TaiKhoan tk = db.TaiKhoans.Find(idtk);
                 tk.MatKhau = matkhaumoi;
                 db.SaveChanges();
                 return 1;

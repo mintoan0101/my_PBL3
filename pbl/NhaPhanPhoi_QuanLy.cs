@@ -143,7 +143,7 @@ namespace pbl
             {
                 string txt = txt_timkiem.Text;
                 string thuoctinh = cb_thuoctinh.SelectedItem.ToString();
-                var re = from p in db.NhaPhanPhoi
+                var re = from p in db.NhaPhanPhois
                          select new
                          {
                              ID = p.IDNhaPhanPhoi,

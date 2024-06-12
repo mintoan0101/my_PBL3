@@ -140,7 +140,7 @@ namespace pbl
         {
             using(PBL3Entities1 pbl = new PBL3Entities1())
             {
-                var query = pbl.HoaDon.OrderByDescending(p => p.NgayTaoHoaDon)
+                var query = pbl.HoaDons.OrderByDescending(p => p.NgayTaoHoaDon)
                .ThenByDescending(p => p.IDHoaDon)
                .Where(p => p.IDNhanVien.Contains(idnv))
                .Select(p => new

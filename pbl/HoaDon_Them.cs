@@ -30,10 +30,10 @@ namespace pbl
             dataGridView1.RowTemplate.Height = 30;
             dataGridView2.Font = new Font("Segoe UI Semibold", 8);
             dataGridView2.RowTemplate.Height = 28;
+            list = ctspBUS.GetData1();
             list_sl = ctspBUS.GetSoLuongs();
             SetBill();
             AddColumnsToDataGridView2();
-            Set_Col2();
             panel10.Visible = false;
             panel11.Visible = false;
             cbb_PhanLoai.SelectedIndex = 0;
@@ -89,13 +89,6 @@ namespace pbl
             dataGridView1.Columns[5].HeaderText = "Số Lượng";
             dataGridView1.Columns[6].HeaderText = "Check";
         }
-        private void Set_Col2()
-        {
-            dataGridView2.Columns[1].HeaderText = "Sản Phẩm";
-            dataGridView2.Columns[2].HeaderText = "Số Lượng";
-            dataGridView2.Columns[3].HeaderText = "Thành Tiền";
-
-        }
         private void SetBill()
         {
             lb_DateTime.Text = DateTime.Now.ToString();
@@ -117,9 +110,9 @@ namespace pbl
         private void AddColumnsToDataGridView2()
         {
             dataGridView2.Columns.Add("IDChiTiet", "IDChiTiet");
-            dataGridView2.Columns.Add("Ten", "Ten");
-            dataGridView2.Columns.Add("SoLuong", "SoLuong");
-            dataGridView2.Columns.Add("ThanhTien", "ThanhTien");
+            dataGridView2.Columns.Add("Ten", "Tên");
+            dataGridView2.Columns.Add("SoLuong", "Số Lượng");
+            dataGridView2.Columns.Add("ThanhTien", "Thành Tiền");
             dataGridView2.ColumnHeadersVisible = true;
             dataGridView2.Columns["IDChiTiet"].Visible = false;
         }
@@ -155,10 +148,10 @@ namespace pbl
                         ctspBUS.Update(chiTietSanPham);
                     }
                 }
-                hd.ChiTietHoaDon = listChiTietHoaDon;
+                hd.ChiTietHoaDons = listChiTietHoaDon;
                 hd.LoiNhuan = HoaDonBUS.Instance.TinhLoiNhuan(listChiTietHoaDon);
                 HoaDonBUS.Instance.Insert(hd);
-                foreach (ChiTietHoaDon chitiethoadon in hd.ChiTietHoaDon)
+                foreach (ChiTietHoaDon chitiethoadon in hd.ChiTietHoaDons)
                 {
                     ChiTietHoaDonDAO.Instance.Insert(chitiethoadon);
                 }
@@ -194,10 +187,9 @@ namespace pbl
         }
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            // Kiểm tra xem cột thay đổi có phải là cột "Check" và chỉ thực hiện khi dữ liệu đã sẵn sàng
-            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Check" )
+            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Check" && e.RowIndex >= 0 && e.RowIndex < list.Count)
             {
-                ChiTietSanPham_View selectedItem = new ChiTietSanPham_View();
+                ChiTietSanPham_View selectedItem = null;
                 foreach (ChiTietSanPham_View item in list)
                 {
                     if (dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString() == item.IDChiTiet)
@@ -206,12 +198,13 @@ namespace pbl
                         break;
                     }
                 }
+
+                if (selectedItem == null) return;
+
                 int SoLuongCoSan = selectedItem.SoLuong;
 
-                // Kiểm tra xem giá trị của ô "Check" có khác null không
                 if (dataGridView1.Rows[e.RowIndex].Cells["Check"].Value != null)
                 {
-                    // Nếu cột "Check" được tick
                     if (Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells["Check"].Value))
                     {
                         if (SoLuongCoSan > 0)
@@ -224,21 +217,19 @@ namespace pbl
                             newRow.Cells[1].Value = selectedItem.Ten;
                             newRow.Cells[2].Value = 1;
                             newRow.Cells[3].Value = selectedItem.GiaBan;
-
                             dataGridView2.Rows.Add(newRow);
                         }
                         else
                         {
                             MessageBox.Show("Sản phẩm không đủ số lượng.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            dataGridView1.Rows[e.RowIndex].Cells["Check"].Value = false; // Bỏ tick nếu số lượng bằng 0
+                            dataGridView1.Rows[e.RowIndex].Cells["Check"].Value = false;
                         }
                     }
-                    else // Nếu bỏ tick cột "Check"
+                    else
                     {
                         string idChiTiet = selectedItem.IDChiTiet;
                         foreach (DataGridViewRow row in dataGridView2.Rows)
                         {
-                            // Kiểm tra xem giá trị của ô có khác null không trước khi thực hiện bất kỳ xử lý nào
                             if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() == idChiTiet)
                             {
                                 int SoLuong = Convert.ToInt32(row.Cells[2].Value);
@@ -247,15 +238,23 @@ namespace pbl
                                 break;
                             }
                         }
+
+                    }
+
+                    if (DaDoiDiem)
+                    {
+                        kh.Diem += (int)Convert.ToDecimal(lb_GiamGia.Text);
+                        lb_DiemThuong.Text = "Điểm Thưởng: " + kh.Diem.ToString();
+                        lb_GiamGia.Text = "0";
+                        DaDoiDiem = false;
                     }
                 }
-                MessageBox.Show("");
-                // Cập nhật tổng tiền sau khi thay đổi số lượng hoặc trạng thái Check
+
                 TinhTien();
                 Refresh_DataGridView();
             }
-                
         }
+
         private void bt_TimKiem_Click(object sender, EventArgs e)
         {
             string PhanLoai = cbb_PhanLoai.SelectedItem.ToString();
@@ -362,12 +361,16 @@ namespace pbl
             foreach (DataGridViewRow item in dataGridView2.Rows)
             {
                 thanhtien += Convert.ToDecimal(item.Cells[2].Value) * Convert.ToDecimal(item.Cells[3].Value);
-
             }
             lb_ThanhTien.Text = thanhtien.ToString();
-            Decimal chietkhau = Convert.ToDecimal(lb_GiamGia.Text);
+            Decimal chietkhau = 0;
+            if (DaDoiDiem)
+            {
+                chietkhau = Convert.ToDecimal(lb_GiamGia.Text);
+            }
             lb_Tong.Text = (thanhtien - chietkhau).ToString();
         }
+
         private void HoaDon_Them_Load(object sender, EventArgs e)
         {
             Dieu_Chinh_DataGridView1();
@@ -405,6 +408,7 @@ namespace pbl
                 e.Handled = true;
             }
         }
+        
     }
 }
 

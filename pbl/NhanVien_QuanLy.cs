@@ -133,7 +133,7 @@ namespace pbl
                 string text = txt_timkiem.Text;
                 string thuoctinh = cb_thuoctinh.SelectedItem.ToString();
                 string boloc = cb_boloc.SelectedItem.ToString();
-                var res = from p in pbl.NhanVien
+                var res = from p in pbl.NhanViens
                           select new
                           {
                               p.IDNhanVien,

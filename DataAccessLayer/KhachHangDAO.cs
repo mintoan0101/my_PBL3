@@ -32,7 +32,7 @@ namespace DataAccessLayer
         }
         public List<dynamic> GetData()
         {
-            var li = pbl.KhachHang.Select(p => new
+            var li = pbl.KhachHangs.Select(p => new
             {
                 p.IDKhachHang,
                 p.Ten,
@@ -44,7 +44,7 @@ namespace DataAccessLayer
       
         public int Insert(KhachHang kh)
         {
-            foreach (KhachHang item in pbl.KhachHang)
+            foreach (KhachHang item in pbl.KhachHangs)
             {
                 if (kh.SDT == item.SDT)
                 {
@@ -52,7 +52,7 @@ namespace DataAccessLayer
                 }
                     
             }
-            pbl.KhachHang.Add(kh);
+            pbl.KhachHangs.Add(kh);
                 pbl.SaveChanges();
                 return 1;
            
@@ -60,15 +60,15 @@ namespace DataAccessLayer
         public int Delete(string id)
         {
             
-                var kh = pbl.KhachHang.Where(p => p.IDKhachHang == id).FirstOrDefault();
-                pbl.KhachHang.Remove(kh);
+                var kh = pbl.KhachHangs.Where(p => p.IDKhachHang == id).FirstOrDefault();
+                pbl.KhachHangs.Remove(kh);
                 pbl.SaveChanges();
                 return 1;
 
         }
         public int Update(KhachHang kh)
         {
-             var khachHang = pbl.KhachHang.Where(p => p.IDKhachHang == kh.IDKhachHang).FirstOrDefault();
+             var khachHang = pbl.KhachHangs.Where(p => p.IDKhachHang == kh.IDKhachHang).FirstOrDefault();
                 if (khachHang != null)
                 {
                     khachHang.SDT = kh.SDT;
@@ -83,25 +83,25 @@ namespace DataAccessLayer
         public KhachHang GetDataBySDT(string SDT)
         {
             KhachHang kh = new KhachHang();
-            kh = pbl.KhachHang.Where(p => p.SDT == SDT).FirstOrDefault();
+            kh = pbl.KhachHangs.Where(p => p.SDT == SDT).FirstOrDefault();
             return kh;
         }
 
         public string GetLastID()
         {
-            var li = pbl.KhachHang.OrderByDescending(p => p.IDKhachHang).FirstOrDefault().IDKhachHang;
+            var li = pbl.KhachHangs.OrderByDescending(p => p.IDKhachHang).FirstOrDefault().IDKhachHang;
             return li;
         }
 
         public double GetTongHoaDon(string idKhachHang)
         {
-            double? tongHoaDon = pbl.HoaDon.Where(hd => hd.IDKhachHang == idKhachHang).Sum(hd => (double?)hd.TongTien);
+            double? tongHoaDon = pbl.HoaDons.Where(hd => hd.IDKhachHang == idKhachHang).Sum(hd => (double?)hd.TongTien);
             return tongHoaDon ?? 0;
         }
 
         public bool CheckEnableToDelete(string IDKH)
         {
-            var li = pbl.HoaDon.Where(p => p.IDKhachHang.Contains(IDKH));
+            var li = pbl.HoaDons.Where(p => p.IDKhachHang.Contains(IDKH));
             if(li.Count() > 0)
             {
                 return false;

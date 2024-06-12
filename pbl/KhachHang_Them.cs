@@ -69,6 +69,11 @@ namespace pbl
                             MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Close();
                         }
+                        else
+                        {
+                            MessageBox.Show("Số điện thoại đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        } 
+                            
                     }
                 }
                 else

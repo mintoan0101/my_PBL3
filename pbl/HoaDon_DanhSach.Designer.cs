@@ -121,7 +121,6 @@
             this.cbb_PhanLoai.Items.AddRange(new object[] {
             "ID Hoá Đơn",
             "Nhân Viên",
-            "Ngày Tạo Hoá Đơn",
             "Khách Hàng"});
             this.cbb_PhanLoai.Location = new System.Drawing.Point(-1, 0);
             this.cbb_PhanLoai.Margin = new System.Windows.Forms.Padding(4);

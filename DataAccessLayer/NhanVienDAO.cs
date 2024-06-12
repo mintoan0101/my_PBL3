@@ -110,5 +110,37 @@ namespace DataAccessLayer
             }
             return true;
         }
+        public IEnumerable<dynamic> DoanhThu(DateTime start, DateTime end, string sapxep, bool TangDan, string idnv)
+        {
+            var li = pbl.HoaDons.Select(h => new
+            {
+                Ngay = h.NgayTaoHoaDon,
+                GiamGia = h.ChietKhau,
+                DoanhThu = h.TongTien,
+                LoiNhuan = h.LoiNhuan,
+                ID = h.IDHoaDon,
+                IDNV = h.IDNhanVien,
+            }).Where(h => h.Ngay >= start && h.Ngay < end && h.IDNV.Contains(idnv));
+
+            if (TangDan)
+            {
+                switch (sapxep)
+                {
+                    case "Doanh thu":
+                        li = li.OrderBy(h => h.DoanhThu);
+                        break;
+                    case "Lợi nhuận":
+                        li = li.OrderBy(h => h.LoiNhuan);
+                        break;
+                    case "Ngày":
+                        li = li.OrderBy(h => h.Ngay);
+                        break;
+                    case "Giảm giá":
+                        li = li.OrderBy(h => h.GiamGia);
+                        break;
+                }
+            }    
+            return li.ToList();
+        }
     }
 }

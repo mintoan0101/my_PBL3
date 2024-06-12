@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogicLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace pbl
     public partial class HoaDon_NhanVien : Form
     {
         public string IDNhanvien;
+        private NhanVienBUS nv = new NhanVienBUS();
         private Form currentFormChild;
         public HoaDon_NhanVien()
         {
@@ -35,7 +37,10 @@ namespace pbl
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new HoaDon_DanhSach());
+            string ID = nv.GetIDNVByUsername(IDNhanvien);
+            HoaDon_DanhSach f = new HoaDon_DanhSach(ID);
+            f.isAdmin = false;
+            OpenChildForm(f);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

@@ -26,7 +26,17 @@ namespace DataAccessLayer
             }).ToList();
             return li;
         }
-
+    public int CountIDCT(string IDSP)
+        {
+            var li = pbl.ChiTietSanPhams.Where(p => p.IDSanPham == IDSP).Count();
+            return li;
+        }
+        public decimal GetGiaNhapByLastIDSP(string IDSP)
+        {
+            string IDCT = GetLastIDByIDSP(IDSP);
+            var li = pbl.ChiTietSanPhams.Find(IDCT).GiaNhap;
+            return li;
+        }
         public int Insert(ChiTietSanPham ctsp)
         {
             if (ctsp != null)

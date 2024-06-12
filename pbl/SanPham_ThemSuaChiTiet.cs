@@ -37,7 +37,6 @@ namespace pbl
             
             if(isNhapKho)
             {
-                btn_exit.Enabled = false;
                 cb_npp.Enabled = false; ;
             }
             Load_Nha_Phan_Phoi();
@@ -58,7 +57,10 @@ namespace pbl
         private void btn_ok_Click(object sender, EventArgs e)
         {
 
-            if (CheckSoLuongHopLe() && CheckGiaSanPham())
+            string warning = "";
+            if (!CheckSoLuongHopLe()) warning += "Số lượng nhập vào không hợp lệ. ";
+            if (!CheckGiaSanPham()) warning += "Giá nhập vào không hợp lệ. ";
+            if (warning.Trim().Length == 0)
             {
                 if (isEdit == true)
                 {
@@ -82,7 +84,7 @@ namespace pbl
             }
             else
             {
-                MessageBox.Show("Số lượng nhập vào không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(warning, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btn_exit_Click_1(object sender, EventArgs e)
@@ -95,13 +97,7 @@ namespace pbl
         {
             lbl_id.Text = IDChiTiet;
             cb_npp.SelectedItem = TenNPP;
-            string hsd = HSD.Substring(0, 10);
-            string[] parts = hsd.Split('/');
-            int y = int.Parse(parts[2]);
-            int m = int.Parse(parts[1]);
-            int d = int.Parse(parts[0]);
-            DateTime dateTimeValue = new DateTime(y, m, d);
-            dateTimePicker1.Value = dateTimeValue;
+            dateTimePicker1.Value = Convert.ToDateTime(HSD);
             txt_soluong.Text = SoLuong + "";
             txt_gianhap.Text = GiaNhap.ToString();
 
@@ -144,6 +140,7 @@ namespace pbl
             ctsp.IDSanPham = IDSanPham;
             ctsp.HanSuDung = dateTimePicker1.Value;
             ctsp.SoLuong = int.Parse(txt_soluong.Text);
+            ctsp.GiaNhap = decimal.Parse(txt_gianhap.Text);
             return ctsp;
         }
         public bool CheckSoLuongHopLe()

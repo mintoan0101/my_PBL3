@@ -82,7 +82,7 @@ namespace pbl
             bool GiamDan = checkBox1.Checked;
             using (PBL3Entities1 db = new PBL3Entities1())
             {
-                var li = db.ChiTietHoaDonNhap.Select(p => new
+                var li = db.ChiTietHoaDonNhaps.Select(p => new
                 {
                     IDChiTietSP = p.IDChiTiet,
                     TenSanPham = p.ChiTietSanPham.SanPham.Ten,

@@ -27,7 +27,6 @@ namespace pbl
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.Font = new Font("Segoe UI Semibold", 12);
             dataGridView1.RowTemplate.Height = 30;
-            Load_Thuoc_Tinh();
             Load_BoLoc();
             btn_timkiem.PerformClick();
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -125,12 +124,7 @@ namespace pbl
             }
         }
         //CÁC HÀM BỔ TRỢ
-        public void Load_Thuoc_Tinh()
-        {
-            cb_thuoctinh.Items.Add("SĐT");
-            cb_thuoctinh.Items.Add("Tên");
-            cb_thuoctinh.SelectedItem = "SĐT";
-        }
+        
         public void Load_BoLoc()
         {
             cbb_BoLoc.Items.Add("< 500k");
@@ -146,7 +140,7 @@ namespace pbl
         {
             using (PBL3Entities1 pbl = new PBL3Entities1())
             {
-                var query = pbl.KhachHang.Select(p => new
+                var query = pbl.KhachHangs.Select(p => new
                 {
                     IDKhachHang = p.IDKhachHang,
                     Ten = p.Ten,
@@ -154,7 +148,6 @@ namespace pbl
                     Diem = p.Diem,
                 });
                 string txt = txt_timkiem.Text;
-                string PhanLoai = cb_thuoctinh.SelectedItem.ToString();
                 string BoLoc = cbb_BoLoc.SelectedItem.ToString();
                 Dictionary<string, double> tongHoaDonDict = new Dictionary<string, double>();
                 foreach (var khachHang in query)
@@ -163,15 +156,8 @@ namespace pbl
                 }
                 if (!string.IsNullOrEmpty(txt))
                 {
-                    if (PhanLoai == "Tên")
-                    {
-                        txt = txt.ToLower();
-                        query = query.Where(kh => kh.Ten.ToLower().Contains(txt));
-                    }
-                    if (PhanLoai == "SĐT")
-                    {
-                        query = query.Where(kh => kh.SDT.Contains(txt));
-                    }
+                    txt = txt.ToLower();
+                    query = query.Where(kh => kh.Ten.ToLower().Contains(txt) || kh.SDT.Contains(txt));
                 }
 
                 if (BoLoc != "Tất cả")

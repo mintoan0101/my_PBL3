@@ -32,7 +32,7 @@ namespace DataAccessLayer
         }
         public List<dynamic> GetData()
         {
-            var list = pbl.HoaDon.OrderByDescending(p => p.NgayTaoHoaDon)
+            var list = pbl.HoaDons.OrderByDescending(p => p.NgayTaoHoaDon)
                 .ThenByDescending(p => p.IDHoaDon)
                 .Select(p => new
                 {
@@ -50,7 +50,7 @@ namespace DataAccessLayer
         }
         public List<dynamic> GetDataByNhanVien(string idnv)
         {
-            var list = pbl.HoaDon.OrderByDescending(p => p.NgayTaoHoaDon)
+            var list = pbl.HoaDons.OrderByDescending(p => p.NgayTaoHoaDon)
                                   .ThenByDescending(p => p.IDHoaDon)
                                   .Where(p => p.IDNhanVien == idnv)
                                   .Select(p => new
@@ -70,7 +70,7 @@ namespace DataAccessLayer
         public int Insert(HoaDon hd)
         {
             
-                pbl.HoaDon.Add(hd);
+                pbl.HoaDons.Add(hd);
                 pbl.SaveChanges();
                 return 1;
             
@@ -79,14 +79,14 @@ namespace DataAccessLayer
 
         public string GetLastID()
         {
-            var li = pbl.HoaDon.OrderByDescending(p => p.IDHoaDon).FirstOrDefault().IDHoaDon;
+            var li = pbl.HoaDons.OrderByDescending(p => p.IDHoaDon).FirstOrDefault().IDHoaDon;
             return li;
         }
 
      
         public int CountSoLuongSanPham(string IDHD)
         {
-            var query = from c in pbl.ChiTietHoaDon
+            var query = from c in pbl.ChiTietHoaDons
                         where c.IDHoaDon == IDHD
                         select c.SoLuong;
 
@@ -101,7 +101,7 @@ namespace DataAccessLayer
         }
         public decimal DoanhThuTheoNhanVien(string IDNV)
         {
-            var li = pbl.HoaDon.GroupBy(p=> p.IDNhanVien).Select(p => new
+            var li = pbl.HoaDons.GroupBy(p=> p.IDNhanVien).Select(p => new
             {
                 IDNhanVien = p.Key,
                 TongDoanhThu = p.Sum(hd => hd.TongTien)
@@ -121,8 +121,8 @@ namespace DataAccessLayer
             decimal loiNhuan = 0.000m;
             foreach (ChiTietHoaDon item in listChiTietHoaDon)
             {
-                var ctsp = pbl.ChiTietSanPham.Find(item.IDChiTiet);
-                var sp = pbl.SanPham.Find(ctsp.IDSanPham);
+                var ctsp = pbl.ChiTietSanPhams.Find(item.IDChiTiet);
+                var sp = pbl.SanPhams.Find(ctsp.IDSanPham);
                 decimal giaNhap = ctsp.GiaNhap;
                 decimal giaBan = sp.GiaBan;
                 loiNhuan += (giaBan - giaNhap) * item.SoLuong;

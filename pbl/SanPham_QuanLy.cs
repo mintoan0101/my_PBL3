@@ -187,7 +187,7 @@ namespace pbl
                 string txt = txt_tentimkiem.Text;
                 string boloc = cb_boloc.SelectedItem.ToString();
                 string phanloai = cb_phanloai.SelectedItem.ToString();
-                var list = pbl.SanPham.Select(p => new
+                var list = pbl.SanPhams.Select(p => new
                 {
                     ID = p.IDSanPham,
                     Ten = p.Ten,

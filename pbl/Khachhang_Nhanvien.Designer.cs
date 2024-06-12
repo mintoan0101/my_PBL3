@@ -37,7 +37,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_timkiem = new System.Windows.Forms.Button();
             this.txt_timkiem = new System.Windows.Forms.TextBox();
-            this.cb_thuoctinh = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -127,12 +126,12 @@
             // cbb_BoLoc
             // 
             this.cbb_BoLoc.DisplayMember = "Sort By";
-            this.cbb_BoLoc.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.cbb_BoLoc.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.cbb_BoLoc.FormattingEnabled = true;
-            this.cbb_BoLoc.Location = new System.Drawing.Point(1204, 20);
+            this.cbb_BoLoc.Location = new System.Drawing.Point(1141, 18);
             this.cbb_BoLoc.Margin = new System.Windows.Forms.Padding(4);
             this.cbb_BoLoc.Name = "cbb_BoLoc";
-            this.cbb_BoLoc.Size = new System.Drawing.Size(276, 36);
+            this.cbb_BoLoc.Size = new System.Drawing.Size(340, 39);
             this.cbb_BoLoc.TabIndex = 1;
             // 
             // panel3
@@ -141,11 +140,10 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.btn_timkiem);
             this.panel3.Controls.Add(this.txt_timkiem);
-            this.panel3.Controls.Add(this.cb_thuoctinh);
             this.panel3.Location = new System.Drawing.Point(17, 17);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1143, 42);
+            this.panel3.Size = new System.Drawing.Size(1105, 42);
             this.panel3.TabIndex = 0;
             // 
             // btn_timkiem
@@ -154,7 +152,7 @@
             this.btn_timkiem.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_timkiem.Image = global::pbl.Properties.Resources.search44;
-            this.btn_timkiem.Location = new System.Drawing.Point(1041, -1);
+            this.btn_timkiem.Location = new System.Drawing.Point(1003, 0);
             this.btn_timkiem.Margin = new System.Windows.Forms.Padding(4);
             this.btn_timkiem.Name = "btn_timkiem";
             this.btn_timkiem.Size = new System.Drawing.Size(101, 42);
@@ -166,23 +164,11 @@
             // 
             this.txt_timkiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_timkiem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_timkiem.Location = new System.Drawing.Point(333, 5);
+            this.txt_timkiem.Location = new System.Drawing.Point(19, 5);
             this.txt_timkiem.Margin = new System.Windows.Forms.Padding(4);
             this.txt_timkiem.Name = "txt_timkiem";
-            this.txt_timkiem.Size = new System.Drawing.Size(700, 27);
+            this.txt_timkiem.Size = new System.Drawing.Size(966, 27);
             this.txt_timkiem.TabIndex = 1;
-            // 
-            // cb_thuoctinh
-            // 
-            this.cb_thuoctinh.DisplayMember = "Phân loại";
-            this.cb_thuoctinh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cb_thuoctinh.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.cb_thuoctinh.FormattingEnabled = true;
-            this.cb_thuoctinh.Location = new System.Drawing.Point(4, 2);
-            this.cb_thuoctinh.Margin = new System.Windows.Forms.Padding(4);
-            this.cb_thuoctinh.Name = "cb_thuoctinh";
-            this.cb_thuoctinh.Size = new System.Drawing.Size(321, 36);
-            this.cb_thuoctinh.TabIndex = 0;
             // 
             // dataGridView1
             // 
@@ -196,7 +182,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1506, 544);
             this.dataGridView1.TabIndex = 0;
             // 
-            // Khachhang_Nhanvien
+            // KhachHang_NhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -205,7 +191,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Khachhang_Nhanvien";
+            this.Name = "KhachHang_NhanVien";
             this.Text = "Khachhang_Nhanvien";
             this.Load += new System.EventHandler(this.Khachhang_Nhanvien_Load);
             this.panel1.ResumeLayout(false);
@@ -228,7 +214,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_timkiem;
         private System.Windows.Forms.TextBox txt_timkiem;
-        private System.Windows.Forms.ComboBox cb_thuoctinh;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

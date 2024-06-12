@@ -77,6 +77,7 @@
             this.txt_password.Size = new System.Drawing.Size(208, 23);
             this.txt_password.TabIndex = 2;
             this.txt_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_password_KeyDown);
+            this.txt_password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_password_KeyPress);
             // 
             // label2
             // 

@@ -58,8 +58,11 @@ namespace pbl
         {
 
             string warning = "";
-            if (!CheckSoLuongHopLe()) warning += "Số lượng nhập vào không hợp lệ. ";
-            if (!CheckGiaSanPham()) warning += "Giá nhập vào không hợp lệ. ";
+            if (!Check_Day_Du_Thong_Tin()) warning = " Vui lòng nhập đầy đủ thông tin";
+            else if (!CheckSoLuongHopLe()) warning = "Số lượng nhập vào không hợp lệ. ";
+            else if (!CheckGiaSanPham()) warning = "Giá nhập vào không hợp lệ. ";
+            else if (!Check_So_Luong_Khong_Qua_Lon()) warning = " Số lượng nhập vào quá lớn. ";
+            else if (!Check_Gia_Khong_Qua_Lon()) warning = " Giá nhập vào quá lớn. ";
             if (warning.Trim().Length == 0)
             {
                 if (isEdit == true)
@@ -143,7 +146,15 @@ namespace pbl
             ctsp.GiaNhap = decimal.Parse(txt_gianhap.Text);
             return ctsp;
         }
-        public bool CheckSoLuongHopLe()
+        private bool Check_Day_Du_Thong_Tin()
+        {
+            if(String.IsNullOrEmpty(txt_gianhap.Text) || String.IsNullOrEmpty(txt_soluong.Text))
+            {
+                return false;
+            }
+            return true;
+        }
+        private bool CheckSoLuongHopLe()
         {
             int res = 0;
             if (int.TryParse(txt_soluong.Text, out res))
@@ -152,10 +163,26 @@ namespace pbl
             }
             return false;
         }
-        public bool CheckGiaSanPham()
+        private bool Check_So_Luong_Khong_Qua_Lon()
         {
-            double res2 = 0;
-            if (double.TryParse(txt_gianhap.Text, out res2))
+            if(int.Parse(txt_soluong.Text.Trim()) <= 10000)
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool CheckGiaSanPham()
+        {
+            decimal res2 = 0;
+            if (decimal.TryParse(txt_gianhap.Text, out res2))
+            {
+                return true;
+            }
+            return false;
+        }
+        private  bool Check_Gia_Khong_Qua_Lon()
+        {
+            if(decimal.Parse(txt_gianhap.Text.Trim()) <= 10000000)
             {
                 return true;
             }
@@ -170,6 +197,22 @@ namespace pbl
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void txt_soluong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_gianhap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

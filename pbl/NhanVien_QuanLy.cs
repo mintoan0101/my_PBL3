@@ -26,12 +26,26 @@ namespace pbl
         }
         private void Quanlynhanvien_Load(object sender, EventArgs e)
         {
-            Load_DS_Nhan_Vien();
             Load_Thuoc_Tinh();
             Load_Bo_Loc();
+            btn_timkiem.PerformClick();
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
-
+        private void Set_Col()
+        {
+            dataGridView1.Columns[0].HeaderText = "ID";
+            dataGridView1.Columns[1].HeaderText = "ID Tài Khoản";
+            dataGridView1.Columns[2].HeaderText = "Tên Nhân Viên";
+            dataGridView1.Columns[3].HeaderText = "Tên Tài Khoản";
+            dataGridView1.Columns[4].HeaderText = "Mật Khẩu";
+            dataGridView1.Columns[5].HeaderText = "Số Điện Thoại";
+            dataGridView1.Columns[6].HeaderText = "Giới Tính";
+            dataGridView1.Columns[7].HeaderText = "Ngày Sinh";
+            dataGridView1.Columns[8].HeaderText = "Email";
+            dataGridView1.Columns[9].HeaderText = "CCCD";
+            dataGridView1.Columns[10].HeaderText = "Mức Lương";
+            dataGridView1.Columns[11].HeaderText = "Địa Chỉ";
+        }
         //CÁC HÀM XỬ LÍ SỰ KIỆN
         private void btn_sua_Click_1(object sender, EventArgs e)
         {
@@ -42,7 +56,7 @@ namespace pbl
                 f.idnv = row.Cells[0].Value.ToString();
                 f.isEdit = true;
                 f.ShowDialog();
-                Load_DS_Nhan_Vien();
+                btn_timkiem.PerformClick();
             }
             else
             {
@@ -65,7 +79,7 @@ namespace pbl
                         if (nvbus.Delete(row.Cells[0].Value.ToString()) > 0)
                         {
                             MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Load_DS_Nhan_Vien();
+                            btn_timkiem.PerformClick();
                         }
                     }
                 }
@@ -84,7 +98,7 @@ namespace pbl
             NhanVien_Them f = new NhanVien_Them();
             f.isEdit = false;
             f.ShowDialog();
-            Load_DS_Nhan_Vien();
+            btn_timkiem.PerformClick();
         }
         private void button5_Click(object sender, EventArgs e)
         {
@@ -94,33 +108,9 @@ namespace pbl
         private void btn_timkiem_Click(object sender, EventArgs e)
         {
             Hien_Thi_Tim_Kiem();
+            Set_Col();
         }
         //CÁC HÀM BỔ TRỢ
-        public void Load_DS_Nhan_Vien()
-        {
-            //dataGridView1.DataSource = nvbus.GetData();
-            using (PBL3Entities1 db = new PBL3Entities1())
-            {
-                var li = from p in db.NhanViens
-                         select new
-                         {
-                             p.IDNhanVien,
-                             p.IDTaiKhoan,
-                             p.TenNhanVien,
-                             p.TaiKhoan.TenTaiKhoan,
-                             p.TaiKhoan.MatKhau,
-                             p.SoDienThoai,
-                             p.Nam,
-                             p.NgaySinh,
-                             p.Email,
-                             p.CCCD,
-                             p.MucLuong,
-                             p.DiaChi,
-                         };
-                dataGridView1.DataSource = li.ToList();
-            }
-
-        }
         public void Load_Thuoc_Tinh()
         {
             cb_thuoctinh.Items.Add("ID Nhân Viên");
@@ -143,7 +133,7 @@ namespace pbl
                 string text = txt_timkiem.Text;
                 string thuoctinh = cb_thuoctinh.SelectedItem.ToString();
                 string boloc = cb_boloc.SelectedItem.ToString();
-                var res = from p in pbl.NhanViens
+                var res = from p in pbl.NhanVien
                           select new
                           {
                               p.IDNhanVien,

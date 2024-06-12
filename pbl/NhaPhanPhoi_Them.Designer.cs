@@ -113,6 +113,7 @@
             this.txt_sdt.Size = new System.Drawing.Size(430, 27);
             this.txt_sdt.TabIndex = 86;
             this.txt_sdt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_sdt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_sdt_KeyPress);
             // 
             // panel3
             // 
@@ -262,6 +263,7 @@
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.lbl_infor);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(550, 230);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;

@@ -56,7 +56,7 @@
             this.panel5.Controls.Add(this.panel1);
             this.panel5.Controls.Add(this.panel2);
             this.panel5.Location = new System.Drawing.Point(-1, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1942, 1102);
             this.panel5.TabIndex = 0;
@@ -66,7 +66,7 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(240)))), ((int)(((byte)(243)))));
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Location = new System.Drawing.Point(289, 105);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1635, 948);
             this.panel3.TabIndex = 11;
@@ -88,7 +88,7 @@
             this.button6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.button6.Image = global::pbl.Properties.Resources.logout;
             this.button6.Location = new System.Drawing.Point(0, 0);
-            this.button6.Margin = new System.Windows.Forms.Padding(4);
+            this.button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(226, 98);
             this.button6.TabIndex = 2;
@@ -102,7 +102,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(226)))), ((int)(((byte)(235)))));
             this.panel1.Controls.Add(this.btn_infor);
             this.panel1.Location = new System.Drawing.Point(289, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1635, 105);
             this.panel1.TabIndex = 9;
@@ -116,7 +116,7 @@
             this.btn_infor.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_infor.Image = global::pbl.Properties.Resources.user;
             this.btn_infor.Location = new System.Drawing.Point(1409, 3);
-            this.btn_infor.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_infor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_infor.Name = "btn_infor";
             this.btn_infor.Size = new System.Drawing.Size(226, 102);
             this.btn_infor.TabIndex = 0;
@@ -136,7 +136,7 @@
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.button9);
             this.panel2.Location = new System.Drawing.Point(-3, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(292, 1055);
             this.panel2.TabIndex = 10;
@@ -150,7 +150,7 @@
             this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.button3.Image = global::pbl.Properties.Resources.khachhang;
             this.button3.Location = new System.Drawing.Point(4, 813);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(293, 95);
             this.button3.TabIndex = 9;
@@ -167,7 +167,7 @@
             this.button8.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.button8.Image = global::pbl.Properties.Resources.thongke;
             this.button8.Location = new System.Drawing.Point(4, 719);
-            this.button8.Margin = new System.Windows.Forms.Padding(4);
+            this.button8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(293, 95);
             this.button8.TabIndex = 8;
@@ -184,7 +184,7 @@
             this.button7.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.button7.Image = global::pbl.Properties.Resources.employee;
             this.button7.Location = new System.Drawing.Point(4, 531);
-            this.button7.Margin = new System.Windows.Forms.Padding(4);
+            this.button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(293, 95);
             this.button7.TabIndex = 7;
@@ -201,7 +201,7 @@
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.Image = global::pbl.Properties.Resources.sp;
             this.button1.Location = new System.Drawing.Point(4, 625);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(293, 95);
             this.button1.TabIndex = 1;
@@ -218,7 +218,7 @@
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.Image = global::pbl.Properties.Resources.hoadon;
             this.button2.Location = new System.Drawing.Point(4, 343);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(293, 95);
             this.button2.TabIndex = 2;
@@ -231,7 +231,7 @@
             // 
             this.pictureBox1.Image = global::pbl.Properties.Resources.logo2;
             this.pictureBox1.Location = new System.Drawing.Point(19, 27);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(250, 250);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -246,7 +246,7 @@
             this.button9.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.button9.Image = global::pbl.Properties.Resources.warehouse;
             this.button9.Location = new System.Drawing.Point(4, 437);
-            this.button9.Margin = new System.Windows.Forms.Padding(4);
+            this.button9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(293, 95);
             this.button9.TabIndex = 6;
@@ -261,11 +261,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.panel5);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MinimizeBox = false;
             this.Name = "MainFormAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "MainForm_Admin";
+            this.Text = "ADMIN";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormAdmin_FormClosing);
             this.Load += new System.EventHandler(this.MainFormAdmin_Load);

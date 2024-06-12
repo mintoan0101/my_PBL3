@@ -14,14 +14,14 @@ namespace DataAccessLayer
         PBL3Entities1 pbl = new PBL3Entities1();
         public int Insert(NhanVien nv)
         {
-            pbl.NhanViens.Add(nv);
+            pbl.NhanVien.Add(nv);
             pbl.SaveChanges();
             return 1;
         }
         public int Delete(string id)
         {
-            var nv = pbl.NhanViens.Where(p => p.IDNhanVien == id).FirstOrDefault();
-            pbl.NhanViens.Remove(nv);
+            var nv = pbl.NhanVien.Where(p => p.IDNhanVien == id).FirstOrDefault();
+            pbl.NhanVien.Remove(nv);
             pbl.SaveChanges();
             return 1;
         }
@@ -30,7 +30,7 @@ namespace DataAccessLayer
             if (nv != null)
             {
 
-                NhanVien n = pbl.NhanViens.Find(nv.IDNhanVien);
+                NhanVien n = pbl.NhanVien.Find(nv.IDNhanVien);
                 n.TenNhanVien = nv.TenNhanVien;
                 n.DiaChi = nv.DiaChi;
                 n.CCCD = nv.CCCD;
@@ -40,7 +40,7 @@ namespace DataAccessLayer
                 n.NgaySinh = nv.NgaySinh;
                 n.SoDienThoai = nv.SoDienThoai;
                 pbl.SaveChanges();
-                var nhanVien = pbl.NhanViens.Where(p => p.IDNhanVien == nv.IDNhanVien).FirstOrDefault();
+                var nhanVien = pbl.NhanVien.Where(p => p.IDNhanVien == nv.IDNhanVien).FirstOrDefault();
                 if (nhanVien != null)
                 {
                     nhanVien.TenNhanVien = nv.TenNhanVien;
@@ -60,22 +60,22 @@ namespace DataAccessLayer
         }
         public string GetLastId()
         {
-            var re = pbl.NhanViens.OrderByDescending(p => p.IDNhanVien).FirstOrDefault();
+            var re = pbl.NhanVien.OrderByDescending(p => p.IDNhanVien).FirstOrDefault();
             return re.IDNhanVien;
         }
         public NhanVien GetNVByID(string ID)
         {
-            var n = pbl.NhanViens.Find(ID);
+            var n = pbl.NhanVien.Find(ID);
             return n;
         }
         public string GetIDNVByUsername(string un)
         {
-            var re = pbl.NhanViens.Where(p => p.TaiKhoan.TenTaiKhoan.Contains(un)).FirstOrDefault();
+            var re = pbl.NhanVien.Where(p => p.TaiKhoan.TenTaiKhoan.Contains(un)).FirstOrDefault();
             return re.IDNhanVien;
         }
         public int UpdateByNhanVien(NhanVien nv)
         {
-            NhanVien n = pbl.NhanViens.Find(nv.IDNhanVien);
+            NhanVien n = pbl.NhanVien.Find(nv.IDNhanVien);
             n.TenNhanVien = nv.TenNhanVien;
             n.Email = nv.Email;
             n.SoDienThoai = nv.SoDienThoai;
@@ -88,22 +88,22 @@ namespace DataAccessLayer
         }
         public string GetIDTaiKhoanByNhanVien(string idnv)
         {
-            var re = pbl.NhanViens.Find(idnv).TaiKhoan;
+            var re = pbl.NhanVien.Find(idnv).TaiKhoan;
             return re.IDTaiKhoan;
         }
         public List<string> GetNameNhanVien()
         {
-            var re = pbl.NhanViens.Select(p => p.TenNhanVien);
+            var re = pbl.NhanVien.Select(p => p.TenNhanVien);
             return re.ToList();
         }
         public string GetID(string tentaikhoan)
         {
-            var id = pbl.NhanViens.Where(p => p.TaiKhoan.TenTaiKhoan == tentaikhoan).FirstOrDefault().IDNhanVien;
+            var id = pbl.NhanVien.Where(p => p.TaiKhoan.TenTaiKhoan == tentaikhoan).FirstOrDefault().IDNhanVien;
             return id;
         }
         public bool CheckEnableToDelete(string IDNV)
         {
-            var li = pbl.HoaDons.Where(p => p.NhanVien.IDNhanVien.Contains(IDNV));
+            var li = pbl.HoaDon.Where(p => p.NhanVien.IDNhanVien.Contains(IDNV));
             if(li.Count() > 0)
             {
                 return false;
@@ -112,7 +112,7 @@ namespace DataAccessLayer
         }
         public IEnumerable<dynamic> DoanhThu(DateTime start, DateTime end, string sapxep, bool TangDan, string idnv)
         {
-            var li = pbl.HoaDons.Select(h => new
+            var li = pbl.HoaDon.Select(h => new
             {
                 Ngay = h.NgayTaoHoaDon,
                 GiamGia = h.ChietKhau,
@@ -122,24 +122,26 @@ namespace DataAccessLayer
                 IDNV = h.IDNhanVien,
             }).Where(h => h.Ngay >= start && h.Ngay < end && h.IDNV.Contains(idnv));
 
-            if (TangDan)
-            {
                 switch (sapxep)
                 {
-                    case "Doanh thu":
-                        li = li.OrderBy(h => h.DoanhThu);
+                    case "Doanh Thu":
+                        if(TangDan) li = li.OrderBy(h => h.DoanhThu);
+                        else li = li.OrderByDescending(h => h.DoanhThu);
                         break;
-                    case "Lợi nhuận":
-                        li = li.OrderBy(h => h.LoiNhuan);
-                        break;
+                    case "Lợi Nhuận":
+                       if(TangDan) li = li.OrderBy(h => h.LoiNhuan);
+                     else li = li.OrderByDescending(h => h.LoiNhuan);
+                    break;
                     case "Ngày":
-                        li = li.OrderBy(h => h.Ngay);
-                        break;
-                    case "Giảm giá":
-                        li = li.OrderBy(h => h.GiamGia);
-                        break;
+                      if(TangDan)  li = li.OrderBy(h => h.Ngay);
+                     else li = li.OrderByDescending(h => h.Ngay);
+                    break;
+                    case "Giảm Giá":
+                      if(TangDan)  li = li.OrderBy(h => h.GiamGia);
+                    else li = li.OrderByDescending(h => h.GiamGia);
+                    break;
                 }
-            }    
+            
             return li.ToList();
         }
     }

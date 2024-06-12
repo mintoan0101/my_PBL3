@@ -205,6 +205,7 @@
             this.txt_giatien.Name = "txt_giatien";
             this.txt_giatien.Size = new System.Drawing.Size(183, 24);
             this.txt_giatien.TabIndex = 47;
+            this.txt_giatien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_giatien_KeyPress);
             // 
             // lbl_id
             // 
@@ -260,6 +261,7 @@
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.btn_exit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(550, 230);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;

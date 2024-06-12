@@ -131,12 +131,15 @@ namespace pbl
         public void Them_Nhan_Vien()
         {
             string message = "";
-            if (!Kiem_Tra_Day_Du_Thong_Tin()) message += " Vui lòng nhập đầy đủ thông tin.";
-            else if (!Kiem_Tra_SDT()) message += " Vui lòng nhập số điện thoại đúng 10 chữ số.";
-            else if (!Kiem_Tra_Dinh_Dang_SDT()) message += " Số điện thoại chỉ được phép chứa kí tự số.";
-            else if (!Kiem_Tra_Dinh_Dang_CCCD()) message += " Số CCCD chỉ được phép chứa kí tự số.";
-            else if (!Count_CCCD()) message += "Số CCCD chỉ được chưá đúng 12 chữ số";
-            else if (!KiemTraLuong()) message += "Mức lương nhập không đúng định dạng số. ";
+            if (!Kiem_Tra_Day_Du_Thong_Tin()) message = " Vui lòng nhập đầy đủ thông tin.";
+            else if (!Kiem_Tra_SDT()) message = " Vui lòng nhập số điện thoại đúng 10 chữ số.";
+            else if (!Kiem_Tra_Dinh_Dang_SDT()) message = " Số điện thoại chỉ được phép chứa kí tự số.";
+            else if (!Kiem_Tra_Dinh_Dang_CCCD()) message = " Số CCCD chỉ được phép chứa kí tự số.";
+            else if (!Count_CCCD()) message = "Số CCCD chỉ được chứa đúng 12 chữ số";
+            else if (!KiemTraLuong()) message = "Mức lương nhập không đúng định dạng số. ";
+            else if (!Check_Do_Dai_Mat_Khau()) message = "Độ dài mật khẩu tối thiểu 8 kí tự. ";
+            else if (!Check_Mat_Khau_Khong_Qua_Dai()) message = "Độ dài mật khẩu tối đa không vượt quá 20 kí tự. ";
+            else if (!Check_Ten_tai_Khoan()) message = "Độ dài tên tài khoản tối đa không vượt quá 20 kí tự. ";
             if (message.Length == 0)
             {
                 TaiKhoan tk = new TaiKhoan();
@@ -228,6 +231,30 @@ namespace pbl
             }
             return false;
         }
+        private bool Check_Do_Dai_Mat_Khau()
+        {
+            if (txt_matkhau.Text.Trim().Length < 8)
+            {
+                return false;
+            }
+            return true;
+        }
+        private bool Check_Mat_Khau_Khong_Qua_Dai()
+        {
+            if (txt_matkhau.Text.Trim().Length > 20)
+            {
+                return false;
+            }
+            return true;
+        }
+        private bool Check_Ten_tai_Khoan()
+        {
+            if(txt_tendangnhap.Text.Trim().Length >20)
+            {
+                return false;
+            }
+            return true;
+        }
         public void Load_IDNV_Tu_Dong()
         {
             string lastID = nvbus.GetLastID();
@@ -299,7 +326,17 @@ namespace pbl
         }
         public void Luu_Nhan_Vien()
         {
-            if (Kiem_Tra_Day_Du_Thong_Tin())
+            string message = "";
+            if (!Kiem_Tra_Day_Du_Thong_Tin()) message = " Vui lòng nhập đầy đủ thông tin.";
+            else if (!Kiem_Tra_SDT()) message = " Vui lòng nhập số điện thoại đúng 10 chữ số.";
+            else if (!Kiem_Tra_Dinh_Dang_SDT()) message = " Số điện thoại chỉ được phép chứa kí tự số.";
+            else if (!Kiem_Tra_Dinh_Dang_CCCD()) message = " Số CCCD chỉ được phép chứa kí tự số.";
+            else if (!Count_CCCD()) message = "Số CCCD chỉ được chứa đúng 12 chữ số";
+            else if (!KiemTraLuong()) message = "Mức lương nhập không đúng định dạng số. ";
+            else if (!Check_Do_Dai_Mat_Khau()) message = "Độ dài mật khẩu tối thiểu 8 kí tự. ";
+            else if (!Check_Mat_Khau_Khong_Qua_Dai()) message = "Độ dài mật khẩu tối đa không vượt quá 20 kí tự. ";
+            else if (!Check_Ten_tai_Khoan()) message = "Độ dài tên tài khoản tối đa không vượt quá 20 kí tự. ";
+            if (message.Length == 0)
             {
                 TaiKhoan tk = new TaiKhoan();
                 //Lưu thông tin tài khoản trước
@@ -326,10 +363,42 @@ namespace pbl
                         this.Close();
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+            }
+            else
+            {
+                MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txt_cccd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_sdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_matkhau_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_luong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

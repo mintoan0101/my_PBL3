@@ -32,33 +32,33 @@ namespace DataAccessLayer
         }
         public List<dynamic> GetData()
         {
-            var list = pbl.HoaDons.OrderByDescending(p => p.NgayTaoHoaDon)
+            var list = pbl.HoaDon.OrderByDescending(p => p.NgayTaoHoaDon)
                 .ThenByDescending(p => p.IDHoaDon)
                 .Select(p => new
                 {
                     p.IDHoaDon,
+                    p.NhanVien.TenNhanVien,
                     p.NgayTaoHoaDon,
-                    p.IDNhanVien,
-                    p.IDKhachHang,
+                    p.KhachHang.Ten,
                     p.ChietKhau,
                     p.TongTien,
                     p.LoiNhuan,
-                
+
                 });
             
             return list.ToList<dynamic>();
         }
         public List<dynamic> GetDataByNhanVien(string idnv)
         {
-            var list = pbl.HoaDons.OrderByDescending(p => p.NgayTaoHoaDon)
+            var list = pbl.HoaDon.OrderByDescending(p => p.NgayTaoHoaDon)
                                   .ThenByDescending(p => p.IDHoaDon)
                                   .Where(p => p.IDNhanVien == idnv)
                                   .Select(p => new
                                   {
                                       p.IDHoaDon,
+                                      p.NhanVien.TenNhanVien,
                                       p.NgayTaoHoaDon,
-                                      p.IDNhanVien,
-                                      p.IDKhachHang,
+                                      p.KhachHang.Ten,
                                       p.ChietKhau,
                                       p.TongTien,
                                       p.LoiNhuan,
@@ -70,7 +70,7 @@ namespace DataAccessLayer
         public int Insert(HoaDon hd)
         {
             
-                pbl.HoaDons.Add(hd);
+                pbl.HoaDon.Add(hd);
                 pbl.SaveChanges();
                 return 1;
             
@@ -79,61 +79,14 @@ namespace DataAccessLayer
 
         public string GetLastID()
         {
-            var li = pbl.HoaDons.OrderByDescending(p => p.IDHoaDon).FirstOrDefault().IDHoaDon;
+            var li = pbl.HoaDon.OrderByDescending(p => p.IDHoaDon).FirstOrDefault().IDHoaDon;
             return li;
         }
 
-        public List<HoaDon> Search(string txt, string phanloai, string boloc)
-        {
-            var query = pbl.HoaDons.Select(p => p);
-            if (string.IsNullOrEmpty(txt) == false)
-            {
-                switch (phanloai)
-                {
-                    case "ID Hoá Đơn":
-                        query = query.Where(hd => hd.IDHoaDon.Contains(txt));
-                        break;
-                    case "Nhân Viên":
-                        query = query.Where(hd => hd.NhanVien.IDNhanVien.Contains(txt) || hd.NhanVien.TenNhanVien.Contains(txt));
-                        break;
-                    case "Khách Hàng":
-                        query = query.Where(hd => hd.KhachHang.IDKhachHang.Contains(txt) || hd.KhachHang.Ten.Contains(txt));
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            if (boloc != "Tất Cả")
-            {
-                switch (boloc)
-                {
-                    case "< 100K":
-                        query = query.Where(hd => hd.TongTien < 100);
-                        break;
-                    case "100K - 500K":
-                        query = query.Where(hd => hd.TongTien >= 100 && hd.TongTien <= 500);
-                        break;
-                    case "500K - 1000K":
-                        query = query.Where(hd => hd.TongTien >= 500 && hd.TongTien <= 1000);
-                        break;
-                    case "> 1000K":
-                        query = query.Where(hd => hd.TongTien > 1000);
-                        break;
-                    case "Tăng dần":
-                        query = query.OrderBy(hd => hd.TongTien);
-                        break;
-                    case "Giảm dần":
-                        query = query.OrderByDescending(hd => hd.TongTien);
-                        break;
-                }
-            }
-
-            return query.ToList();
-        }
+     
         public int CountSoLuongSanPham(string IDHD)
         {
-            var query = from c in pbl.ChiTietHoaDons
+            var query = from c in pbl.ChiTietHoaDon
                         where c.IDHoaDon == IDHD
                         select c.SoLuong;
 
@@ -148,7 +101,7 @@ namespace DataAccessLayer
         }
         public decimal DoanhThuTheoNhanVien(string IDNV)
         {
-            var li = pbl.HoaDons.GroupBy(p=> p.IDNhanVien).Select(p => new
+            var li = pbl.HoaDon.GroupBy(p=> p.IDNhanVien).Select(p => new
             {
                 IDNhanVien = p.Key,
                 TongDoanhThu = p.Sum(hd => hd.TongTien)
@@ -168,8 +121,8 @@ namespace DataAccessLayer
             decimal loiNhuan = 0.000m;
             foreach (ChiTietHoaDon item in listChiTietHoaDon)
             {
-                var ctsp = pbl.ChiTietSanPhams.Find(item.IDChiTiet);
-                var sp = pbl.SanPhams.Find(ctsp.IDSanPham);
+                var ctsp = pbl.ChiTietSanPham.Find(item.IDChiTiet);
+                var sp = pbl.SanPham.Find(ctsp.IDSanPham);
                 decimal giaNhap = ctsp.GiaNhap;
                 decimal giaBan = sp.GiaBan;
                 loiNhuan += (giaBan - giaNhap) * item.SoLuong;

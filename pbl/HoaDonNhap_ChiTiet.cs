@@ -26,9 +26,9 @@ namespace pbl
         private void XemChiTietHoaDonNhap_Load(object sender, EventArgs e)
         {
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            Load_San_Pham();
             Load_Sap_Xep();
             checkBox1.Checked = true;
+            btn_timkiem.PerformClick();
             Dieu_Chinh_DataGridView();
         }
         private void Dieu_Chinh_DataGridView()
@@ -51,7 +51,14 @@ namespace pbl
                 c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
-
+        private void Set_Col()
+        {
+            dataGridView1.Columns[0].HeaderText = "ID Chi Tiết";
+            dataGridView1.Columns[1].HeaderText = "Tên Sản Phẩm";
+            dataGridView1.Columns[2].HeaderText = "Giá Nhập";
+            dataGridView1.Columns[3].HeaderText = "Số Lượng";
+            dataGridView1.Columns[4].HeaderText = "ID Hóa Đơn";
+        }
         private void btn_exit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -59,21 +66,7 @@ namespace pbl
         private void btn_timkiem_Click(object sender, EventArgs e)
         {
             Hien_Thi_Tim_Kiem();
-        }
-        public void Load_San_Pham()
-        {
-            using (PBL3Entities1 db = new PBL3Entities1())
-            {
-                var li = db.ChiTietHoaDonNhaps.Select(p => new
-                {
-                    IDChiTietSP = p.IDChiTiet,
-                    TenSanPham = p.ChiTietSanPham.SanPham.Ten,
-                    GiaNhap = p.ChiTietSanPham.GiaNhap,
-                    SoLuong = p.SoLuong,
-                    IDHoaDon = p.IDHoaDonNhap,
-                }).Where(p => p.IDHoaDon == IDHoaDonNhap);
-                dataGridView1.DataSource = li.ToList();
-            }
+            Set_Col();
         }
         public void Load_Sap_Xep()
         {
@@ -89,7 +82,7 @@ namespace pbl
             bool GiamDan = checkBox1.Checked;
             using (PBL3Entities1 db = new PBL3Entities1())
             {
-                var li = db.ChiTietHoaDonNhaps.Select(p => new
+                var li = db.ChiTietHoaDonNhap.Select(p => new
                 {
                     IDChiTietSP = p.IDChiTiet,
                     TenSanPham = p.ChiTietSanPham.SanPham.Ten,

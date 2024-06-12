@@ -74,14 +74,14 @@ namespace pbl
             DateTime end = dateTimePicker2.Value;
             using (PBL3Entities1 pbl = new PBL3Entities1())
             {
-                var doanhThuTheoNhanVien = pbl.HoaDons.Where(x => x.NgayTaoHoaDon >= start && x.NgayTaoHoaDon < end)
+                var doanhThuTheoNhanVien = pbl.HoaDon.Where(x => x.NgayTaoHoaDon >= start && x.NgayTaoHoaDon < end)
                                           .GroupBy(p => p.IDNhanVien)
                                           .Select(group => new
                                           {
                                               IDNhanVien = group.Key,
                                               TongDoanhThu = group.Sum(hd => hd.TongTien)
                                           })
-                                          .Join(pbl.NhanViens,
+                                          .Join(pbl.NhanVien,
                                                 hd => hd.IDNhanVien,
                                                 nv => nv.IDNhanVien,
                                                 (hd, nv) => new
@@ -114,13 +114,13 @@ namespace pbl
             DateTime end = dateTimePicker2.Value;
             using (PBL3Entities1 context = new PBL3Entities1())
             {
-                var top5SanPhamBanChayNhat = context.ChiTietHoaDons
-                    .Join(context.HoaDons,
+                var top5SanPhamBanChayNhat = context.ChiTietHoaDon
+                    .Join(context.HoaDon,
                         cthd => cthd.IDHoaDon,
                         hd => hd.IDHoaDon,
                         (cthd, hd) => new { cthd.IDChiTiet, cthd.SoLuong, hd.NgayTaoHoaDon })
                      .Where(x => x.NgayTaoHoaDon >= start && x.NgayTaoHoaDon < end)
-                    .Join(context.ChiTietSanPhams,
+                    .Join(context.ChiTietSanPham,
                           cthd => cthd.IDChiTiet,
                           ctsp => ctsp.IDChiTiet,
                           (cthd, ctsp) => new { ctsp.IDSanPham, cthd.SoLuong })
@@ -132,7 +132,7 @@ namespace pbl
                     })
                     .OrderByDescending(x => x.SoLuongBan)
                     .Take(5)
-                    .Join(context.SanPhams,
+                    .Join(context.SanPham,
                           x => x.IDSanPham,
                           sp => sp.IDSanPham,
                           (x, sp) => new
@@ -165,8 +165,8 @@ namespace pbl
             DateTime end = dateTimePicker2.Value;
             using (PBL3Entities1 context = new PBL3Entities1())
             {
-                var doanhThuTheoThang = context.ChiTietHoaDons
-                    .Join(context.HoaDons,
+                var doanhThuTheoThang = context.ChiTietHoaDon
+                    .Join(context.HoaDon,
                           cthd => cthd.IDHoaDon,
                           hd => hd.IDHoaDon,
                           (cthd, hd) => new { cthd.IDChiTiet, hd.TongTien, hd.NgayTaoHoaDon })
@@ -206,7 +206,7 @@ namespace pbl
             DateTime end = dateTimePicker2.Value;
             using (PBL3Entities1 db = new PBL3Entities1())
             {
-                var khachhangThanthiet = db.KhachHangs.Join(db.HoaDons,
+                var khachhangThanthiet = db.KhachHang.Join(db.HoaDon,
                           kh => kh.IDKhachHang,
                           hd => hd.IDKhachHang,
                            (kh, hd) => new { kh.Ten, kh.IDKhachHang, hd.TongTien, hd.NgayTaoHoaDon })

@@ -12,7 +12,7 @@ namespace DataAccessLayer
         PBL3Entities1 db = new PBL3Entities1();
         public int Insert(ChiTietHoaDonNhap c)
         {
-            db.ChiTietHoaDonNhaps.Add(c);
+            db.ChiTietHoaDonNhap.Add(c);
             db.SaveChanges();
             return 1;
         }

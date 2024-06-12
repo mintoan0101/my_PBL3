@@ -22,7 +22,7 @@ namespace pbl
         {
             InitializeComponent();
             Load_Sap_Xep();
-            Load_Doanh_Thu();
+            btn_timkiem.PerformClick();
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
@@ -32,6 +32,7 @@ namespace pbl
         private void btn_timkiem_Click(object sender, EventArgs e)
         {
             Tim_Kiem();
+            Set_Col();
         }
         private void DoanhThuCaNhan_Load(object sender, EventArgs e)
         {
@@ -41,38 +42,31 @@ namespace pbl
             dataGridView1.Font = new Font("Segoe UI Semibold", 12);
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.RowTemplate.Height = 30;
-            Tim_Kiem();
+            btn_timkiem.PerformClick();
             foreach (DataGridViewColumn c in dataGridView1.Columns)
             {
                 c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
+        private void Set_Col()
+        {
+            dataGridView1.Columns[0].HeaderText = "Ngày";
+            dataGridView1.Columns[1].HeaderText = "Giảm Giá";
+            dataGridView1.Columns[2].HeaderText = "Doanh Thu";
+            dataGridView1.Columns[3].HeaderText = "Lợi Nhuận";
+            dataGridView1.Columns[4].HeaderText = "ID Hóa Đơn";
+            dataGridView1.Columns[5].HeaderText = "ID Nhân Viên";
+        }
         public void Load_Sap_Xep()
         {
-            cb_boloc.Items.Add("Doanh thu");
-            cb_boloc.Items.Add("Lợi nhuận");
+            cb_boloc.Items.Add("Doanh Thu");
+            cb_boloc.Items.Add("Lợi Nhuận");
             cb_boloc.Items.Add("Ngày");
-            cb_boloc.Items.Add("Giảm giá");
+            cb_boloc.Items.Add("Giảm Giá");
             cb_boloc.SelectedItem = "Ngày";
         }
-        public void Load_Doanh_Thu()
-        {
-            using (PBL3Entities1 db = new PBL3Entities1())
-            {
-                var li = from h in db.HoaDons
-                         where h.IDNhanVien == idnv
-                         select new
-                         { 
-                             Ngay = h.NgayTaoHoaDon,
-                             GiamGia = h.ChietKhau,
-                             DoanhThu =  h.TongTien,
-                             LoiNhuan = h.LoiNhuan,
-                             ID = h.IDHoaDon,
-                         };
-                dataGridView1.DataSource = li.ToList();
-            }
-        }
+
         public void Tim_Kiem()
         {
             DateTime start = dateTimePicker1.Value;

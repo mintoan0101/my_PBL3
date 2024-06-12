@@ -45,6 +45,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lb_DateTime = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_exit = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -259,18 +260,34 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "HOÁ ĐƠN";
             // 
+            // btn_exit
+            // 
+            this.btn_exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(240)))), ((int)(((byte)(243)))));
+            this.btn_exit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(240)))), ((int)(((byte)(243)))));
+            this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_exit.Image = global::pbl.Properties.Resources.huy2;
+            this.btn_exit.Location = new System.Drawing.Point(199, 603);
+            this.btn_exit.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_exit.Name = "btn_exit";
+            this.btn_exit.Size = new System.Drawing.Size(92, 59);
+            this.btn_exit.TabIndex = 26;
+            this.btn_exit.UseVisualStyleBackColor = false;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
+            // 
             // HoaDon_Xem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(240)))), ((int)(((byte)(243)))));
-            this.ClientSize = new System.Drawing.Size(520, 622);
+            this.ClientSize = new System.Drawing.Size(520, 670);
+            this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.panel4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "HoaDon_Xem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "XemHoaDon";
+            this.Text = "XEM HÓA ĐƠN";
             this.Load += new System.EventHandler(this.XemHoaDon_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -298,5 +315,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lb_NhanVien;
+        private System.Windows.Forms.Button btn_exit;
     }
 }

@@ -24,8 +24,8 @@ namespace pbl
         }
         private void QuanLyNhaPhanPhoi_Load(object sender, EventArgs e)
         {
-            Load_NPP();
             Load_ThuocTinh();
+            btn_timkiem.PerformClick();
             Dieu_Chinh_DataGridView();
         }
         private void Dieu_Chinh_DataGridView()
@@ -47,6 +47,13 @@ namespace pbl
                 c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
+        private void Set_Col()
+        {
+            dataGridView1.Columns[0].HeaderText = "ID";
+            dataGridView1.Columns[1].HeaderText = "Tên Nhà Phân Phối";
+            dataGridView1.Columns[2].HeaderText = "Số Điện Thoại";
+            dataGridView1.Columns[3].HeaderText = "Địa Chỉ";
+        }
         //CÁC HÀM XỬ LÍ SỰ KIỆN
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -55,8 +62,8 @@ namespace pbl
 
         private void btn_timkiem_Click(object sender, EventArgs e)
         {
-            //dataGridView1.DataSource = bus.Search(txt_timkiem.Text, cb_thuoctinh.SelectedItem.ToString());
             Tim_Kiem();
+            Set_Col();
         }
 
         private void btn_sua_Click(object sender, EventArgs e)
@@ -71,7 +78,7 @@ namespace pbl
                 f.npp.SoDienThoai = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
                 f.npp.DiaChi = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
                 f.ShowDialog();
-                Load_NPP();
+                btn_timkiem.PerformClick();
             }
             else
             {
@@ -85,7 +92,7 @@ namespace pbl
             NhaPhanPhoi_Them f = new NhaPhanPhoi_Them();
             f.isEdit = false;
             f.ShowDialog();
-            Load_NPP();
+            btn_timkiem.PerformClick();
         }
 
         private void btn_xoa_Click(object sender, EventArgs e)
@@ -103,7 +110,7 @@ namespace pbl
                         if (bus.Delete(id) > 0)
                         {
                             MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Load_NPP() ;
+                            btn_timkiem.PerformClick();
                         }
                     }
                 }
@@ -130,29 +137,13 @@ namespace pbl
             cb_thuoctinh.Items.Add("Địa Chỉ");
             cb_thuoctinh.SelectedItem = "Tên";
         }
-        public void Load_NPP()
-        {
-            // dataGridView1.DataSource = bus.GetData();
-            using (PBL3Entities1 db = new PBL3Entities1())
-            {
-                var li = from p in db.NhaPhanPhois
-                         select new
-                         {
-                            ID =  p.IDNhaPhanPhoi,
-                            Ten = p.TenNhaPhanPhoi,
-                            SDT = p.SoDienThoai,
-                            DiaChi = p.DiaChi,
-                         };
-                dataGridView1.DataSource = li.ToList();
-            }
-        }
         public void Tim_Kiem()
         {
             using (PBL3Entities1 db = new PBL3Entities1())
             {
                 string txt = txt_timkiem.Text;
                 string thuoctinh = cb_thuoctinh.SelectedItem.ToString();
-                var re = from p in db.NhaPhanPhois
+                var re = from p in db.NhaPhanPhoi
                          select new
                          {
                              ID = p.IDNhaPhanPhoi,

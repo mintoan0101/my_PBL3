@@ -161,6 +161,12 @@ namespace pbl
             button2.BackColor = Color.FromArgb(226, 240, 243);
         }
 
-      
+        private void txt_sdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

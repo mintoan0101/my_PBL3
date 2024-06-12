@@ -32,6 +32,9 @@
             this.lbl_infor = new System.Windows.Forms.Label();
             this.btn_exit = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.txt_gianhap = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.txt_soluong = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -46,9 +49,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btn_ok = new System.Windows.Forms.Button();
-            this.txt_gianhap = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel4.SuspendLayout();
             this.panel9.SuspendLayout();
             this.SuspendLayout();
@@ -120,6 +120,40 @@
             this.panel9.Size = new System.Drawing.Size(384, 302);
             this.panel9.TabIndex = 60;
             // 
+            // txt_gianhap
+            // 
+            this.txt_gianhap.BackColor = System.Drawing.Color.White;
+            this.txt_gianhap.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_gianhap.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txt_gianhap.Location = new System.Drawing.Point(171, 250);
+            this.txt_gianhap.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_gianhap.Name = "txt_gianhap";
+            this.txt_gianhap.Size = new System.Drawing.Size(183, 24);
+            this.txt_gianhap.TabIndex = 53;
+            this.txt_gianhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_gianhap_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label7.Location = new System.Drawing.Point(23, 253);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 23);
+            this.label7.TabIndex = 52;
+            this.label7.Text = "Giá nhập:";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel5.Location = new System.Drawing.Point(171, 275);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(188, 1);
+            this.panel5.TabIndex = 51;
+            // 
             // txt_soluong
             // 
             this.txt_soluong.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -127,6 +161,7 @@
             this.txt_soluong.Name = "txt_soluong";
             this.txt_soluong.Size = new System.Drawing.Size(100, 15);
             this.txt_soluong.TabIndex = 50;
+            this.txt_soluong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_soluong_KeyPress);
             // 
             // label3
             // 
@@ -274,39 +309,6 @@
             this.btn_ok.UseVisualStyleBackColor = false;
             this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
             // 
-            // txt_gianhap
-            // 
-            this.txt_gianhap.BackColor = System.Drawing.Color.White;
-            this.txt_gianhap.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_gianhap.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_gianhap.Location = new System.Drawing.Point(171, 250);
-            this.txt_gianhap.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_gianhap.Name = "txt_gianhap";
-            this.txt_gianhap.Size = new System.Drawing.Size(183, 24);
-            this.txt_gianhap.TabIndex = 53;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label7.Location = new System.Drawing.Point(23, 253);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 23);
-            this.label7.TabIndex = 52;
-            this.label7.Text = "Giá nhập:";
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel5.Location = new System.Drawing.Point(171, 275);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(188, 1);
-            this.panel5.TabIndex = 51;
-            // 
             // SanPham_ThemSuaChiTiet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -314,6 +316,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(815, 490);
             this.Controls.Add(this.panel4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(550, 230);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

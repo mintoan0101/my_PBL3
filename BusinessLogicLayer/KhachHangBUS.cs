@@ -98,11 +98,7 @@ namespace BusinessLogicLayer
         {
             return KhachHangDAO.Instance.GetLastID();
         }
-        
-        public List<KhachHang> Search (string txt, string PhanLoai, string BoLoc)
-        {
-            return KhachHangDAO.Instance.Search(txt, PhanLoai, BoLoc);
-        }
+
         public bool CheckEnableToDelete(string IDKH)
         {
             return KhachHangDAO.Instance.CheckEnableToDelete(IDKH);

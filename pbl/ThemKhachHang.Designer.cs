@@ -32,7 +32,6 @@
             this.txt_diem = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txt_id = new System.Windows.Forms.TextBox();
@@ -43,9 +42,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txt_sdt = new System.Windows.Forms.TextBox();
+            this.lbl_infor = new System.Windows.Forms.Label();
             this.btn_exit = new System.Windows.Forms.Button();
             this.btn_ok = new System.Windows.Forms.Button();
-            this.lbl_infor = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +54,6 @@
             this.panel1.Controls.Add(this.txt_diem);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.panel5);
-            this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.txt_id);
@@ -77,11 +75,12 @@
             this.txt_diem.BackColor = System.Drawing.Color.White;
             this.txt_diem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_diem.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_diem.Location = new System.Drawing.Point(196, 232);
+            this.txt_diem.Location = new System.Drawing.Point(196, 231);
             this.txt_diem.Margin = new System.Windows.Forms.Padding(4);
             this.txt_diem.Name = "txt_diem";
             this.txt_diem.Size = new System.Drawing.Size(309, 24);
             this.txt_diem.TabIndex = 41;
+            this.txt_diem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_diem_KeyPress);
             // 
             // label3
             // 
@@ -99,22 +98,11 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel5.Location = new System.Drawing.Point(196, 261);
+            this.panel5.Location = new System.Drawing.Point(196, 260);
             this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(300, 1);
             this.panel5.TabIndex = 39;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(179, 233);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(175, 22);
-            this.textBox3.TabIndex = 40;
             // 
             // label2
             // 
@@ -226,6 +214,18 @@
             this.txt_sdt.Name = "txt_sdt";
             this.txt_sdt.Size = new System.Drawing.Size(309, 24);
             this.txt_sdt.TabIndex = 30;
+            this.txt_sdt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_sdt_KeyPress);
+            // 
+            // lbl_infor
+            // 
+            this.lbl_infor.AutoSize = true;
+            this.lbl_infor.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbl_infor.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lbl_infor.Location = new System.Drawing.Point(226, 21);
+            this.lbl_infor.Name = "lbl_infor";
+            this.lbl_infor.Size = new System.Drawing.Size(366, 38);
+            this.lbl_infor.TabIndex = 47;
+            this.lbl_infor.Text = "Nhập thông tin khách hàng";
             // 
             // btn_exit
             // 
@@ -258,17 +258,6 @@
             this.btn_ok.MouseEnter += new System.EventHandler(this.btn_ok_MouseEnter);
             this.btn_ok.MouseLeave += new System.EventHandler(this.btn_ok_MouseLeave);
             // 
-            // lbl_infor
-            // 
-            this.lbl_infor.AutoSize = true;
-            this.lbl_infor.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbl_infor.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lbl_infor.Location = new System.Drawing.Point(226, 21);
-            this.lbl_infor.Name = "lbl_infor";
-            this.lbl_infor.Size = new System.Drawing.Size(366, 38);
-            this.lbl_infor.TabIndex = 47;
-            this.lbl_infor.Text = "Nhập thông tin khách hàng";
-            // 
             // KhachHang_Them
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -279,6 +268,7 @@
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(550, 230);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
@@ -312,7 +302,6 @@
         private System.Windows.Forms.TextBox txt_diem;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label lbl_infor;
     }
 }

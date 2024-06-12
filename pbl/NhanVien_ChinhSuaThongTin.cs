@@ -29,7 +29,13 @@ namespace pbl
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
-            if(Kiem_Tra_Day_Du_Thong_Tin())
+            string mess = "";
+            if (!Check_Day_Du_Thong_Tin()) mess = " Vui lòng nhập đầy đủ thông tin. ";
+            else if (!Check_SDT_Hop_Le()) mess = " Số điện thoại không hợp lệ. ";
+            else if (!Check_Do_Dai_SDT()) mess = " Số điện thoại phải chứa đúng 10 chữ số. ";
+            else if (!Check_CCCD_Hop_Le()) mess = " CCCD không hợp lệ. ";
+            else if (!Check_Do_Dai_CCCD()) mess = " CCCD phải chứa đúng 12 chữ số. ";
+            if(String.IsNullOrEmpty(mess))
             {
                 NhanVien nv = new NhanVien();
                 nv.IDNhanVien = txt_id.Text;
@@ -44,6 +50,10 @@ namespace pbl
                 {
                     MessageBox.Show("Đã cập nhật thông tin cá nhân", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+            else
+            {
+                MessageBox.Show(mess, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void ChinhSuaThongTinCaNhan_KeyDown(object sender, KeyEventArgs e)
@@ -81,7 +91,7 @@ namespace pbl
             return new DateTime(y, m, d);
 
         }
-        public bool Kiem_Tra_Day_Du_Thong_Tin()
+        public bool Check_Day_Du_Thong_Tin()
         {
             if(txt_email.Text != ""&&
                 txt_id.Text != ""&&
@@ -94,7 +104,37 @@ namespace pbl
             }
             return false;
         }
+        private bool Check_SDT_Hop_Le()
+        {
+            if(txt_sdt.Text.Trim().All(char.IsDigit)) 
+                { return true;}
+            return false;
+        }
+        private bool Check_Do_Dai_SDT()
+        {
+            if(txt_sdt.Text.Trim().Length != 10)
+            {
+                return false;
+            }
+            return true;
+        }
 
+        private bool Check_CCCD_Hop_Le()
+        {
+            if(txt_cccd.Text.Trim().All(char.IsDigit))
+                {
+                return true;
+            }
+            return false;
+        }
+        private bool Check_Do_Dai_CCCD()
+        {
+            if(txt_cccd.Text.Trim().Length != 12)
+            {
+                return false;
+            }
+            return true;
+        }
         private void txt_cccd_TextChanged(object sender, EventArgs e)
         {
 
@@ -118,6 +158,22 @@ namespace pbl
         private void txt_email_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txt_sdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; 
+            }
+        }
+
+        private void txt_cccd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

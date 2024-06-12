@@ -277,6 +277,7 @@
             this.txt_sdt.TabIndex = 5;
             this.txt_sdt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_sdt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_sdt_KeyDown);
+            this.txt_sdt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_sdt_KeyPress);
             // 
             // txt_cccd
             // 
@@ -290,6 +291,7 @@
             this.txt_cccd.TabIndex = 4;
             this.txt_cccd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_cccd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_cccd_KeyDown);
+            this.txt_cccd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_cccd_KeyPress);
             // 
             // txt_email
             // 
@@ -507,6 +509,7 @@
             this.txt_luong.TabIndex = 8;
             this.txt_luong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_luong.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_luong_KeyDown);
+            this.txt_luong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_luong_KeyPress);
             // 
             // txt_matkhau
             // 
@@ -520,6 +523,7 @@
             this.txt_matkhau.TabIndex = 7;
             this.txt_matkhau.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_matkhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_matkhau_KeyDown);
+            this.txt_matkhau.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_matkhau_KeyPress);
             // 
             // txt_tendangnhap
             // 
@@ -597,6 +601,7 @@
             this.Controls.Add(this.btn_huy);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.panel8);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

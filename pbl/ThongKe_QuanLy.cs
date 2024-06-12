@@ -27,16 +27,16 @@ namespace pbl
         private void ThongKe_Load(object sender, EventArgs e)
         {
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            Load_Hoa_Don();
             Load_ComboBox_NhanVien();
             Load_ComboBox_BoLoc();
             Load_Doanh_Thu();
             Load_Tong_Loi_Nhuan();
             Load_So_San_Pham_Da_Ban();
             Load_Tong_Hoa_Don();
-            checkBox1.Checked = true;
-            dateTimePicker1.Value = new DateTime(2024, 1, 1);
+            checkBox1.Checked = false;
+            dateTimePicker1.Value = new DateTime(2023, 1, 1);
             dateTimePicker2.Value = DateTime.Now;
+            btn_timkiem.PerformClick();
             foreach (DataGridViewColumn c in dataGridView1.Columns)
             {
                 c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -62,10 +62,21 @@ namespace pbl
         {
             OpenChildForm(new ThongKe_BieuDo());
         }
+        private void Set_Col()
+        {
+            dataGridView1.Columns[0].HeaderText = "Ngày Tạo Hóa Đơn";
+            dataGridView1.Columns[1].HeaderText = "Giảm Giá";
+            dataGridView1.Columns[2].HeaderText = "Doanh Thu";
+            dataGridView1.Columns[3].HeaderText = "Lợi Nhuận";
+            dataGridView1.Columns[4].HeaderText = "ID Hóa Đơn";
+            dataGridView1.Columns[5].HeaderText = "Nhân Viên";
+
+        }
         #region
         private void btn_timkiem_Click(object sender, EventArgs e)
         {
             Hien_Thi_Ket_Qua();
+            Set_Col();
             Load_Doanh_Thu();
             Load_Tong_Hoa_Don();
             Load_So_San_Pham_Da_Ban();
@@ -74,23 +85,7 @@ namespace pbl
 
         #endregion
         //CÁC HÀM BỔ TRỢ
-        public void Load_Hoa_Don()
-        {
-            using (PBL3Entities1 db = new PBL3Entities1())
-            {
-                var li = from h in db.HoaDons
-                         select new
-                         {
-                             Ngay = h.NgayTaoHoaDon,
-                             GiamGia = h.ChietKhau,
-                             DoanhThu = h.TongTien,
-                             LoiNhuan = h.LoiNhuan,
-                             ID = h.IDHoaDon,
-                             TenNhanVien = h.NhanVien.TenNhanVien,
-                         };
-                dataGridView1.DataSource = li.ToList();
-            }
-        }
+
         public void Load_Doanh_Thu()
         {
             decimal total = 0;
@@ -134,10 +129,10 @@ namespace pbl
         }
         public void Load_ComboBox_BoLoc()
         {
-            cb_boloc.Items.Add("Doanh thu");
-            cb_boloc.Items.Add("Lợi nhuận");
+            cb_boloc.Items.Add("Doanh Thu");
+            cb_boloc.Items.Add("Lợi Nhuận");
             cb_boloc.Items.Add("Ngày");
-            cb_boloc.Items.Add("Giảm giá");
+            cb_boloc.Items.Add("Giảm Giá");
             cb_boloc.SelectedItem = "Ngày";
         }
         public void Hien_Thi_Ket_Qua()
@@ -153,7 +148,7 @@ namespace pbl
             }
             using (PBL3Entities1 db = new PBL3Entities1())
             {
-                var li = db.HoaDons.Select(h => new
+                var li = db.HoaDon.Select(h => new
                 {
                     Ngay = h.NgayTaoHoaDon,
                     GiamGia = h.ChietKhau,
@@ -174,7 +169,7 @@ namespace pbl
                         li = li.OrderByDescending(h => h.Ngay);
                     }
                 }
-                else if(sapxep == "Doanh thu")
+                else if(sapxep == "Doanh Thu")
                 {
                     if (Tangdan)
                     {
@@ -185,7 +180,7 @@ namespace pbl
                         li = li.OrderByDescending(h => h.DoanhThu);
                     }
                 }
-                else if(sapxep =="Lợi nhuận")
+                else if(sapxep =="Lợi Nhuận")
                 {
                     if (Tangdan)
                     {
@@ -196,7 +191,7 @@ namespace pbl
                         li = li.OrderByDescending(h => h.LoiNhuan);
                     }
                 }
-                else if(sapxep == "Giảm giá")
+                else if(sapxep == "Giảm Giá")
                 {
                     if (Tangdan)
                     {
@@ -209,6 +204,11 @@ namespace pbl
                 }
                 dataGridView1.DataSource = li.ToList();
             }
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

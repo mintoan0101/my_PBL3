@@ -36,11 +36,6 @@ namespace BusinessLogicLayer
             return HoaDonDAO.Instance.Insert(hd);
         }
 
-        public List<HoaDon> Search(string txt, string phanloai, string boloc)
-        {
-            return HoaDonDAO.Instance.Search(txt, phanloai, boloc);
-        }
-
         public string GetLastID()
         {
             return HoaDonDAO.Instance.GetLastID();

@@ -26,10 +26,10 @@ namespace pbl
         private void HoaDonNhap_Load(object sender, EventArgs e)
         {
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            Load_Hoa_Don_Nhap();
             Load_Sap_Xep_Theo();
             Load_Trang_Thai();
-            checkBox1.Checked = true;
+            checkBox1.Checked = false;
+            btn_timkiem.PerformClick();
             foreach (DataGridViewColumn c in dataGridView1.Columns)
             {
                 c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -51,6 +51,13 @@ namespace pbl
             childForm.BringToFront();
             childForm.Show();
         }
+        private void Set_Col()
+        {
+            dataGridView1.Columns[0].HeaderText = "ID Hóa Đơn Nhập";
+            dataGridView1.Columns[1].HeaderText = "Ngày Tạo";
+            dataGridView1.Columns[2].HeaderText = "Tổng Tiền";
+            dataGridView1.Columns[3].HeaderText = "Trạng Thái";
+        }
         //CÁC HÀM SỰ KIỆN
         private void btn_them_Click(object sender, EventArgs e)
         {
@@ -59,6 +66,7 @@ namespace pbl
         private void btn_timkiem_Click(object sender, EventArgs e)
         {
             Hien_Thi_Tim_Kiem();
+            Set_Col();
         }
         private void btn_sua_Click(object sender, EventArgs e)
         {
@@ -76,22 +84,6 @@ namespace pbl
             }
         }
         //CÁC HÀM BỔ TRỢ
-        public void Load_Hoa_Don_Nhap()
-        {
-            using (PBL3Entities1 db = new PBL3Entities1())
-            {
-                var li = from h in db.HoaDonNhaps
-                         select new 
-                         {
-                             ID = h.IDHoaDonNhap,
-                             NgayTao = h.NgayTao,
-                             TongTien = h.TongTien,
-                             TrangThai = h.TrangThai,
-                         };
-                dataGridView1.DataSource = li.ToList();
-            }
-          
-        }
         public void Load_Trang_Thai()
         {
             cb_trangthai.Items.Add("Tất Cả");
@@ -104,7 +96,7 @@ namespace pbl
             cb_sapxep.Items.Add("ID");
             cb_sapxep.Items.Add("Ngày Tạo");
             cb_sapxep.Items.Add("Tổng Tiền");
-            cb_sapxep.SelectedItem = "ID";
+            cb_sapxep.SelectedItem = "Ngày Tạo";
         }
        
         public void Hien_Thi_Tim_Kiem()
@@ -115,7 +107,7 @@ namespace pbl
                 string order = cb_sapxep.SelectedItem.ToString();
                 bool TangDan = checkBox1.Checked;
                 if (status == "Tất Cả") status = "";
-                var li = db.HoaDonNhaps.Select(h => new
+                var li = db.HoaDonNhap.Select(h => new
                 {
                     ID = h.IDHoaDonNhap,
                     NgayTao = h.NgayTao,
@@ -163,6 +155,11 @@ namespace pbl
             HoaDonNhap_ChiTiet x = new HoaDonNhap_ChiTiet();
             x.IDHoaDonNhap = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
             OpenChildForm(x);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

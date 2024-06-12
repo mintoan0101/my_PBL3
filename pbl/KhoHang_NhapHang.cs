@@ -32,36 +32,42 @@ namespace pbl
         private void NhapKho_Load(object sender, EventArgs e)
         {
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            Load_CTSP();
             Load_Phan_Loai();
             Load_ID_Tu_Dong();
             Load_trang_Thai();
             Load_Nha_Phan_Phoi();
+            bt_TimKiem.PerformClick();
             foreach (DataGridViewColumn c in dataGridView1.Columns)
             {
                 c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-            Dieu_Chinh_DataGridView();
+            Dieu_Chinh_DataGridView2();
         }
-        private void Dieu_Chinh_DataGridView()
+        private void Dieu_Chinh_DataGridView2()
         {
             int total = dataGridView2.Width;
-            int part = total / 20;
+            int part = (int)Math.Ceiling((double)total / 20);
             int i = 1;
-            int count = dataGridView1.Columns.Count;
+            int count = dataGridView2.Columns.Count;
             int rate = 1;
             foreach (DataGridViewColumn c in dataGridView2.Columns)
             {
                 if (i == 1) rate = 2;
-                else if (i == 2) rate = 7;
-                else if (i == 3) rate = 2;
+                else if (i == 2) rate = 5;
+                else if (i == 3) rate = 3;
                 else if (i == 4) rate = 3;
                 c.Width = rate * part;
                 i++;
                 c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+        }
+        private void Set_Col1()
+        {
+            dataGridView1.Columns[0].HeaderText = "ID Sản Phẩm";
+            dataGridView1.Columns[1].HeaderText = "Tên Sản Phẩm";
+            dataGridView1.Columns[2].HeaderText = "Phân Loại";
         }
         //CÁC HÀM SỰ KIỆN
         private void bt_Huy_Click(object sender, EventArgs e)
@@ -89,6 +95,7 @@ namespace pbl
         private void bt_TimKiem_Click(object sender, EventArgs e)
         {
             Hien_Thi_Tim_Kiem();
+            Set_Col1();
         }
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -126,19 +133,7 @@ namespace pbl
             }
             lbl_id.Text = id.ToString();
         }
-        public void Load_CTSP()
-        {
-            using (PBL3Entities1 db = new PBL3Entities1())
-            {
-                var li = from c in db.SanPhams
-                         select new { 
-                             ID = c.IDSanPham,
-                             Ten = c.Ten,
-                             PhanLoai =c.PhanLoai,
-                         };
-                dataGridView1.DataSource = li.ToList();
-            }
-        }
+
         public void Load_trang_Thai()
         {
             cb_trangthai.Items.Add("Đã Xử Lí");
@@ -169,7 +164,7 @@ namespace pbl
                 string id = txt_id.Text;
                 string npp = cb_phanloai.SelectedItem.ToString();
                 if (npp == "Tất Cả") npp = "";
-                var li = db.SanPhams.Select(c => new
+                var li = db.SanPham.Select(c => new
                 {
                     ID = c.IDSanPham,
                     Ten = c.Ten,
@@ -196,6 +191,7 @@ namespace pbl
                     dataGridView2.Rows.Add(idsp, sanpham, gianhap, sl);
                 }
             }
+            Load_Tong_Tien();
         }
         public void Xoa_Bot_San_Pham()
         {

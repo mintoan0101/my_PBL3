@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer;
+using DataAccessLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,9 +27,15 @@ namespace pbl
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.Font = new Font("Segoe UI Semibold", 12);
             dataGridView1.RowTemplate.Height = 30;
-            Load_Khach_Hang();
             Load_Thuoc_Tinh();
             Load_BoLoc();
+            btn_timkiem.PerformClick();
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach (DataGridViewColumn c in dataGridView1.Columns)
+            {
+                c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
         private void Dieu_Chinh_DataGridView()
         {
@@ -49,13 +56,21 @@ namespace pbl
                 c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
+        private void Set_Col()
+        {
+            dataGridView1.Columns[0].HeaderText = "ID Khách Hàng";
+            dataGridView1.Columns[1].HeaderText = "Tên Khách Hàng";
+            dataGridView1.Columns[2].HeaderText = "Số Điện Thoại";
+            dataGridView1.Columns[3].HeaderText = "Điểm Tích Lũy";
+
+        }
         //CÁC HÀM XỬ LÍ SỰ KIỆN
         private void btn_them_Click(object sender, EventArgs e)
         {
             KhachHang_Them f = new KhachHang_Them(null);
             f.isEdit = false;
             f.ShowDialog();
-            Load_Khach_Hang();
+            btn_timkiem.PerformClick();
         }
 
         private void btn_sua_Click(object sender, EventArgs e)
@@ -67,7 +82,7 @@ namespace pbl
                 f.isEdit = true;
                 f.kh = KhachHangBUS.Instance.GetKhachHangBySDT(r.Cells[0].Value.ToString());
                 f.ShowDialog();
-                Load_Khach_Hang();
+                btn_timkiem.PerformClick();
             }
             else
             {
@@ -77,10 +92,8 @@ namespace pbl
 
         private void btn_timkiem_Click(object sender, EventArgs e)
         {
-            string txt = txt_timkiem.Text;
-            string phanloai = cb_thuoctinh.SelectedItem.ToString();
-            string boloc = cbb_BoLoc.SelectedItem.ToString();
-            dataGridView1.DataSource = KhachHangBUS.Instance.Search(txt, phanloai, boloc);
+            Tim_Kiem();
+            Set_Col();
         }
         private void btn_xoa_Click(object sender, EventArgs e)
         {
@@ -97,7 +110,7 @@ namespace pbl
                         if (bus.Delete(IDKH) > 0)
                         {
                             MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Load_Khach_Hang();
+                            btn_timkiem.PerformClick();
                         }
                     }
                 }
@@ -112,13 +125,6 @@ namespace pbl
             }
         }
         //CÁC HÀM BỔ TRỢ
-        public void Load_Khach_Hang()
-        {
-            dataGridView1.DataSource = KhachHangBUS.Instance.GetData();
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-            Dieu_Chinh_DataGridView();
-        }
-
         public void Load_Thuoc_Tinh()
         {
             cb_thuoctinh.Items.Add("SĐT");
@@ -136,7 +142,62 @@ namespace pbl
             cbb_BoLoc.SelectedItem = "Tất cả";
         }
 
+        private void Tim_Kiem()
+        {
+            using (PBL3Entities1 pbl = new PBL3Entities1())
+            {
+                var query = pbl.KhachHang.Select(p => new
+                {
+                    IDKhachHang = p.IDKhachHang,
+                    Ten = p.Ten,
+                    SDT = p.SDT,
+                    Diem = p.Diem,
+                });
+                string txt = txt_timkiem.Text;
+                string PhanLoai = cb_thuoctinh.SelectedItem.ToString();
+                string BoLoc = cbb_BoLoc.SelectedItem.ToString();
+                Dictionary<string, double> tongHoaDonDict = new Dictionary<string, double>();
+                foreach (var khachHang in query)
+                {
+                    tongHoaDonDict[khachHang.IDKhachHang] = KhachHangDAO.Instance.GetTongHoaDon(khachHang.IDKhachHang);
+                }
+                if (!string.IsNullOrEmpty(txt))
+                {
+                    if (PhanLoai == "Tên")
+                    {
+                        txt = txt.ToLower();
+                        query = query.Where(kh => kh.Ten.ToLower().Contains(txt));
+                    }
+                    if (PhanLoai == "SĐT")
+                    {
+                        query = query.Where(kh => kh.SDT.Contains(txt));
+                    }
+                }
 
+                if (BoLoc != "Tất cả")
+                {
+                    switch (BoLoc)
+                    {
+                        case "< 500k":
+                            query = query.Where(kh => tongHoaDonDict[kh.IDKhachHang] < 500);
+                            break;
+                        case "500k - 1 triệu":
+                            query = query.Where(kh => tongHoaDonDict[kh.IDKhachHang] >= 500 && tongHoaDonDict[kh.IDKhachHang] <= 1000);
+                            break;
+                        case "1 - 5 triệu":
+                            query = query.Where(kh => tongHoaDonDict[kh.IDKhachHang] >= 1000 && tongHoaDonDict[kh.IDKhachHang] <= 5000);
+                            break;
+                        case "5 - 17 triệu":
+                            query = query.Where(kh => tongHoaDonDict[kh.IDKhachHang] >= 5000 && tongHoaDonDict[kh.IDKhachHang] <= 17000);
+                            break;
+                        case "> 17 triệu":
+                            query = query.Where(kh => tongHoaDonDict[kh.IDKhachHang] > 17000);
+                            break;
+                    }
+                }
+                dataGridView1.DataSource = query.ToList();
+            }
+        }
 
     }
 }

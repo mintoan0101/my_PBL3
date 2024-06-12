@@ -118,16 +118,11 @@
             this.cbb_PhanLoai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbb_PhanLoai.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cbb_PhanLoai.FormattingEnabled = true;
-            this.cbb_PhanLoai.Items.AddRange(new object[] {
-            "ID Hoá Đơn",
-            "Nhân Viên",
-            "Khách Hàng"});
             this.cbb_PhanLoai.Location = new System.Drawing.Point(-1, 0);
             this.cbb_PhanLoai.Margin = new System.Windows.Forms.Padding(4);
             this.cbb_PhanLoai.Name = "cbb_PhanLoai";
             this.cbb_PhanLoai.Size = new System.Drawing.Size(321, 36);
             this.cbb_PhanLoai.TabIndex = 0;
-            this.cbb_PhanLoai.Text = "       Phân loại";
             // 
             // dataGridView1
             // 

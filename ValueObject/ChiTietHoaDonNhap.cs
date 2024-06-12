@@ -20,12 +20,12 @@ namespace ValueObject
     
         public virtual ChiTietSanPham ChiTietSanPham { get; set; }
         public virtual HoaDonNhap HoaDonNhap { get; set; }
-
-        public ChiTietHoaDonNhap(string idHoaDonNhap, string idChiTiet, int soLuong)
+        public ChiTietHoaDonNhap(string iDHoaDonNhap, string iDChiTiet, int soLuong)
         {
-            IDHoaDonNhap = idHoaDonNhap;
-            IDChiTiet = idChiTiet;
+            IDHoaDonNhap = iDHoaDonNhap;
+            IDChiTiet = iDChiTiet;
             SoLuong = soLuong;
+
         }
     }
 }

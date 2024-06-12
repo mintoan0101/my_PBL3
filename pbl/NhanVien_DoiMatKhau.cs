@@ -38,6 +38,8 @@ namespace pbl
         {
             string message = "";
             if (!Check_Day_Du_Thong_Tin()) message = "Vui lòng điền đầy đủ thông tin.";
+            else if (!Check_Do_Dai_Mat_Khau()) message = "Độ dài mật khẩu phải tối thiểu 8 chữ số. ";
+            else if (!Check_Mat_Khau_Khong_Qua_Dai()) message = "Độ dài mật khẩu tối đa không được quá 20 kí tự. ";
             else if (!Check_Mat_Khau_Cu_Hop_le()) message = "Mật khẩu cũ hiện tại không chính xác.";
             else if (!Check_Xac_Nhan_mat_Khau_Moi()) message = "Mật khẩu xác nhận không trùng khớp với mật khẩu mới.";
             if (String.IsNullOrEmpty(message))
@@ -56,7 +58,7 @@ namespace pbl
                 MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public bool Check_Day_Du_Thong_Tin()
+        private bool Check_Day_Du_Thong_Tin()
         {
             if(txt_matkhaucu.Text != ""&&
                 txt_matkhaumoi.Text != ""&&
@@ -66,7 +68,7 @@ namespace pbl
             }
             return false;
         }
-        public bool Check_Mat_Khau_Cu_Hop_le()
+        private bool Check_Mat_Khau_Cu_Hop_le()
         {
             if(bus.CheckPassByIDNV(idnv,txt_matkhaucu.Text))
             {
@@ -81,6 +83,22 @@ namespace pbl
                 return true;
             }
             return false;
+        }
+        private bool Check_Do_Dai_Mat_Khau()
+        {
+            if(txt_matkhaumoi.Text.Trim().Length < 8)
+            {
+                return false;
+            }
+            return true;
+        }
+        private bool Check_Mat_Khau_Khong_Qua_Dai()
+        {
+            if(txt_matkhaumoi.Text.Trim().Length >20)
+            {
+                return false;
+            }
+            return true;
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -122,6 +140,30 @@ namespace pbl
             pictureBox6.Visible = false;
             pictureBox3.Visible = true;
             txt_xacnhan.UseSystemPasswordChar = true;
+        }
+
+        private void txt_matkhaucu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_matkhaumoi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_xacnhan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

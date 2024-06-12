@@ -48,6 +48,16 @@ namespace pbl
                 c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
+        private void Set_Col()
+        {
+            dataGridView1.Columns[0].HeaderText = "ID Chi Tiết";
+            dataGridView1.Columns[1].HeaderText = "Tên";
+            dataGridView1.Columns[2].HeaderText = "Nhà Phân Phối";
+            dataGridView1.Columns[3].HeaderText = "Hạn Sử Dụng";
+            dataGridView1.Columns[4].HeaderText = "Số Lượng";
+            dataGridView1.Columns[5].HeaderText = "Giá Nhập";
+
+        }
         private void ChiTietSanPham_Load(object sender, EventArgs e)
         {
             if (!isAdmin)
@@ -57,9 +67,9 @@ namespace pbl
                 btn_delete.Enabled = false;
             }
             isFull = false;
-            Load_CTSP();
             Load_NPP();
             Load_Bo_Loc();
+            btn_timkiem.PerformClick();
             Dieu_Chinh_DataGridView();
         }
 
@@ -74,7 +84,7 @@ namespace pbl
             f.isEdit = false;
             f.IDSanPham = idsanpham;
             f.ShowDialog();
-            Load_CTSP() ;
+            btn_timkiem.PerformClick();
         }
         private void btn_edit_Click_1(object sender, EventArgs e)
         {
@@ -91,7 +101,7 @@ namespace pbl
                 f.SoLuong = int.Parse(row.Cells[4].Value.ToString());
                 f.GiaNhap = Convert.ToDecimal(row.Cells[5].Value);
                 f.ShowDialog();
-                Load_CTSP();
+                btn_timkiem.PerformClick();
             }
             else
             {
@@ -112,7 +122,7 @@ namespace pbl
                         if (bus.Delete(id) > 0)
                         {
                             MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Load_CTSP();
+                            btn_timkiem.PerformClick();
                         }
                     }
                 }
@@ -129,6 +139,7 @@ namespace pbl
         private void btn_timkiem_Click(object sender, EventArgs e)
         {
             Tim_Kiem();
+            Set_Col();
         }
         //CÁC HÀM BỔ TRỢ
         public void Load_Bo_Loc()
@@ -151,29 +162,13 @@ namespace pbl
             }
             cb_nhaphanphoi.SelectedItem = "Tất Cả";
         }
-        public void Load_CTSP()
-        {
-            PBL3Entities1 db = new PBL3Entities1();
-            var li = db.ChiTietSanPhams.Where(p => p.IDSanPham == idsanpham).Select(p => new
-            {
-                p.IDChiTiet,
-                p.SanPham.Ten,
-                p.NhaPhanPhoi.TenNhaPhanPhoi,
-                p.HanSuDung,
-                p.SoLuong,
-                p.GiaNhap
-            });
-
-            dataGridView1.DataSource = li.ToList();
-
-        }
         public void Tim_Kiem()
         {
             using (PBL3Entities1 db = new PBL3Entities1())
             {
                 string npp = cb_nhaphanphoi.SelectedItem.ToString();
                 string boloc = cb_boloc.SelectedItem.ToString();
-                var li = from c in db.ChiTietSanPhams
+                var li = from c in db.ChiTietSanPham
                          where c.IDSanPham.Contains(non_idsanpham)
                          select new
                          {
@@ -219,7 +214,7 @@ namespace pbl
             {
                 if (isFull)
                 {
-                    var li = from c in db.ChiTietSanPhams
+                    var li = from c in db.ChiTietSanPham
                              where c.IDSanPham == idsanpham
                              select new
                              {
@@ -238,7 +233,7 @@ namespace pbl
                 }
                 else
                 {
-                    var li = from c in db.ChiTietSanPhams
+                    var li = from c in db.ChiTietSanPham
                            
                              select new
                              {

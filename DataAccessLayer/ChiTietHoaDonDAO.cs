@@ -35,7 +35,7 @@ namespace DataAccessLayer
         {
             try
             {
-                pbl.ChiTietHoaDons.Add(cthd);
+                pbl.ChiTietHoaDon.Add(cthd);
                 pbl.SaveChanges();
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace DataAccessLayer
         }
         public List<dynamic> GetData(string ID)
         {
-            var li = pbl.ChiTietHoaDons.Where(p => p.IDHoaDon == ID)
+            var li = pbl.ChiTietHoaDon.Where(p => p.IDHoaDon == ID)
                                        .Select(p => new { p.ChiTietSanPham.SanPham.Ten, p.SoLuong, p.ChiTietSanPham.SanPham.GiaBan });
             return li.ToList<dynamic>();
         }

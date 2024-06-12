@@ -95,6 +95,7 @@
             this.txt_sdt.Size = new System.Drawing.Size(307, 24);
             this.txt_sdt.TabIndex = 3;
             this.txt_sdt.TextChanged += new System.EventHandler(this.txt_sdt_TextChanged);
+            this.txt_sdt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_sdt_KeyPress);
             // 
             // panel6
             // 
@@ -369,6 +370,7 @@
             this.txt_cccd.Size = new System.Drawing.Size(307, 24);
             this.txt_cccd.TabIndex = 5;
             this.txt_cccd.TextChanged += new System.EventHandler(this.txt_cccd_TextChanged);
+            this.txt_cccd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_cccd_KeyPress);
             // 
             // panel2
             // 

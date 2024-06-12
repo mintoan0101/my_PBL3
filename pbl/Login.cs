@@ -110,5 +110,13 @@ namespace pbl
         {
 
         }
+
+        private void txt_password_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

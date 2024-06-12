@@ -44,6 +44,13 @@ namespace pbl
                 c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
+        private void Set_Col()
+        {
+            dataGridView1.Columns[0].HeaderText = "ID Sản Phẩm";
+            dataGridView1.Columns[1].HeaderText = "Tên Sản Phẩm";
+            dataGridView1.Columns[2].HeaderText = "Phân Loại";
+            dataGridView1.Columns[3].HeaderText = "Giá Bán";
+        }
         private void QuanLySanPham_Load(object sender, EventArgs e)
         {
             if (!isAdmin)
@@ -64,7 +71,6 @@ namespace pbl
             SanPham_Them f = new SanPham_Them();
             f.isEdit = false;
             f.Show();
-            btn_timkiem.PerformClick();
         }
 
         private void btn_sua_Click(object sender, EventArgs e)
@@ -79,14 +85,11 @@ namespace pbl
                 f.tensanpham = row.Cells[1].Value.ToString();
                 f.giaban = row.Cells[3].Value.ToString();
                 f.Show();
-                btn_timkiem.PerformClick();
-
             }
             else
             {
                 MessageBox.Show("Vui lòng chọn sản phẩm cần sửa đổi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
 
         private void btn_xoa_Click(object sender, EventArgs e)
@@ -121,6 +124,7 @@ namespace pbl
         private void btn_timkiem_Click(object sender, EventArgs e)
         {
             Tim_Kiem();
+            Set_Col();
         }
         private void btn_chitiet_Click(object sender, EventArgs e)
         {
@@ -183,7 +187,7 @@ namespace pbl
                 string txt = txt_tentimkiem.Text;
                 string boloc = cb_boloc.SelectedItem.ToString();
                 string phanloai = cb_phanloai.SelectedItem.ToString();
-                var list = pbl.SanPhams.Select(p => new
+                var list = pbl.SanPham.Select(p => new
                 {
                     ID = p.IDSanPham,
                     Ten = p.Ten,

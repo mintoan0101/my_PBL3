@@ -17,7 +17,7 @@ namespace ValueObject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HoaDonNhap()
         {
-            this.ChiTietHoaDonNhaps = new HashSet<ChiTietHoaDonNhap>();
+            this.ChiTietHoaDonNhap = new HashSet<ChiTietHoaDonNhap>();
         }
     
         public string IDHoaDonNhap { get; set; }
@@ -26,14 +26,13 @@ namespace ValueObject
         public string TrangThai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHoaDonNhap> ChiTietHoaDonNhaps { get; set; }
-
-        public HoaDonNhap(string idHoaDonNhap, DateTime ngayTao, decimal tongTien, string trangThai)
+        public virtual ICollection<ChiTietHoaDonNhap> ChiTietHoaDonNhap { get; set; }
+        public HoaDonNhap(string iDHoaDonNhap, DateTime ngayTao, decimal tongTien, string trangThai)
         {
-            this.IDHoaDonNhap = idHoaDonNhap;
-            this.NgayTao = ngayTao;
-            this.TongTien = tongTien;
-            this.TrangThai = trangThai;
+            IDHoaDonNhap = iDHoaDonNhap;
+            NgayTao = ngayTao;
+            TongTien = tongTien;
+            TrangThai = trangThai;
         }
     }
 }

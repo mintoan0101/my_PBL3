@@ -31,12 +31,13 @@ namespace pbl
             dataGridView2.Font = new Font("Segoe UI Semibold", 8);
             dataGridView2.RowTemplate.Height = 28;
             list_sl = ctspBUS.GetSoLuongs();
-            Load_DS_San_Pham();
             SetBill();
             AddColumnsToDataGridView2();
+            Set_Col2();
             panel10.Visible = false;
             panel11.Visible = false;
             cbb_PhanLoai.SelectedIndex = 0;
+            bt_TimKiem_Click(this, new EventArgs());
         }
         private void Dieu_Chinh_DataGridView1()
         {
@@ -78,6 +79,23 @@ namespace pbl
                 c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
+        private void Set_Col1()
+        {
+            dataGridView1.Columns[0].HeaderText = "ID Sản Phẩm";
+            dataGridView1.Columns[1].HeaderText = "Phân Loại";
+            dataGridView1.Columns[2].HeaderText = "Tên Sản Phẩm";
+            dataGridView1.Columns[3].HeaderText = "Hạn Sử Dụng";
+            dataGridView1.Columns[4].HeaderText = "Giá Bán";
+            dataGridView1.Columns[5].HeaderText = "Số Lượng";
+            dataGridView1.Columns[6].HeaderText = "Check";
+        }
+        private void Set_Col2()
+        {
+            dataGridView2.Columns[1].HeaderText = "Sản Phẩm";
+            dataGridView2.Columns[2].HeaderText = "Số Lượng";
+            dataGridView2.Columns[3].HeaderText = "Thành Tiền";
+
+        }
         private void SetBill()
         {
             lb_DateTime.Text = DateTime.Now.ToString();
@@ -95,21 +113,7 @@ namespace pbl
             }
             return columnNames;
         }
-        private void bt_Search_Click(object sender, EventArgs e)
-        {
-            string PhanLoai = cbb_PhanLoai.SelectedItem.ToString();
-            string txt = txt_TimKiem.Text;
-            if (PhanLoai != null && txt != null)
-            {
-                dataGridView1.DataSource = ctspBUS.Search(PhanLoai, txt);
-            }
-        }
-        public void Load_DS_San_Pham()
-        {
-            list = ctspBUS.GetData1();
-            dataGridView1.DataSource = list;
-            
-        }
+       
         private void AddColumnsToDataGridView2()
         {
             dataGridView2.Columns.Add("IDChiTiet", "IDChiTiet");
@@ -151,10 +155,10 @@ namespace pbl
                         ctspBUS.Update(chiTietSanPham);
                     }
                 }
-                hd.ChiTietHoaDons = listChiTietHoaDon;
+                hd.ChiTietHoaDon = listChiTietHoaDon;
                 hd.LoiNhuan = HoaDonBUS.Instance.TinhLoiNhuan(listChiTietHoaDon);
                 HoaDonBUS.Instance.Insert(hd);
-                foreach (ChiTietHoaDon chitiethoadon in hd.ChiTietHoaDons)
+                foreach (ChiTietHoaDon chitiethoadon in hd.ChiTietHoaDon)
                 {
                     ChiTietHoaDonDAO.Instance.Insert(chitiethoadon);
                 }
@@ -191,7 +195,7 @@ namespace pbl
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra xem cột thay đổi có phải là cột "Check" và chỉ thực hiện khi dữ liệu đã sẵn sàng
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "Check" && e.RowIndex >= 0 && e.RowIndex < list.Count)
+            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Check" )
             {
                 ChiTietSanPham_View selectedItem = new ChiTietSanPham_View();
                 foreach (ChiTietSanPham_View item in list)
@@ -245,13 +249,23 @@ namespace pbl
                         }
                     }
                 }
-
+                MessageBox.Show("");
                 // Cập nhật tổng tiền sau khi thay đổi số lượng hoặc trạng thái Check
                 TinhTien();
                 Refresh_DataGridView();
             }
+                
         }
-
+        private void bt_TimKiem_Click(object sender, EventArgs e)
+        {
+            string PhanLoai = cbb_PhanLoai.SelectedItem.ToString();
+            string txt = txt_TimKiem.Text;
+            if (PhanLoai != null && txt != null)
+            {
+                dataGridView1.DataSource = ctspBUS.Search(PhanLoai, txt);
+            }
+            Set_Col1();
+        }
 
         private void dataGridView1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
@@ -382,6 +396,14 @@ namespace pbl
             }
 
             return list;
+        }
+
+        private void txt_STDKhachHang_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

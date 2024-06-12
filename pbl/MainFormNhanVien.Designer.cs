@@ -231,7 +231,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainFormNhanVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Main Form Nhân Viên";
+            this.Text = "NHÂN VIÊN";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.NHANVIEN_Load);
             this.panel5.ResumeLayout(false);

@@ -42,10 +42,12 @@ namespace pbl
        
         private void btn_ok_Click(object sender, EventArgs e)
         {
-
-            if (!string.IsNullOrEmpty(txt_tensp.Text) &&
-                !string.IsNullOrEmpty(cb_phanloai.SelectedItem.ToString()) &&
-                !string.IsNullOrEmpty(txt_giatien.Text))
+            string mess = "";
+            if (!Check_Day_Du_ThongTin()) mess = " Vui lòng điền đầy đủ thông tin. ";
+            else if (!Check_Gia_Tien_Hop_Le()) mess = " Giá tiền chỉ được chứa kí tự số. ";
+            else if (!Check_gia_Tien_Khong_Am()) mess = " Giá tiền không được phép âm. ";
+            else if (!Check_Gia_Tien_Khong_Qua_Lon()) mess = " Giá trị sản phẩm quá lớn. ";
+            if(String.IsNullOrEmpty(mess))
             {
                 if (isEdit)
                 {
@@ -58,7 +60,7 @@ namespace pbl
             }
             else
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin");
+                MessageBox.Show(mess,"Lỗi nhập vào",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
         private void btn_exit_Click(object sender, EventArgs e)
@@ -75,6 +77,42 @@ namespace pbl
             {
                 this.SelectNextControl((Control)sender, true, true, true, true);
             }
+        }
+        // CÁC HÀM CHECK LỖI
+        private bool Check_Day_Du_ThongTin()
+        {
+            if( !string.IsNullOrEmpty(txt_tensp.Text) &&
+                !string.IsNullOrEmpty(lbl_id.Text) &&
+                !string.IsNullOrEmpty(txt_giatien.Text))
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool Check_Gia_Tien_Hop_Le()
+        {
+            decimal a = 0;
+            if(decimal.TryParse(txt_giatien.Text.Trim(), out a))
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool Check_gia_Tien_Khong_Am()
+        {
+            if(decimal.Parse(txt_giatien.Text.Trim())>=0)
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool Check_Gia_Tien_Khong_Qua_Lon()
+        {
+            if(decimal.Parse(txt_giatien.Text.Trim()) <= 10000000)
+            {
+                return true;
+            }
+            return false;
         }
         //CÁC HÀM BỔ TRỢ
         public void Load_Phan_Loai()
@@ -115,7 +153,6 @@ namespace pbl
             double res = 0;
             if(double.TryParse(txt_giatien.Text, out res))
             {
-                double res2 = 0;
                 return true;
             }
             return false;
@@ -158,7 +195,15 @@ namespace pbl
             }
             else
             {
-                MessageBox.Show("Sửa đỏi không thành công");
+                MessageBox.Show("Sửa đổi không thành công");
+            }
+        }
+
+        private void txt_giatien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

@@ -121,7 +121,7 @@
             this.bt_TimKiem.Size = new System.Drawing.Size(114, 42);
             this.bt_TimKiem.TabIndex = 2;
             this.bt_TimKiem.UseVisualStyleBackColor = false;
-            this.bt_TimKiem.Click += new System.EventHandler(this.bt_Search_Click);
+            this.bt_TimKiem.Click += new System.EventHandler(this.bt_TimKiem_Click);
             // 
             // txt_TimKiem
             // 
@@ -487,11 +487,12 @@
             // 
             this.txt_STDKhachHang.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_STDKhachHang.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_STDKhachHang.Location = new System.Drawing.Point(79, 48);
+            this.txt_STDKhachHang.Location = new System.Drawing.Point(79, 47);
             this.txt_STDKhachHang.Margin = new System.Windows.Forms.Padding(4);
             this.txt_STDKhachHang.Name = "txt_STDKhachHang";
             this.txt_STDKhachHang.Size = new System.Drawing.Size(545, 24);
             this.txt_STDKhachHang.TabIndex = 3;
+            this.txt_STDKhachHang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_STDKhachHang_KeyPress);
             // 
             // panel9
             // 

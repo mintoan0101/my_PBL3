@@ -14,7 +14,7 @@ namespace DataAccessLayer
         PBL3Entities1 pbl = new PBL3Entities1();
         public List<ChiTietSanPham_View> GetData1()
         {
-            var li = pbl.ChiTietSanPhams.Select(p => new ChiTietSanPham_View
+            var li = pbl.ChiTietSanPham.Select(p => new ChiTietSanPham_View
             {
                 IDChiTiet = p.IDChiTiet,
                 PhanLoai = p.SanPham.PhanLoai,
@@ -28,20 +28,20 @@ namespace DataAccessLayer
         }
     public int CountIDCT(string IDSP)
         {
-            var li = pbl.ChiTietSanPhams.Where(p => p.IDSanPham == IDSP).Count();
+            var li = pbl.ChiTietSanPham.Where(p => p.IDSanPham == IDSP).Count();
             return li;
         }
         public decimal GetGiaNhapByLastIDSP(string IDSP)
         {
             string IDCT = GetLastIDByIDSP(IDSP);
-            var li = pbl.ChiTietSanPhams.Find(IDCT).GiaNhap;
+            var li = pbl.ChiTietSanPham.Find(IDCT).GiaNhap;
             return li;
         }
         public int Insert(ChiTietSanPham ctsp)
         {
             if (ctsp != null)
             {
-                pbl.ChiTietSanPhams.Add(ctsp);
+                pbl.ChiTietSanPham.Add(ctsp);
                 pbl.SaveChanges();
                 return 1;
             }
@@ -73,20 +73,21 @@ namespace DataAccessLayer
         }
         public int Delete(string id)
         {
-            var ct = pbl.ChiTietSanPhams.Where(p => p.IDChiTiet.Contains( id)).FirstOrDefault();
-            pbl.ChiTietSanPhams.Remove(ct);
+            var ct = pbl.ChiTietSanPham.Where(p => p.IDChiTiet.Contains( id)).FirstOrDefault();
+            pbl.ChiTietSanPham.Remove(ct);
             pbl.SaveChanges();
             return 1;
         }
         public int Update(ChiTietSanPham ctsp)
         {
-            var sp = pbl.ChiTietSanPhams.Where(p => p.IDChiTiet == ctsp.IDChiTiet).FirstOrDefault();
+            var sp = pbl.ChiTietSanPham.Where(p => p.IDChiTiet == ctsp.IDChiTiet).FirstOrDefault();
             if (sp != null)
             {
                 sp.IDNhaPhanPhoi = ctsp.IDNhaPhanPhoi;
                 sp.IDSanPham = ctsp.IDSanPham;
                 sp.HanSuDung = ctsp.HanSuDung;
                 sp.SoLuong = ctsp.SoLuong;
+                sp.GiaNhap = ctsp.GiaNhap;
                 pbl.SaveChanges();
                 return 1;
             }
@@ -94,28 +95,28 @@ namespace DataAccessLayer
         }
         public ChiTietSanPham GetCTSP(string IDChiTiet)
         {
-            ChiTietSanPham ctsp = pbl.ChiTietSanPhams.Where(p => p.IDChiTiet == IDChiTiet).FirstOrDefault();
+            ChiTietSanPham ctsp = pbl.ChiTietSanPham.Where(p => p.IDChiTiet == IDChiTiet).FirstOrDefault();
             return ctsp;
         }
         public string GetLastID(string f)
         {
-            var c = pbl.ChiTietSanPhams.Where(p => p.IDChiTiet.Contains(f)).OrderByDescending(p => p.IDChiTiet).FirstOrDefault();
+            var c = pbl.ChiTietSanPham.Where(p => p.IDChiTiet.Contains(f)).OrderByDescending(p => p.IDChiTiet).FirstOrDefault();
             return c.IDChiTiet;
         }
 
         public string GetIDNPP(int index)
         {
-            var n = pbl.NhaPhanPhois.Where(p => p.IDNhaPhanPhoi.Contains(index + "")).OrderBy(p => p.IDNhaPhanPhoi).FirstOrDefault();
+            var n = pbl.NhaPhanPhoi.Where(p => p.IDNhaPhanPhoi.Contains(index + "")).OrderBy(p => p.IDNhaPhanPhoi).FirstOrDefault();
             return n.IDNhaPhanPhoi;
         }
         public int CountID(string f)
         {
-            var count = pbl.ChiTietSanPhams.Count(p => p.IDChiTiet.Contains("CT" + f));
+            var count = pbl.ChiTietSanPham.Count(p => p.IDChiTiet.Contains("CT" + f));
             return count;
         }
         public List<SoLuongCTSP> GetSoLuongs()
         {
-            var li = pbl.ChiTietSanPhams.Select(p => new SoLuongCTSP
+            var li = pbl.ChiTietSanPham.Select(p => new SoLuongCTSP
             {
                 IDChiTiet = p.IDChiTiet,
                 SoLuong = p.SoLuong,
@@ -124,7 +125,7 @@ namespace DataAccessLayer
         }
        public int DeleteLastID(string IDSP)
         {
-            var re = pbl.ChiTietSanPhams.Select(p => new
+            var re = pbl.ChiTietSanPham.Select(p => new
             {
                 IDCT = p.IDChiTiet,
                 IDSP = p.IDSanPham,
@@ -137,20 +138,20 @@ namespace DataAccessLayer
         }
         public int UpdateThongSo(string IDSP,string NPP)
         {
-            var re = pbl.ChiTietSanPhams.Where(p => p.IDSanPham.Contains(IDSP)).OrderByDescending(p => p.IDChiTiet).FirstOrDefault();
+            var re = pbl.ChiTietSanPham.Where(p => p.IDSanPham.Contains(IDSP)).OrderByDescending(p => p.IDChiTiet).FirstOrDefault();
             re.NhaPhanPhoi.TenNhaPhanPhoi = NPP;
             pbl.SaveChanges();
             return 1;
         }
         public string GetLastIDByIDSP(string IDSP)
         {
-            var li = pbl.ChiTietSanPhams.Where(p => p.IDSanPham.Contains(IDSP)).OrderByDescending(p => p.IDChiTiet).FirstOrDefault();
+            var li = pbl.ChiTietSanPham.Where(p => p.IDSanPham.Contains(IDSP)).OrderByDescending(p => p.IDChiTiet).FirstOrDefault();
             return li.IDChiTiet;
         }
         public bool CheckCTSPCoTheXoa(string ID)
         {
-            var li = pbl.ChiTietHoaDonNhaps.Where(p => p.IDChiTiet.Contains(ID) ).Select(p => p);
-            var li1 = pbl.ChiTietHoaDons.Where(p => p.IDChiTiet.Contains(ID)).Select(p => p);
+            var li = pbl.ChiTietHoaDonNhap.Where(p => p.IDChiTiet.Contains(ID) ).Select(p => p);
+            var li1 = pbl.ChiTietHoaDon.Where(p => p.IDChiTiet.Contains(ID)).Select(p => p);
             if(li.Count()>0 || li1.Count()>0)
             {
                 return false;
@@ -159,7 +160,7 @@ namespace DataAccessLayer
         }
         public int GetSoLuongByLastID(string IDSP)
         {
-            var re = pbl.ChiTietSanPhams.Where(p => p.IDSanPham == IDSP).OrderByDescending(p => p.IDChiTiet).FirstOrDefault();
+            var re = pbl.ChiTietSanPham.Where(p => p.IDSanPham == IDSP).OrderByDescending(p => p.IDChiTiet).FirstOrDefault();
             return re.SoLuong;
         }
     }

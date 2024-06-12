@@ -16,7 +16,7 @@ namespace DataAccessLayer
         {
             if (p != null)
             {
-                db.NhaPhanPhois.Add(p);
+                db.NhaPhanPhoi.Add(p);
                 db.SaveChanges();
                 return 1;
             }
@@ -24,10 +24,10 @@ namespace DataAccessLayer
         }
         public int Delete(string id )
         {
-            var p =db.NhaPhanPhois.Find(id);
+            var p =db.NhaPhanPhoi.Find(id);
             if (p != null)
             { 
-                db.NhaPhanPhois.Remove(p);
+                db.NhaPhanPhoi.Remove(p);
                 db.SaveChanges();
                 return 1;
             }
@@ -37,7 +37,7 @@ namespace DataAccessLayer
         {
             if (p != null)
             {
-                var n = db.NhaPhanPhois.Find(p.IDNhaPhanPhoi);
+                var n = db.NhaPhanPhoi.Find(p.IDNhaPhanPhoi);
                 n.TenNhaPhanPhoi = p.TenNhaPhanPhoi;
                 n.DiaChi = p.DiaChi;
                 n.SoDienThoai = p.SoDienThoai;
@@ -48,17 +48,17 @@ namespace DataAccessLayer
         }
         public List<string> GetName()
         {
-            var li = db.NhaPhanPhois.Select(p => p.TenNhaPhanPhoi);
+            var li = db.NhaPhanPhoi.Select(p => p.TenNhaPhanPhoi);
             return li.ToList();
         }
         public string GetLastID()
         {
-            var re = db.NhaPhanPhois.Select(p => p).OrderByDescending(p => p.IDNhaPhanPhoi).FirstOrDefault();
+            var re = db.NhaPhanPhoi.Select(p => p).OrderByDescending(p => p.IDNhaPhanPhoi).FirstOrDefault();
             return re.IDNhaPhanPhoi;
         }
         public bool CheckNPP(string id)
         {
-            var l = db.ChiTietSanPhams.Where(p => p.IDNhaPhanPhoi.Contains(id)).Count();
+            var l = db.ChiTietSanPham.Where(p => p.IDNhaPhanPhoi.Contains(id)).Count();
             if(l >0)
             {
                 return false;

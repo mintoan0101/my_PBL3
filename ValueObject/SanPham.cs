@@ -17,7 +17,7 @@ namespace ValueObject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SanPham()
         {
-            this.ChiTietSanPhams = new HashSet<ChiTietSanPham>();
+            this.ChiTietSanPham = new HashSet<ChiTietSanPham>();
         }
     
         public string IDSanPham { get; set; }
@@ -26,6 +26,6 @@ namespace ValueObject
         public decimal GiaBan { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietSanPham> ChiTietSanPhams { get; set; }
+        public virtual ICollection<ChiTietSanPham> ChiTietSanPham { get; set; }
     }
 }
